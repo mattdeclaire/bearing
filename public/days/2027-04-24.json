@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Anchorage",
+    "country": "United States",
+    "lat": 61.2181,
+    "lon": -149.9003
+  },
+  {
+    "name": "Prague",
+    "country": "Czechia",
+    "lat": 50.0755,
+    "lon": 14.4378
+  },
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "lat": 52.3676,
+    "lon": 4.9041
+  },
+  {
+    "name": "Cairo",
+    "country": "Egypt",
+    "lat": 30.0444,
+    "lon": 31.2357
+  }
+]

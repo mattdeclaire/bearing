@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Kolkata",
+    "country": "India",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "name": "Athens",
+    "country": "Greece",
+    "lat": 37.9838,
+    "lon": 23.7275
+  },
+  {
+    "name": "Sydney",
+    "country": "Australia",
+    "lat": -33.8688,
+    "lon": 151.2093
+  },
+  {
+    "name": "Melbourne",
+    "country": "Australia",
+    "lat": -37.8136,
+    "lon": 144.9631
+  },
+  {
+    "name": "Reykjavík",
+    "country": "Iceland",
+    "lat": 64.1466,
+    "lon": -21.9426
+  }
+]

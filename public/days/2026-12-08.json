@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Dublin",
+    "country": "Ireland",
+    "lat": 53.3498,
+    "lon": -6.2603
+  },
+  {
+    "name": "Lagos",
+    "country": "Nigeria",
+    "lat": 6.5244,
+    "lon": 3.3792
+  },
+  {
+    "name": "Lisbon",
+    "country": "Portugal",
+    "lat": 38.7223,
+    "lon": -9.1393
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "lat": -33.9249,
+    "lon": 18.4241
+  },
+  {
+    "name": "Kolkata",
+    "country": "India",
+    "lat": 22.5726,
+    "lon": 88.3639
+  }
+]

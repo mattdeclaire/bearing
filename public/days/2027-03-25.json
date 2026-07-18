@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198
+  },
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "lat": 47.4979,
+    "lon": 19.0402
+  },
+  {
+    "name": "Lagos",
+    "country": "Nigeria",
+    "lat": 6.5244,
+    "lon": 3.3792
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2297,
+    "lon": 21.0122
+  },
+  {
+    "name": "Nagoya",
+    "country": "Japan",
+    "lat": 35.1815,
+    "lon": 136.9066
+  }
+]

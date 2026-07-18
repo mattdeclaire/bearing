@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  {
+    "name": "São Paulo",
+    "country": "Brazil",
+    "lat": -23.5505,
+    "lon": -46.6333
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198
+  },
+  {
+    "name": "Osaka",
+    "country": "Japan",
+    "lat": 34.6937,
+    "lon": 135.5023
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "lat": 41.9028,
+    "lon": 12.4964
+  }
+]

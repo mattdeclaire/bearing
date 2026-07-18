@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Lagos",
+    "country": "Nigeria",
+    "lat": 6.5244,
+    "lon": 3.3792
+  },
+  {
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "lat": -34.6037,
+    "lon": -58.3816
+  },
+  {
+    "name": "Dublin",
+    "country": "Ireland",
+    "lat": 53.3498,
+    "lon": -6.2603
+  },
+  {
+    "name": "Manila",
+    "country": "Philippines",
+    "lat": 14.5995,
+    "lon": 120.9842
+  },
+  {
+    "name": "Santiago",
+    "country": "Chile",
+    "lat": -33.4489,
+    "lon": -70.6693
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Honolulu",
+    "country": "United States",
+    "lat": 21.3099,
+    "lon": -157.8581
+  },
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "lat": 43.6532,
+    "lon": -79.3832
+  },
+  {
+    "name": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0522,
+    "lon": -118.2437
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "lat": 52.3676,
+    "lon": 4.9041
+  },
+  {
+    "name": "Oslo",
+    "country": "Norway",
+    "lat": 59.9139,
+    "lon": 10.7522
+  }
+]

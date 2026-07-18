@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Bogotá",
+    "country": "Colombia",
+    "lat": 4.711,
+    "lon": -74.0721
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2297,
+    "lon": 21.0122
+  },
+  {
+    "name": "Havana",
+    "country": "Cuba",
+    "lat": 23.1136,
+    "lon": -82.3666
+  },
+  {
+    "name": "Moscow",
+    "country": "Russia",
+    "lat": 55.7558,
+    "lon": 37.6173
+  },
+  {
+    "name": "Cairo",
+    "country": "Egypt",
+    "lat": 30.0444,
+    "lon": 31.2357
+  }
+]

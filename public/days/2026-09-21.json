@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Athens",
+    "country": "Greece",
+    "lat": 37.9838,
+    "lon": 23.7275
+  },
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "lat": 19.4326,
+    "lon": -99.1332
+  },
+  {
+    "name": "Anchorage",
+    "country": "United States",
+    "lat": 61.2181,
+    "lon": -149.9003
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "lat": 41.9028,
+    "lon": 12.4964
+  }
+]

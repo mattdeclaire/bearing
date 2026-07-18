@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Moscow",
+    "country": "Russia",
+    "lat": 55.7558,
+    "lon": 37.6173
+  },
+  {
+    "name": "São Paulo",
+    "country": "Brazil",
+    "lat": -23.5505,
+    "lon": -46.6333
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "lat": 52.3676,
+    "lon": 4.9041
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "lat": 35.6762,
+    "lon": 139.6503
+  },
+  {
+    "name": "Berlin",
+    "country": "Germany",
+    "lat": 52.52,
+    "lon": 13.405
+  }
+]

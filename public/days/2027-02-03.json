@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Osaka",
+    "country": "Japan",
+    "lat": 34.6937,
+    "lon": 135.5023
+  },
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "lat": 19.4326,
+    "lon": -99.1332
+  },
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "lat": 43.6532,
+    "lon": -79.3832
+  },
+  {
+    "name": "Vienna",
+    "country": "Austria",
+    "lat": 48.2082,
+    "lon": 16.3738
+  },
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "lat": 31.2304,
+    "lon": 121.4737
+  }
+]

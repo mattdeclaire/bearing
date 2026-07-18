@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "lat": 37.5665,
+    "lon": 126.978
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686
+  },
+  {
+    "name": "Lagos",
+    "country": "Nigeria",
+    "lat": 6.5244,
+    "lon": 3.3792
+  },
+  {
+    "name": "Bogotá",
+    "country": "Colombia",
+    "lat": 4.711,
+    "lon": -74.0721
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198
+  }
+]

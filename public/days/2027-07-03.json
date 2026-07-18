@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Vancouver",
+    "country": "Canada",
+    "lat": 49.2827,
+    "lon": -123.1207
+  },
+  {
+    "name": "Istanbul",
+    "country": "Turkey",
+    "lat": 41.0082,
+    "lon": 28.9784
+  },
+  {
+    "name": "Nagoya",
+    "country": "Japan",
+    "lat": 35.1815,
+    "lon": 136.9066
+  },
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "lat": 47.4979,
+    "lon": 19.0402
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2297,
+    "lon": 21.0122
+  }
+]

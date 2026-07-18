@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "lat": 47.4979,
+    "lon": 19.0402
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "lat": 37.5665,
+    "lon": 126.978
+  },
+  {
+    "name": "Oslo",
+    "country": "Norway",
+    "lat": 59.9139,
+    "lon": 10.7522
+  },
+  {
+    "name": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8509,
+    "lon": 174.7645
+  },
+  {
+    "name": "Karachi",
+    "country": "Pakistan",
+    "lat": 24.8607,
+    "lon": 67.0011
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Reykjavík",
+    "country": "Iceland",
+    "lat": 64.1466,
+    "lon": -21.9426
+  },
+  {
+    "name": "Moscow",
+    "country": "Russia",
+    "lat": 55.7558,
+    "lon": 37.6173
+  },
+  {
+    "name": "Berlin",
+    "country": "Germany",
+    "lat": 52.52,
+    "lon": 13.405
+  },
+  {
+    "name": "Istanbul",
+    "country": "Turkey",
+    "lat": 41.0082,
+    "lon": 28.9784
+  },
+  {
+    "name": "Lima",
+    "country": "Peru",
+    "lat": -12.0464,
+    "lon": -77.0428
+  }
+]

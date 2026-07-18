@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Santiago",
+    "country": "Chile",
+    "lat": -33.4489,
+    "lon": -70.6693
+  },
+  {
+    "name": "Casablanca",
+    "country": "Morocco",
+    "lat": 33.5731,
+    "lon": -7.5898
+  },
+  {
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "lat": -34.6037,
+    "lon": -58.3816
+  },
+  {
+    "name": "Havana",
+    "country": "Cuba",
+    "lat": 23.1136,
+    "lon": -82.3666
+  },
+  {
+    "name": "Kolkata",
+    "country": "India",
+    "lat": 22.5726,
+    "lon": 88.3639
+  }
+]

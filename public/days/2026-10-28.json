@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Havana",
+    "country": "Cuba",
+    "lat": 23.1136,
+    "lon": -82.3666
+  },
+  {
+    "name": "Melbourne",
+    "country": "Australia",
+    "lat": -37.8136,
+    "lon": 144.9631
+  },
+  {
+    "name": "Lisbon",
+    "country": "Portugal",
+    "lat": 38.7223,
+    "lon": -9.1393
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "lat": 35.6762,
+    "lon": 139.6503
+  },
+  {
+    "name": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0522,
+    "lon": -118.2437
+  }
+]

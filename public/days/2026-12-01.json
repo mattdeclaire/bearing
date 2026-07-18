@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Athens",
+    "country": "Greece",
+    "lat": 37.9838,
+    "lon": 23.7275
+  },
+  {
+    "name": "Los Angeles",
+    "country": "United States",
+    "lat": 34.0522,
+    "lon": -118.2437
+  },
+  {
+    "name": "Prague",
+    "country": "Czechia",
+    "lat": 50.0755,
+    "lon": 14.4378
+  },
+  {
+    "name": "Kolkata",
+    "country": "India",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "name": "Madrid",
+    "country": "Spain",
+    "lat": 40.4168,
+    "lon": -3.7038
+  }
+]

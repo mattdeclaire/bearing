@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Lima",
+    "country": "Peru",
+    "lat": -12.0464,
+    "lon": -77.0428
+  },
+  {
+    "name": "Kolkata",
+    "country": "India",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "name": "Oslo",
+    "country": "Norway",
+    "lat": 59.9139,
+    "lon": 10.7522
+  },
+  {
+    "name": "Paris",
+    "country": "France",
+    "lat": 48.8566,
+    "lon": 2.3522
+  },
+  {
+    "name": "Nairobi",
+    "country": "Kenya",
+    "lat": -1.2921,
+    "lon": 36.8219
+  }
+]

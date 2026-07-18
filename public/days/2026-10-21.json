@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Chicago",
+    "country": "United States",
+    "lat": 41.8781,
+    "lon": -87.6298
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2297,
+    "lon": 21.0122
+  },
+  {
+    "name": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8509,
+    "lon": 174.7645
+  },
+  {
+    "name": "Anchorage",
+    "country": "United States",
+    "lat": 61.2181,
+    "lon": -149.9003
+  },
+  {
+    "name": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "lat": 19.4326,
+    "lon": -99.1332
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2297,
+    "lon": 21.0122
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "lat": 37.5665,
+    "lon": 126.978
+  },
+  {
+    "name": "Melbourne",
+    "country": "Australia",
+    "lat": -37.8136,
+    "lon": 144.9631
+  },
+  {
+    "name": "Sydney",
+    "country": "Australia",
+    "lat": -33.8688,
+    "lon": 151.2093
+  }
+]

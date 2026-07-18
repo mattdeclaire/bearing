@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "lat": 43.6532,
+    "lon": -79.3832
+  },
+  {
+    "name": "Berlin",
+    "country": "Germany",
+    "lat": 52.52,
+    "lon": 13.405
+  },
+  {
+    "name": "Madrid",
+    "country": "Spain",
+    "lat": 40.4168,
+    "lon": -3.7038
+  },
+  {
+    "name": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "lat": 10.8231,
+    "lon": 106.6297
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686
+  }
+]

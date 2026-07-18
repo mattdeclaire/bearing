@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8509,
+    "lon": 174.7645
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686
+  },
+  {
+    "name": "Vienna",
+    "country": "Austria",
+    "lat": 48.2082,
+    "lon": 16.3738
+  },
+  {
+    "name": "Helsinki",
+    "country": "Finland",
+    "lat": 60.1699,
+    "lon": 24.9384
+  },
+  {
+    "name": "Beijing",
+    "country": "China",
+    "lat": 39.9042,
+    "lon": 116.4074
+  }
+]

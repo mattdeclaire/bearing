@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Dhaka",
+    "country": "Bangladesh",
+    "lat": 23.8103,
+    "lon": 90.4125
+  },
+  {
+    "name": "Santiago",
+    "country": "Chile",
+    "lat": -33.4489,
+    "lon": -70.6693
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "lat": 52.3676,
+    "lon": 4.9041
+  },
+  {
+    "name": "Bangkok",
+    "country": "Thailand",
+    "lat": 13.7563,
+    "lon": 100.5018
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Paris",
+    "country": "France",
+    "lat": 48.8566,
+    "lon": 2.3522
+  },
+  {
+    "name": "Reykjavík",
+    "country": "Iceland",
+    "lat": 64.1466,
+    "lon": -21.9426
+  },
+  {
+    "name": "Honolulu",
+    "country": "United States",
+    "lat": 21.3099,
+    "lon": -157.8581
+  },
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  {
+    "name": "Riyadh",
+    "country": "Saudi Arabia",
+    "lat": 24.7136,
+    "lon": 46.6753
+  }
+]

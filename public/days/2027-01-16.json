@@ -1,0 +1,32 @@
+[
+  {
+    "name": "London",
+    "country": "United Kingdom",
+    "lat": 51.5074,
+    "lon": -0.1278
+  },
+  {
+    "name": "Moscow",
+    "country": "Russia",
+    "lat": 55.7558,
+    "lon": 37.6173
+  },
+  {
+    "name": "Lagos",
+    "country": "Nigeria",
+    "lat": 6.5244,
+    "lon": 3.3792
+  },
+  {
+    "name": "Karachi",
+    "country": "Pakistan",
+    "lat": 24.8607,
+    "lon": 67.0011
+  },
+  {
+    "name": "Prague",
+    "country": "Czechia",
+    "lat": 50.0755,
+    "lon": 14.4378
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "lat": 31.2304,
+    "lon": 121.4737
+  },
+  {
+    "name": "Melbourne",
+    "country": "Australia",
+    "lat": -37.8136,
+    "lon": 144.9631
+  },
+  {
+    "name": "Dublin",
+    "country": "Ireland",
+    "lat": 53.3498,
+    "lon": -6.2603
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686
+  },
+  {
+    "name": "Beijing",
+    "country": "China",
+    "lat": 39.9042,
+    "lon": 116.4074
+  }
+]

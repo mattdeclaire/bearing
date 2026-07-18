@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "lat": 43.6532,
+    "lon": -79.3832
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "lat": 52.2297,
+    "lon": 21.0122
+  },
+  {
+    "name": "Berlin",
+    "country": "Germany",
+    "lat": 52.52,
+    "lon": 13.405
+  },
+  {
+    "name": "Chengdu",
+    "country": "China",
+    "lat": 30.5728,
+    "lon": 104.0668
+  },
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "lat": 47.4979,
+    "lon": 19.0402
+  }
+]

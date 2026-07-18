@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Paris",
+    "country": "France",
+    "lat": 48.8566,
+    "lon": 2.3522
+  },
+  {
+    "name": "Delhi",
+    "country": "India",
+    "lat": 28.7041,
+    "lon": 77.1025
+  },
+  {
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "lat": -6.2088,
+    "lon": 106.8456
+  },
+  {
+    "name": "Casablanca",
+    "country": "Morocco",
+    "lat": 33.5731,
+    "lon": -7.5898
+  },
+  {
+    "name": "Beijing",
+    "country": "China",
+    "lat": 39.9042,
+    "lon": 116.4074
+  }
+]

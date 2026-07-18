@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "lat": -6.2088,
+    "lon": 106.8456
+  },
+  {
+    "name": "Vancouver",
+    "country": "Canada",
+    "lat": 49.2827,
+    "lon": -123.1207
+  },
+  {
+    "name": "Riyadh",
+    "country": "Saudi Arabia",
+    "lat": 24.7136,
+    "lon": 46.6753
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686
+  },
+  {
+    "name": "Osaka",
+    "country": "Japan",
+    "lat": 34.6937,
+    "lon": 135.5023
+  }
+]

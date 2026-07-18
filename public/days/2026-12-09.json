@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Cairo",
+    "country": "Egypt",
+    "lat": 30.0444,
+    "lon": 31.2357
+  },
+  {
+    "name": "Athens",
+    "country": "Greece",
+    "lat": 37.9838,
+    "lon": 23.7275
+  },
+  {
+    "name": "Mumbai",
+    "country": "India",
+    "lat": 19.076,
+    "lon": 72.8777
+  },
+  {
+    "name": "Tehran",
+    "country": "Iran",
+    "lat": 35.6892,
+    "lon": 51.389
+  },
+  {
+    "name": "Nairobi",
+    "country": "Kenya",
+    "lat": -1.2921,
+    "lon": 36.8219
+  }
+]

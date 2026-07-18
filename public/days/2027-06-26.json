@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Beijing",
+    "country": "China",
+    "lat": 39.9042,
+    "lon": 116.4074
+  },
+  {
+    "name": "Nairobi",
+    "country": "Kenya",
+    "lat": -1.2921,
+    "lon": 36.8219
+  },
+  {
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "lat": -34.6037,
+    "lon": -58.3816
+  },
+  {
+    "name": "Bogotá",
+    "country": "Colombia",
+    "lat": 4.711,
+    "lon": -74.0721
+  },
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "lat": 43.6532,
+    "lon": -79.3832
+  }
+]

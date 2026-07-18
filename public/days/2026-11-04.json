@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Nagoya",
+    "country": "Japan",
+    "lat": 35.1815,
+    "lon": 136.9066
+  },
+  {
+    "name": "Prague",
+    "country": "Czechia",
+    "lat": 50.0755,
+    "lon": 14.4378
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "lat": 41.9028,
+    "lon": 12.4964
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "lat": 37.5665,
+    "lon": 126.978
+  },
+  {
+    "name": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8509,
+    "lon": 174.7645
+  }
+]

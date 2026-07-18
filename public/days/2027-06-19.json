@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "lat": -33.9249,
+    "lon": 18.4241
+  },
+  {
+    "name": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+  },
+  {
+    "name": "Lima",
+    "country": "Peru",
+    "lat": -12.0464,
+    "lon": -77.0428
+  },
+  {
+    "name": "Dubai",
+    "country": "United Arab Emirates",
+    "lat": 25.2048,
+    "lon": 55.2708
+  },
+  {
+    "name": "Hong Kong",
+    "country": "China",
+    "lat": 22.3193,
+    "lon": 114.1694
+  }
+]

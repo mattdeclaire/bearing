@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "lat": 41.9028,
+    "lon": 12.4964
+  },
+  {
+    "name": "Karachi",
+    "country": "Pakistan",
+    "lat": 24.8607,
+    "lon": 67.0011
+  },
+  {
+    "name": "Chicago",
+    "country": "United States",
+    "lat": 41.8781,
+    "lon": -87.6298
+  },
+  {
+    "name": "Nagoya",
+    "country": "Japan",
+    "lat": 35.1815,
+    "lon": 136.9066
+  },
+  {
+    "name": "Auckland",
+    "country": "New Zealand",
+    "lat": -36.8509,
+    "lon": 174.7645
+  }
+]

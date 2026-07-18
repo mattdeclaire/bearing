@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "lat": 47.4979,
+    "lon": 19.0402
+  },
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "lat": 35.6762,
+    "lon": 139.6503
+  },
+  {
+    "name": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+  },
+  {
+    "name": "London",
+    "country": "United Kingdom",
+    "lat": 51.5074,
+    "lon": -0.1278
+  },
+  {
+    "name": "Osaka",
+    "country": "Japan",
+    "lat": 34.6937,
+    "lon": 135.5023
+  }
+]

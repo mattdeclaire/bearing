@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "lat": 52.3676,
+    "lon": 4.9041
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "lat": 59.3293,
+    "lon": 18.0686
+  },
+  {
+    "name": "Honolulu",
+    "country": "United States",
+    "lat": 21.3099,
+    "lon": -157.8581
+  },
+  {
+    "name": "Sydney",
+    "country": "Australia",
+    "lat": -33.8688,
+    "lon": 151.2093
+  },
+  {
+    "name": "Chengdu",
+    "country": "China",
+    "lat": 30.5728,
+    "lon": 104.0668
+  }
+]

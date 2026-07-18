@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Manila",
+    "country": "Philippines",
+    "lat": 14.5995,
+    "lon": 120.9842
+  },
+  {
+    "name": "Mumbai",
+    "country": "India",
+    "lat": 19.076,
+    "lon": 72.8777
+  },
+  {
+    "name": "Delhi",
+    "country": "India",
+    "lat": 28.7041,
+    "lon": 77.1025
+  },
+  {
+    "name": "New York",
+    "country": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+  },
+  {
+    "name": "Havana",
+    "country": "Cuba",
+    "lat": 23.1136,
+    "lon": -82.3666
+  }
+]

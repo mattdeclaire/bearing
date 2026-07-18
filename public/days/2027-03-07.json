@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Mumbai",
+    "country": "India",
+    "lat": 19.076,
+    "lon": 72.8777
+  },
+  {
+    "name": "Kolkata",
+    "country": "India",
+    "lat": 22.5726,
+    "lon": 88.3639
+  },
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "lat": 19.4326,
+    "lon": -99.1332
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "lat": 1.3521,
+    "lon": 103.8198
+  },
+  {
+    "name": "Chengdu",
+    "country": "China",
+    "lat": 30.5728,
+    "lon": 104.0668
+  }
+]

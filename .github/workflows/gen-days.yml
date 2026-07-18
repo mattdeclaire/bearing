@@ -1,0 +1,32 @@
+name: Top up daily puzzles
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gen-days:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run gen-days
+      - name: Commit new day files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/days
+          if git diff --cached --quiet; then
+            echo "No new day files to commit."
+          else
+            git commit -m "Top up daily puzzle files"
+            git push
+          fi
