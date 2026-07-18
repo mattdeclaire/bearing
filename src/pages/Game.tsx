@@ -39,9 +39,11 @@ export default function Game() {
   }, [saved]);
 
   const startPermissions = () => {
+    // The Play tap is itself a user gesture, so iOS's compass permission
+    // prompt can be triggered right here — no separate "Enable compass" tap.
     setPhase("permissions");
     geo.request();
-    if (!compass.needsPermissionGesture) compass.request();
+    compass.request();
   };
 
   const compassResolved =
@@ -155,20 +157,9 @@ export default function Game() {
               {compass.status === "sensor"
                 ? "Compass ready!"
                 : compass.status === "manual"
-                  ? "No compass found — you'll aim by dragging the dial instead."
-                  : compass.status === "requesting"
-                    ? "Listening for the compass…"
-                    : "Lets you aim by physically pointing your phone."}
+                  ? "No compass available — you'll aim by dragging the dial instead."
+                  : "Listening for the compass…"}
             </p>
-            {compass.status === "idle" && compass.needsPermissionGesture && (
-              <Button
-                variant="secondary"
-                className="mt-3 text-sm px-4 py-2"
-                onClick={compass.request}
-              >
-                Enable compass
-              </Button>
-            )}
           </div>
         </div>
       )}
