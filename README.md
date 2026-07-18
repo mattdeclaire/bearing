@@ -44,12 +44,14 @@ npm test         # unit tests (bearing math, scoring, share text, day generation
 npm run build    # static production build in dist/
 ```
 
-## Known approximation
+## True north
 
-Some Android devices report **magnetic** north rather than true north; iOS
-reports true heading when location services are on. The difference (magnetic
-declination) is usually under ~15° — accepted as noise for a casual game and
-not corrected for.
+Target bearings are great-circle (true-north) bearings. iOS's
+`webkitCompassHeading` is already true-north-corrected when location services
+are on. Android's `deviceorientationabsolute` reports **magnetic** north, so
+the app adds the local magnetic declination — computed client-side from the
+World Magnetic Model (`geomagnetism`) at the player's position — to put both
+platforms on true north.
 
 ## One-time setup after cloning to a new repo
 

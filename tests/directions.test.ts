@@ -124,6 +124,16 @@ describe("buildMonth", () => {
   });
 });
 
+describe("declinationAt", () => {
+  it("matches known WMM values within a degree", async () => {
+    const { declinationAt } = await import("../src/lib/declination.ts");
+    const d = new Date("2026-07-18");
+    expect(declinationAt({ lat: 47.6, lon: -122.3 }, d)).toBeCloseTo(14.9, 0); // Seattle, east
+    expect(declinationAt({ lat: 64.15, lon: -21.94 }, d)).toBeCloseTo(-11.1, 0); // Reykjavík, west
+    expect(Math.abs(declinationAt({ lat: 51.5, lon: -0.13 }, d))).toBeLessThan(3); // London, near zero
+  });
+});
+
 describe("citiesForDay", () => {
   it("returns exactly 5 distinct cities", () => {
     const cities = citiesForDay("2026-07-17");

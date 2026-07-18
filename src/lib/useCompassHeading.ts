@@ -20,9 +20,14 @@ const needsIosPermission = () =>
 
 const SENSOR_TIMEOUT_MS = 3000;
 
+export type CompassSource = "webkit" | "alpha";
+
 export function useCompassHeading() {
   const [status, setStatus] = useState<CompassStatus>("idle");
   const [heading, setHeading] = useState<number | null>(null);
+  // "webkit" headings are already true-north (iOS corrects via location);
+  // "alpha" headings are magnetic and need declination applied by the caller.
+  const [source, setSource] = useState<CompassSource | null>(null);
   const cleanupRef = useRef<(() => void) | null>(null);
 
   const listen = useCallback(() => {
@@ -31,14 +36,17 @@ export function useCompassHeading() {
     const onOrientation = (e: DeviceOrientationEvent) => {
       const webkit = (e as WebkitOrientationEvent).webkitCompassHeading;
       let h: number | null = null;
+      let src: CompassSource = "alpha";
       if (typeof webkit === "number" && !Number.isNaN(webkit)) {
         h = webkit;
+        src = "webkit";
       } else if (e.alpha !== null) {
         h = (360 - e.alpha) % 360;
       }
       if (h !== null) {
         gotEvent = true;
         setHeading(h);
+        setSource(src);
         setStatus("sensor");
       }
     };
@@ -87,5 +95,11 @@ export function useCompassHeading() {
 
   useEffect(() => () => cleanupRef.current?.(), []);
 
-  return { status, heading, request, needsPermissionGesture: needsIosPermission() };
+  return {
+    status,
+    heading,
+    source,
+    request,
+    needsPermissionGesture: needsIosPermission(),
+  };
 }

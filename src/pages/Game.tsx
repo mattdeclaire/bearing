@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { City } from "../lib/cities.ts";
 import {
   angularDiff,
@@ -9,6 +9,7 @@ import {
 } from "../lib/directions.ts";
 import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
+import { declinationAt } from "../lib/declination.ts";
 import { useGeolocation } from "../lib/useGeolocation.ts";
 import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
@@ -56,10 +57,23 @@ export default function Game() {
 
   const mode = compass.status === "sensor" ? "sensor" : "manual";
 
+  // Convert magnetic headings ("alpha" source, i.e. Android) to true north.
+  // iOS's webkitCompassHeading is already true when location is on.
+  const declination = useMemo(
+    () => (geo.position ? declinationAt(geo.position) : 0),
+    [geo.position],
+  );
+  const trueHeading =
+    compass.heading === null
+      ? null
+      : compass.source === "alpha"
+        ? (compass.heading + declination + 360) % 360
+        : compass.heading;
+
   const lockIn = () => {
     if (cities === "loading" || cities === null || !geo.position) return;
     const city = cities[round];
-    const guess = mode === "sensor" ? (compass.heading ?? 0) : manualAngle;
+    const guess = mode === "sensor" ? (trueHeading ?? 0) : manualAngle;
     const actual = bearingTo(geo.position, city);
     setResults((prev) => [
       ...prev,
@@ -174,7 +188,7 @@ export default function Game() {
           </div>
           <CompassDial
             mode={mode}
-            heading={compass.heading ?? 0}
+            heading={trueHeading ?? 0}
             manualAngle={manualAngle}
             onManualChange={setManualAngle}
             reveal={reveal}
