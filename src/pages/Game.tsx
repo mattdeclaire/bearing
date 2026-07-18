@@ -8,6 +8,7 @@ import {
   type CityResult,
 } from "../lib/directions.ts";
 import { loadTodayCities, todayKey } from "../lib/today.ts";
+import { loadResult, saveResult } from "../lib/storage.ts";
 import { useGeolocation } from "../lib/useGeolocation.ts";
 import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
@@ -16,10 +17,13 @@ import Button from "../components/Button.tsx";
 type Phase = "intro" | "permissions" | "playing" | "results";
 
 export default function Game() {
-  const [phase, setPhase] = useState<Phase>("intro");
+  // A finished game persists for the rest of the day — refreshing shows the
+  // results again instead of restarting the puzzle.
+  const [saved] = useState(() => loadResult(todayKey()));
+  const [phase, setPhase] = useState<Phase>(saved ? "results" : "intro");
   const [cities, setCities] = useState<City[] | null | "loading">("loading");
   const [round, setRound] = useState(0);
-  const [results, setResults] = useState<CityResult[]>([]);
+  const [results, setResults] = useState<CityResult[]>(saved ?? []);
   const [manualAngle, setManualAngle] = useState(0);
   const [reveal, setReveal] = useState<{ guess: number; actual: number } | null>(
     null,
@@ -31,8 +35,8 @@ export default function Game() {
   const dateKey = useRef(todayKey()).current;
 
   useEffect(() => {
-    loadTodayCities().then(setCities);
-  }, []);
+    if (!saved) loadTodayCities().then(setCities);
+  }, [saved]);
 
   const startPermissions = () => {
     setPhase("permissions");
@@ -72,6 +76,7 @@ export default function Game() {
     setReveal(null);
     setManualAngle(0);
     if (round + 1 >= 5) {
+      saveResult(dateKey, results);
       setPhase("results");
     } else {
       setRound(round + 1);
