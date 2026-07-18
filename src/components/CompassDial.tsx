@@ -13,37 +13,48 @@ const SIZE = 280;
 const C = SIZE / 2;
 const R = C - 10;
 
+// Shortest signed rotation from b to a, in (-180, 180].
+const signedDiff = (a: number, b: number) => {
+  const d = ((a - b + 540) % 360) - 180;
+  return d === -180 ? 180 : d;
+};
+
+const point = (angle: number, radius: number): [number, number] => {
+  const rad = (angle * Math.PI) / 180;
+  return [C + radius * Math.sin(rad), C - radius * Math.cos(rad)];
+};
+
+// Uniform ticks only — no cardinal labels, no distinguishable "north" tick.
+// Players must rely on their own sense of direction.
 function tickMarks() {
   const ticks = [];
   for (let deg = 0; deg < 360; deg += 15) {
-    const major = deg % 90 === 0;
-    const len = major ? 16 : 8;
-    const rad = (deg * Math.PI) / 180;
-    const x1 = C + (R - len) * Math.sin(rad);
-    const y1 = C - (R - len) * Math.cos(rad);
-    const x2 = C + R * Math.sin(rad);
-    const y2 = C - R * Math.cos(rad);
+    const [x1, y1] = point(deg, R - 10);
+    const [x2, y2] = point(deg, R);
     ticks.push(
-      <line
-        key={deg}
-        x1={x1}
-        y1={y1}
-        x2={x2}
-        y2={y2}
-        stroke={major ? "#f8fafc" : "#64748b"}
-        strokeWidth={major ? 3 : 1.5}
-      />,
+      <line key={deg} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#475569" strokeWidth={2} />,
     );
   }
   return ticks;
 }
 
-const LABELS: [string, number][] = [
-  ["N", 0],
-  ["E", 90],
-  ["S", 180],
-  ["W", 270],
-];
+function errorWedge(guessAngle: number, diff: number) {
+  if (Math.abs(diff) < 0.5) return null;
+  const wedgeR = R - 18;
+  const [gx, gy] = point(guessAngle, wedgeR);
+  const [ax, ay] = point(guessAngle + diff, wedgeR);
+  const sweep = diff > 0 ? 1 : 0;
+  return (
+    <path
+      d={`M ${C} ${C} L ${gx} ${gy} A ${wedgeR} ${wedgeR} 0 0 ${sweep} ${ax} ${ay} Z`}
+      fill="#4ade80"
+      fillOpacity={0.14}
+      stroke="#4ade80"
+      strokeOpacity={0.35}
+      strokeWidth={1}
+    />
+  );
+}
 
 export default function CompassDial({
   mode,
@@ -76,17 +87,18 @@ export default function CompassDial({
     dragging.current = false;
   };
 
-  // Sensor mode: rose rotates opposite the device heading so its north tracks
-  // real-world north; the needle stays fixed pointing up (where the phone points).
-  // Manual mode: rose is static (north up); the needle rotates to the dragged angle.
-  const roseRotation = mode === "sensor" ? -heading : 0;
-  const needleRotation = mode === "sensor" ? 0 : manualAngle;
-  const actualRotation =
-    reveal === null
-      ? null
-      : mode === "sensor"
-        ? reveal.actual - heading
-        : reveal.actual;
+  // While guessing, sensor mode spins the rose opposite the live heading and the
+  // needle points up (where the phone points). On reveal everything freezes: the
+  // rose locks at the heading captured with the guess, the needle stays where it
+  // was locked in, and the true direction is drawn offset by the signed error so
+  // the wedge between them IS the angle difference.
+  const frozen = reveal !== null;
+  const roseRotation =
+    mode === "sensor" ? -(frozen ? reveal.guess : heading) : 0;
+  const needleAngle =
+    mode === "sensor" ? 0 : frozen ? reveal.guess : manualAngle;
+  const diff = frozen ? signedDiff(reveal.actual, reveal.guess) : 0;
+  const actualAngle = frozen ? needleAngle + diff : null;
 
   return (
     <svg
@@ -98,83 +110,86 @@ export default function CompassDial({
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
     >
+      <defs>
+        <linearGradient id="needle-head" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fde68a" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+        <linearGradient id="needle-tail" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#475569" />
+          <stop offset="100%" stopColor="#1e293b" />
+        </linearGradient>
+        <radialGradient id="dial-face" cx="50%" cy="42%" r="65%">
+          <stop offset="0%" stopColor="#1a2436" />
+          <stop offset="100%" stopColor="#0b1220" />
+        </radialGradient>
+      </defs>
+
       <circle cx={C} cy={C} r={R + 6} fill="#1e293b" />
-      <circle cx={C} cy={C} r={R} fill="#0f172a" stroke="#334155" strokeWidth={2} />
+      <circle cx={C} cy={C} r={R} fill="url(#dial-face)" stroke="#334155" strokeWidth={2} />
+      <circle cx={C} cy={C} r={R - 14} fill="none" stroke="#334155" strokeWidth={1} strokeOpacity={0.6} />
+
       <g
         style={{
           transform: `rotate(${roseRotation}deg)`,
           transformOrigin: "center",
-          transition: mode === "sensor" ? "transform 120ms linear" : undefined,
+          transition: mode === "sensor" && !frozen ? "transform 120ms linear" : undefined,
         }}
       >
         {tickMarks()}
-        {LABELS.map(([label, deg]) => {
-          const rad = (deg * Math.PI) / 180;
-          const x = C + (R - 34) * Math.sin(rad);
-          const y = C - (R - 34) * Math.cos(rad);
-          return (
-            <text
-              key={label}
-              x={x}
-              y={y}
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill={label === "N" ? "#f87171" : "#94a3b8"}
-              fontSize={label === "N" ? 24 : 18}
-              fontWeight={700}
-              style={{
-                transform: `rotate(${-roseRotation}deg)`,
-                transformOrigin: `${x}px ${y}px`,
-              }}
-            >
-              {label}
-            </text>
-          );
-        })}
       </g>
-      {actualRotation !== null && (
-        <g
-          style={{
-            transform: `rotate(${actualRotation}deg)`,
-            transformOrigin: "center",
-          }}
-        >
+
+      {frozen && errorWedge(needleAngle, diff)}
+
+      {actualAngle !== null && (
+        <g style={{ transform: `rotate(${actualAngle}deg)`, transformOrigin: "center" }}>
           <line
             x1={C}
             y1={C}
             x2={C}
-            y2={C - R + 24}
+            y2={C - R + 26}
             stroke="#4ade80"
-            strokeWidth={5}
+            strokeWidth={4}
             strokeLinecap="round"
+            strokeDasharray="2 6"
           />
           <polygon
-            points={`${C},${C - R + 12} ${C - 8},${C - R + 30} ${C + 8},${C - R + 30}`}
+            points={`${C},${C - R + 12} ${C - 8},${C - R + 32} ${C + 8},${C - R + 32}`}
             fill="#4ade80"
           />
         </g>
       )}
-      <g
-        style={{
-          transform: `rotate(${needleRotation}deg)`,
-          transformOrigin: "center",
-        }}
-      >
+
+      <g style={{ transform: `rotate(${needleAngle}deg)`, transformOrigin: "center" }}>
+        {/* tail: slate kite half pointing away from the guess */}
+        <polygon
+          points={`${C - 13},${C} ${C + 13},${C} ${C},${C + 58}`}
+          fill="url(#needle-tail)"
+          stroke="#0f172a"
+          strokeWidth={1}
+        />
+        {/* head: amber kite half pointing at the guess */}
+        <polygon
+          points={`${C},${C - R + 24} ${C - 13},${C} ${C + 13},${C}`}
+          fill="url(#needle-head)"
+          stroke="#0f172a"
+          strokeWidth={1}
+        />
+        {/* spine highlight */}
         <line
           x1={C}
-          y1={C + 30}
+          y1={C - R + 28}
           x2={C}
-          y2={C - R + 40}
-          stroke="#fbbf24"
-          strokeWidth={6}
-          strokeLinecap="round"
-        />
-        <polygon
-          points={`${C},${C - R + 26} ${C - 11},${C - R + 50} ${C + 11},${C - R + 50}`}
-          fill="#fbbf24"
+          y2={C + 52}
+          stroke="#f8fafc"
+          strokeOpacity={0.28}
+          strokeWidth={1.5}
         />
       </g>
-      <circle cx={C} cy={C} r={10} fill="#f8fafc" stroke="#0f172a" strokeWidth={3} />
+
+      {/* hub */}
+      <circle cx={C} cy={C} r={13} fill="#1e293b" stroke="#64748b" strokeWidth={2} />
+      <circle cx={C} cy={C} r={5} fill="#fbbf24" />
     </svg>
   );
 }
