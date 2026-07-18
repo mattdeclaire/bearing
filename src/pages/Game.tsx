@@ -109,7 +109,7 @@ export default function Game() {
           <p className="text-lg text-slate-300">
             You'll be shown <strong>5 cities</strong>. Point your phone toward
             where you think each one is, then lock in your guess. The closer
-            your bearing, the lower your score.
+            your bearing, the better.
           </p>
           {cities === null ? (
             <p className="text-amber-400">
