@@ -107,7 +107,6 @@ export default function Game() {
           <h1 className="text-5xl font-bold tracking-tight">
             🧭 Bearing
           </h1>
-          <p className="text-slate-400">{dateKey}</p>
           <p className="text-lg text-slate-300">
             You'll be shown <strong>5 cities</strong>. Point your phone toward
             where you think each one is, then lock in your guess. The closer
@@ -205,7 +204,7 @@ export default function Game() {
 
       {phase === "results" && (
         <div className="flex flex-col items-center gap-6 w-full max-w-sm my-auto">
-          <h2 className="text-2xl font-bold">Results — {dateKey}</h2>
+          <h2 className="text-2xl font-bold">Results</h2>
           <p className="text-5xl font-bold text-amber-400">
             {Math.round(results.reduce((s, r) => s + r.error, 0))}°
           </p>
