@@ -37,7 +37,7 @@ export function gradeEmoji(diff: number): string {
   return "🔴";
 }
 
-export const SITE_URL = "https://mattdeclaire.github.io/bearing/";
+export const SITE_URL = "https://bearing.city/";
 
 export function buildShareText(dateKey: string, results: CityResult[]): string {
   const total = Math.round(results.reduce((sum, r) => sum + r.error, 0));

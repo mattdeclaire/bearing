@@ -6,7 +6,7 @@ the sum of your angular errors in degrees across all 5 cities. Lower is better.
 One puzzle per day, same cities for everyone — share your result and see how
 your friends' sense of direction stacks up.
 
-**Play it:** https://mattdeclaire.github.io/bearing/
+**Play it:** https://bearing.city/
 
 ## Stack
 
@@ -52,4 +52,7 @@ not corrected for.
 
 ## One-time setup after cloning to a new repo
 
-Enable GitHub Pages: **Settings → Pages → Source → "GitHub Actions"**.
+Enable GitHub Pages: **Settings → Pages → Source → "GitHub Actions"**, and set
+the custom domain to `bearing.city` (DNS: apex A records to GitHub Pages'
+IPs). Note that workflow-based Pages deploys ignore any `CNAME` file — the
+domain lives in the Pages settings.
