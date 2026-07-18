@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import type { PointerEvent } from "react";
 
 interface CompassDialProps {
@@ -64,7 +64,40 @@ export default function CompassDial({
   reveal,
 }: CompassDialProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const roseRef = useRef<SVGGElement>(null);
   const dragging = useRef(false);
+
+  const frozen = reveal !== null;
+
+  // Sensor headings arrive at uneven rates, so binding the rose straight to
+  // them (or tweening each discrete update with a CSS transition) looks jaggy
+  // and spins the long way when the heading wraps past 0°. Instead a rAF loop
+  // eases a displayed angle toward the live heading along the shortest arc
+  // every frame, writing the transform directly so React isn't re-rendered
+  // 60 times a second.
+  const headingRef = useRef(heading);
+  headingRef.current = heading;
+  const displayRef = useRef(heading);
+
+  useEffect(() => {
+    const el = roseRef.current;
+    if (!el) return;
+    if (mode !== "sensor") {
+      el.style.transform = "rotate(0deg)";
+      return;
+    }
+    if (frozen) return; // hold whatever angle the loop last painted
+    let raf = requestAnimationFrame(function tick() {
+      const d = signedDiff(headingRef.current, displayRef.current);
+      displayRef.current =
+        Math.abs(d) < 0.05
+          ? headingRef.current
+          : (displayRef.current + d * 0.15 + 360) % 360;
+      el.style.transform = `rotate(${-displayRef.current}deg)`;
+      raf = requestAnimationFrame(tick);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [mode, frozen]);
 
   const angleFromEvent = useCallback((e: PointerEvent<SVGSVGElement>) => {
     const rect = svgRef.current!.getBoundingClientRect();
@@ -89,12 +122,9 @@ export default function CompassDial({
 
   // While guessing, sensor mode spins the rose opposite the live heading and the
   // needle points up (where the phone points). On reveal everything freezes: the
-  // rose locks at the heading captured with the guess, the needle stays where it
-  // was locked in, and the true direction is drawn offset by the signed error so
-  // the wedge between them IS the angle difference.
-  const frozen = reveal !== null;
-  const roseRotation =
-    mode === "sensor" ? -(frozen ? reveal.guess : heading) : 0;
+  // rose holds its last painted angle, the needle stays where it was locked in,
+  // and the true direction is drawn offset by the signed error so the wedge
+  // between them IS the angle difference.
   const needleAngle =
     mode === "sensor" ? 0 : frozen ? reveal.guess : manualAngle;
   const diff = frozen ? signedDiff(reveal.actual, reveal.guess) : 0;
@@ -129,13 +159,7 @@ export default function CompassDial({
       <circle cx={C} cy={C} r={R} fill="url(#dial-face)" stroke="#334155" strokeWidth={2} />
       <circle cx={C} cy={C} r={R - 14} fill="none" stroke="#334155" strokeWidth={1} strokeOpacity={0.6} />
 
-      <g
-        style={{
-          transform: `rotate(${roseRotation}deg)`,
-          transformOrigin: "center",
-          transition: mode === "sensor" && !frozen ? "transform 120ms linear" : undefined,
-        }}
-      >
+      <g ref={roseRef} data-rose style={{ transformOrigin: "center" }}>
         {tickMarks()}
       </g>
 
