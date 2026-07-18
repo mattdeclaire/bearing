@@ -1,1 +1,0 @@
-{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/components/Button.tsx","./src/components/CompassDial.tsx","./src/lib/cities.ts","./src/lib/directions.ts","./src/lib/today.ts","./src/lib/useCompassHeading.ts","./src/lib/useGeolocation.ts","./src/pages/Game.tsx"],"version":"5.9.3"}
