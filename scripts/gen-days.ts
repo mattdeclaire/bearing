@@ -27,6 +27,8 @@ function mulberry32(seed: number): () => number {
   };
 }
 
+// Deterministic per-date: a given date always yields the same 5 cities, so
+// regenerating (or regrouping into month files) never changes a published day.
 export function citiesForDay(dateKey: string): City[] {
   const rand = mulberry32(hashString(`bearing:${dateKey}`));
   const pool = [...CITIES];
@@ -37,34 +39,46 @@ export function citiesForDay(dateKey: string): City[] {
   return pool.slice(0, CITIES_PER_DAY);
 }
 
-function dateKeyUTC(d: Date): string {
-  return d.toISOString().slice(0, 10);
+// One file per month: { "YYYY-MM-DD": City[5], ... } for every day of the month.
+export function buildMonth(year: number, month: number): Record<string, City[]> {
+  const out: Record<string, City[]> = {};
+  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  for (let d = 1; d <= daysInMonth; d++) {
+    const key = `${year}-${String(month).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    out[key] = citiesForDay(key);
+  }
+  return out;
 }
 
 function main() {
   const force = process.argv.includes("--force");
   mkdirSync(DAYS_DIR, { recursive: true });
 
+  // Cover every month that intersects [yesterday, one year out]. Months are
+  // always written complete, then never touched again (absent --force).
   const start = new Date();
   start.setUTCDate(start.getUTCDate() - 1);
+  const end = new Date();
+  end.setUTCDate(end.getUTCDate() + WINDOW_DAYS + 1);
+
   let written = 0;
   let skipped = 0;
-
-  for (let i = 0; i <= WINDOW_DAYS + 1; i++) {
-    const d = new Date(start);
-    d.setUTCDate(d.getUTCDate() + i);
-    const key = dateKeyUTC(d);
-    const file = join(DAYS_DIR, `${key}.json`);
+  const cur = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), 1));
+  while (cur <= end) {
+    const y = cur.getUTCFullYear();
+    const m = cur.getUTCMonth() + 1;
+    const file = join(DAYS_DIR, `${y}-${String(m).padStart(2, "0")}.json`);
     if (existsSync(file) && !force) {
       skipped++;
-      continue;
+    } else {
+      writeFileSync(file, JSON.stringify(buildMonth(y, m), null, 2) + "\n");
+      written++;
     }
-    writeFileSync(file, JSON.stringify(citiesForDay(key), null, 2) + "\n");
-    written++;
+    cur.setUTCMonth(cur.getUTCMonth() + 1);
   }
 
-  const total = readdirSync(DAYS_DIR).filter((f) => f.endsWith(".json")).length;
-  console.log(`gen-days: wrote ${written}, skipped ${skipped} existing, ${total} total day files`);
+  const total = readdirSync(DAYS_DIR).filter((f) => /^\d{4}-\d{2}\.json$/.test(f)).length;
+  console.log(`gen-days: wrote ${written}, skipped ${skipped} existing, ${total} total month files`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) main();

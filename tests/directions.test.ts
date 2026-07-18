@@ -6,8 +6,8 @@ import {
   gradeEmoji,
   SITE_URL,
 } from "../src/lib/directions.ts";
-import { todayKey } from "../src/lib/today.ts";
-import { citiesForDay } from "../scripts/gen-days.ts";
+import { monthKey, todayKey } from "../src/lib/today.ts";
+import { buildMonth, citiesForDay } from "../scripts/gen-days.ts";
 
 const LONDON = { lat: 51.5074, lon: -0.1278 };
 const NYC = { lat: 40.7128, lon: -74.006 };
@@ -96,6 +96,31 @@ describe("todayKey", () => {
   it("formats a local date as YYYY-MM-DD with zero padding", () => {
     expect(todayKey(new Date(2026, 0, 5))).toBe("2026-01-05");
     expect(todayKey(new Date(2026, 11, 31))).toBe("2026-12-31");
+  });
+});
+
+describe("monthKey", () => {
+  it("is the YYYY-MM prefix of the local date", () => {
+    expect(monthKey(new Date(2026, 0, 5))).toBe("2026-01");
+    expect(monthKey(new Date(2026, 11, 31))).toBe("2026-12");
+  });
+});
+
+describe("buildMonth", () => {
+  it("covers every day of the month with 5 cities each", () => {
+    const feb = buildMonth(2026, 2);
+    expect(Object.keys(feb)).toHaveLength(28);
+    expect(feb["2026-02-01"]).toHaveLength(5);
+    expect(feb["2026-02-28"]).toHaveLength(5);
+    expect(feb["2026-02-29"]).toBeUndefined();
+  });
+
+  it("handles leap years", () => {
+    expect(Object.keys(buildMonth(2028, 2))).toHaveLength(29);
+  });
+
+  it("month entries match the per-day generator", () => {
+    expect(buildMonth(2026, 7)["2026-07-18"]).toEqual(citiesForDay("2026-07-18"));
   });
 });
 

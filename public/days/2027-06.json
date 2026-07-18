@@ -1,0 +1,962 @@
+{
+  "2027-06-01": [
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686
+    }
+  ],
+  "2027-06-02": [
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666
+    },
+    {
+      "name": "Lagos",
+      "country": "Nigeria",
+      "lat": 6.5244,
+      "lon": 3.3792
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473
+    }
+  ],
+  "2027-06-03": [
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738
+    }
+  ],
+  "2027-06-04": [
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426
+    },
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784
+    }
+  ],
+  "2027-06-05": [
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297
+    },
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198
+    }
+  ],
+  "2027-06-06": [
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241
+    }
+  ],
+  "2027-06-07": [
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978
+    },
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721
+    }
+  ],
+  "2027-06-08": [
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219
+    },
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522
+    }
+  ],
+  "2027-06-09": [
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041
+    },
+    {
+      "name": "Lagos",
+      "country": "Nigeria",
+      "lat": 6.5244,
+      "lon": 3.3792
+    }
+  ],
+  "2027-06-10": [
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721
+    },
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125
+    },
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357
+    }
+  ],
+  "2027-06-11": [
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686
+    }
+  ],
+  "2027-06-12": [
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393
+    },
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581
+    }
+  ],
+  "2027-06-13": [
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581
+    }
+  ],
+  "2027-06-14": [
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473
+    }
+  ],
+  "2027-06-15": [
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023
+    },
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686
+    }
+  ],
+  "2027-06-16": [
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503
+    }
+  ],
+  "2027-06-17": [
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437
+    },
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066
+    }
+  ],
+  "2027-06-18": [
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298
+    },
+    {
+      "name": "Chengdu",
+      "country": "China",
+      "lat": 30.5728,
+      "lon": 104.0668
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603
+    }
+  ],
+  "2027-06-19": [
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241
+    },
+    {
+      "name": "New York",
+      "country": "United States",
+      "lat": 40.7128,
+      "lon": -74.006
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694
+    }
+  ],
+  "2027-06-20": [
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018
+    }
+  ],
+  "2027-06-21": [
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333
+    }
+  ],
+  "2027-06-22": [
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275
+    }
+  ],
+  "2027-06-23": [
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978
+    }
+  ],
+  "2027-06-24": [
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816
+    }
+  ],
+  "2027-06-25": [
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473
+    }
+  ],
+  "2027-06-26": [
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9042,
+      "lon": 116.4074
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832
+    }
+  ],
+  "2027-06-27": [
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207
+    }
+  ],
+  "2027-06-28": [
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093
+    },
+    {
+      "name": "Shanghai",
+      "country": "China",
+      "lat": 31.2304,
+      "lon": 121.4737
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207
+    }
+  ],
+  "2027-06-29": [
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666
+    },
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9042,
+      "lon": 116.4074
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631
+    }
+  ],
+  "2027-06-30": [
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842
+    },
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426
+    },
+    {
+      "name": "Delhi",
+      "country": "India",
+      "lat": 28.7041,
+      "lon": 77.1025
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738
+    }
+  ]
+}

@@ -19,16 +19,17 @@ your friends' sense of direction stacks up.
 
 ## Daily puzzles
 
-Each day's 5 cities live in a committed JSON file: `public/days/YYYY-MM-DD.json`.
-The app loads the file matching the player's **local** date (Wordle-style), so
-everyone on the same calendar day gets the same puzzle. If no file exists for
-today, the app shows a friendly "no puzzle today" state.
+Puzzles live in committed monthly JSON files: `public/days/YYYY-MM.json`, an
+object mapping each date of the month to its 5 cities. The app fetches the
+current month's file and picks the entry for the player's **local** date
+(Wordle-style), so everyone on the same calendar day gets the same puzzle. A
+missing file or date shows a friendly "no puzzle today" state.
 
-- `npm run gen-days` (`scripts/gen-days.ts`) generates files with a
-  deterministic shuffle keyed off the date string, from **yesterday** (covers
-  every timezone) through one year out. It **skips files that already exist** —
-  a published puzzle must never change underneath players. Use `--force` only
-  for deliberate regeneration.
+- `npm run gen-days` (`scripts/gen-days.ts`) generates complete month files
+  with a deterministic shuffle keyed off each date string, covering yesterday
+  through one year out. It **skips files that already exist** — a published
+  puzzle must never change underneath players — and per-date determinism means
+  even `--force` regeneration reproduces identical puzzles.
 - `.github/workflows/gen-days.yml` runs monthly (cron, 1st of the month) to
   top up the window and commits the new files to `main`, which triggers a
   deploy. If a run is missed, the next run catches up automatically. GitHub

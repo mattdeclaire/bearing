@@ -7,13 +7,19 @@ export function todayKey(now: Date = new Date()): string {
   return `${y}-${m}-${d}`;
 }
 
+export function monthKey(now: Date = new Date()): string {
+  return todayKey(now).slice(0, 7);
+}
+
 export async function loadTodayCities(): Promise<City[] | null> {
   try {
-    const res = await fetch(`days/${todayKey()}.json`);
+    const res = await fetch(`days/${monthKey()}.json`);
     if (!res.ok) return null;
     const data: unknown = await res.json();
-    if (!Array.isArray(data) || data.length !== 5) return null;
-    return data as City[];
+    if (typeof data !== "object" || data === null) return null;
+    const cities = (data as Record<string, unknown>)[todayKey()];
+    if (!Array.isArray(cities) || cities.length !== 5) return null;
+    return cities as City[];
   } catch {
     return null;
   }
