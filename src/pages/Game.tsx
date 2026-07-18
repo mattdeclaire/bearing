@@ -86,7 +86,7 @@ export default function Game() {
   };
 
   const share = async () => {
-    const text = buildShareText(dateKey, results);
+    const text = buildShareText(results);
     if (navigator.share) {
       try {
         await navigator.share({ text });

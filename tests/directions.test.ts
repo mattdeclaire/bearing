@@ -85,9 +85,9 @@ describe("buildShareText", () => {
       { name: "D", country: "X", guess: 0, actual: 100, error: 100 },
       { name: "E", country: "X", guess: 0, actual: 170, error: 170 },
     ];
-    const text = buildShareText("2026-07-17", results);
+    const text = buildShareText(results);
     expect(text).toBe(
-      `Bearing — 2026-07-17 · 345° off over 5 cities · 🎯🟢🟡🟠🔴\n${SITE_URL}`,
+      `Bearing · 345° off over 5 cities · 🎯🟢🟡🟠🔴\n${SITE_URL}`,
     );
   });
 });

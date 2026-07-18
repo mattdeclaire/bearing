@@ -39,8 +39,8 @@ export function gradeEmoji(diff: number): string {
 
 export const SITE_URL = "https://bearing.city/";
 
-export function buildShareText(dateKey: string, results: CityResult[]): string {
+export function buildShareText(results: CityResult[]): string {
   const total = Math.round(results.reduce((sum, r) => sum + r.error, 0));
   const emojis = results.map((r) => gradeEmoji(r.error)).join("");
-  return `Bearing — ${dateKey} · ${total}° off over ${results.length} cities · ${emojis}\n${SITE_URL}`;
+  return `Bearing · ${total}° off over ${results.length} cities · ${emojis}\n${SITE_URL}`;
 }
