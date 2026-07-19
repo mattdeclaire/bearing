@@ -10,6 +10,7 @@ import {
 import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
 import { declinationAt } from "../lib/declination.ts";
+import { track } from "../lib/analytics.ts";
 import { useGeolocation } from "../lib/useGeolocation.ts";
 import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
@@ -42,10 +43,15 @@ export default function Game() {
   const startPermissions = () => {
     // The Play tap is itself a user gesture, so iOS's compass permission
     // prompt can be triggered right here — no separate "Enable compass" tap.
+    track("game_start");
     setPhase("permissions");
     geo.request();
     compass.request();
   };
+
+  useEffect(() => {
+    if (geo.status === "denied") track("geo_denied");
+  }, [geo.status]);
 
   const compassResolved =
     compass.status === "sensor" || compass.status === "manual";
@@ -93,6 +99,10 @@ export default function Game() {
     setManualAngle(0);
     if (round + 1 >= 5) {
       saveResult(dateKey, results);
+      track("game_complete", {
+        score: Math.round(results.reduce((s, r) => s + r.error, 0)),
+        mode,
+      });
       setPhase("results");
     } else {
       setRound(round + 1);
@@ -101,6 +111,9 @@ export default function Game() {
 
   const share = async () => {
     const text = buildShareText(results);
+    track("share", {
+      method: typeof navigator.share === "function" ? "sheet" : "clipboard",
+    });
     if (navigator.share) {
       try {
         await navigator.share({ text });
