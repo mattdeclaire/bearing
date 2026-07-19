@@ -46,8 +46,16 @@ export default function Game() {
     // prompt can be triggered right here — no separate "Enable compass" tap.
     track("game_start");
     setPhase("permissions");
-    geo.request();
-    compass.request();
+    if (isIos()) {
+      // Serial prompts: motion must be requested inside the tap's gesture
+      // window, while the location prompt needs no gesture — so motion goes
+      // first and location waits for it to settle instead of stacking two
+      // popups on top of each other.
+      compass.request().then(() => geo.request());
+    } else {
+      geo.request();
+      compass.request();
+    }
   };
 
   useEffect(() => {
