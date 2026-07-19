@@ -238,6 +238,19 @@ export default function Game() {
             ))}
           </ul>
           <Button onClick={share}>{copied ? "Copied!" : "Share"}</Button>
+          <p className="text-sm text-slate-500 max-w-xs">
+            Surprised by a direction? Bearing scores the shortest path over the
+            globe, which often differs from the straight line on a flat map —{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Rhumb_line"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-slate-400 hover:text-slate-300"
+            >
+              great circles vs rhumb lines
+            </a>
+            .
+          </p>
           <p className="text-sm text-slate-500">
             Come back tomorrow for a new set of cities.
           </p>
