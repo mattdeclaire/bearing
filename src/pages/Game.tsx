@@ -11,6 +11,7 @@ import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
 import { declinationAt } from "../lib/declination.ts";
 import { track } from "../lib/analytics.ts";
+import { isIos, likelyHasCompass } from "../lib/device.ts";
 import { useGeolocation } from "../lib/useGeolocation.ts";
 import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
@@ -135,9 +136,35 @@ export default function Game() {
             🧭 Bearing
           </h1>
           <p className="text-lg text-slate-300">
-            You'll be shown <strong>5 cities</strong>. Point your phone toward
-            where you think each one is, then lock in your guess. The closer
-            your bearing, the better.
+            {likelyHasCompass() ? (
+              <>
+                You'll be shown <strong>5 cities</strong>. Point your phone
+                toward where you think each one is, then lock in your guess.
+                The closer your bearing, the better.
+              </>
+            ) : (
+              <>
+                You'll be shown <strong>5 cities</strong>. Drag the compass
+                needle toward where you think each one is, then lock in your
+                guess. The closer your bearing, the better.
+              </>
+            )}
+          </p>
+          <p className="text-sm text-slate-500 max-w-xs">
+            {likelyHasCompass() ? (
+              <>
+                Your browser will ask for your location
+                {isIos() ? " and motion access" : ""} — that's how Bearing
+                knows each city's true direction and where you're pointing.
+                Your location never leaves your device.
+              </>
+            ) : (
+              <>
+                Your browser will ask for your location — that's how Bearing
+                knows each city's true direction. It never leaves your device.
+                No compass here? On a phone you get to physically point. 📱
+              </>
+            )}
           </p>
           {cities === null ? (
             <p className="text-amber-400">
@@ -166,12 +193,12 @@ export default function Game() {
               {geo.status === "granted"
                 ? "Got it!"
                 : geo.status === "requesting"
-                  ? "Waiting for permission…"
+                  ? "Waiting for your browser's permission prompt…"
                   : geo.status === "denied"
-                    ? "Permission denied. Bearing needs your location to know which way each city is."
+                    ? "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
                     : geo.status === "error"
-                      ? "Couldn't get your location."
-                      : "Needed to compute the true direction of each city."}
+                      ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
+                      : "Used only on your device, only to compute city directions."}
             </p>
             {(geo.status === "denied" || geo.status === "error") && (
               <Button
@@ -183,16 +210,27 @@ export default function Game() {
               </Button>
             )}
           </div>
-          <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
-            <p className="font-semibold">🧭 Compass</p>
-            <p className="text-sm text-slate-400 mt-1">
-              {compass.status === "sensor"
-                ? "Compass ready!"
-                : compass.status === "manual"
-                  ? "No compass available — you'll aim by dragging the dial instead."
-                  : "Listening for the compass…"}
-            </p>
-          </div>
+          {likelyHasCompass() ? (
+            <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
+              <p className="font-semibold">🧭 Compass</p>
+              <p className="text-sm text-slate-400 mt-1">
+                {compass.status === "sensor"
+                  ? "Compass ready!"
+                  : compass.status === "manual"
+                    ? "No compass reading — no problem, you'll aim by dragging the dial instead."
+                    : "Listening for the compass…"}
+              </p>
+            </div>
+          ) : (
+            <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
+              <p className="font-semibold">🖱️ No compass needed</p>
+              <p className="text-sm text-slate-400 mt-1">
+                This device doesn't have a compass, so you'll aim by dragging
+                the dial. For the point-your-phone experience, open
+                bearing.city on a phone.
+              </p>
+            </div>
+          )}
         </div>
       )}
 

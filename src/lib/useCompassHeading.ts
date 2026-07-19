@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isIos, likelyHasCompass } from "./device.ts";
 
 export type CompassStatus =
   | "idle"
@@ -10,13 +11,6 @@ export type CompassStatus =
 interface WebkitOrientationEvent extends DeviceOrientationEvent {
   webkitCompassHeading?: number;
 }
-
-const needsIosPermission = () =>
-  typeof (
-    DeviceOrientationEvent as unknown as {
-      requestPermission?: () => Promise<string>;
-    }
-  ).requestPermission === "function";
 
 const SENSOR_TIMEOUT_MS = 3000;
 
@@ -30,7 +24,7 @@ export function useCompassHeading() {
   const [source, setSource] = useState<CompassSource | null>(null);
   const cleanupRef = useRef<(() => void) | null>(null);
 
-  const listen = useCallback(() => {
+  const listen = useCallback((awaitSensor: boolean) => {
     let gotEvent = false;
 
     const onOrientation = (e: DeviceOrientationEvent) => {
@@ -67,14 +61,25 @@ export function useCompassHeading() {
         true,
       );
 
-    setTimeout(() => {
-      if (!gotEvent) setStatus("manual");
-    }, SENSOR_TIMEOUT_MS);
+    if (awaitSensor) {
+      setTimeout(() => {
+        if (!gotEvent) setStatus("manual");
+      }, SENSOR_TIMEOUT_MS);
+    }
   }, []);
 
   const request = useCallback(async () => {
+    // Devices classified as compass-less resolve to manual instantly — no 3s
+    // wait, no iOS-style prompt — but the listener still attaches so unusual
+    // hardware (touchscreen laptops with real sensors) can upgrade to sensor
+    // mode if orientation events actually arrive.
+    if (!likelyHasCompass()) {
+      setStatus("manual");
+      listen(false);
+      return;
+    }
     setStatus("requesting");
-    if (needsIosPermission()) {
+    if (isIos()) {
       try {
         const result = await (
           DeviceOrientationEvent as unknown as {
@@ -90,16 +95,10 @@ export function useCompassHeading() {
         return;
       }
     }
-    listen();
+    listen(true);
   }, [listen]);
 
   useEffect(() => () => cleanupRef.current?.(), []);
 
-  return {
-    status,
-    heading,
-    source,
-    request,
-    needsPermissionGesture: needsIosPermission(),
-  };
+  return { status, heading, source, request };
 }
