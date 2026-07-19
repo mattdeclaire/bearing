@@ -56,6 +56,37 @@ function errorWedge(guessAngle: number, diff: number) {
   );
 }
 
+function Needle({ angle }: { angle: number }) {
+  return (
+    <g style={{ transform: `rotate(${angle}deg)`, transformOrigin: "center" }}>
+      {/* tail: slate kite half pointing away from the guess */}
+      <polygon
+        points={`${C - 13},${C} ${C + 13},${C} ${C},${C + 58}`}
+        fill="url(#needle-tail)"
+        stroke="#0f172a"
+        strokeWidth={1}
+      />
+      {/* head: amber kite half pointing at the guess */}
+      <polygon
+        points={`${C},${C - R + 24} ${C - 13},${C} ${C + 13},${C}`}
+        fill="url(#needle-head)"
+        stroke="#0f172a"
+        strokeWidth={1}
+      />
+      {/* spine highlight */}
+      <line
+        x1={C}
+        y1={C - R + 28}
+        x2={C}
+        y2={C + 52}
+        stroke="#f8fafc"
+        strokeOpacity={0.28}
+        strokeWidth={1.5}
+      />
+    </g>
+  );
+}
+
 export default function CompassDial({
   mode,
   heading,
@@ -65,6 +96,7 @@ export default function CompassDial({
 }: CompassDialProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const roseRef = useRef<SVGGElement>(null);
+  const worldRef = useRef<SVGGElement>(null);
   const dragging = useRef(false);
 
   const frozen = reveal !== null;
@@ -86,18 +118,21 @@ export default function CompassDial({
       el.style.transform = "rotate(0deg)";
       return;
     }
-    if (frozen) return; // hold whatever angle the loop last painted
     let raf = requestAnimationFrame(function tick() {
       const d = signedDiff(headingRef.current, displayRef.current);
       displayRef.current =
         Math.abs(d) < 0.05
           ? headingRef.current
           : (displayRef.current + d * 0.15 + 360) % 360;
-      el.style.transform = `rotate(${-displayRef.current}deg)`;
+      const t = `rotate(${-displayRef.current}deg)`;
+      el.style.transform = t;
+      // The reveal tableau shares the rose's world rotation so the true-
+      // direction arrow keeps pointing at the real city as the phone turns.
+      if (worldRef.current) worldRef.current.style.transform = t;
       raf = requestAnimationFrame(tick);
     });
     return () => cancelAnimationFrame(raf);
-  }, [mode, frozen]);
+  }, [mode]);
 
   const angleFromEvent = useCallback((e: PointerEvent<SVGSVGElement>) => {
     const rect = svgRef.current!.getBoundingClientRect();
@@ -120,15 +155,18 @@ export default function CompassDial({
     dragging.current = false;
   };
 
-  // While guessing, sensor mode spins the rose opposite the live heading and the
-  // needle points up (where the phone points). On reveal everything freezes: the
-  // rose holds its last painted angle, the needle stays where it was locked in,
-  // and the true direction is drawn offset by the signed error so the wedge
-  // between them IS the angle difference.
-  const needleAngle =
-    mode === "sensor" ? 0 : frozen ? reveal.guess : manualAngle;
+  // While guessing, sensor mode spins the rose opposite the live heading and
+  // the needle points up (where the phone points). On reveal the guess needle,
+  // true-direction arrow, and error wedge are drawn at their absolute world
+  // bearings inside a group that keeps rotating with the live heading — so the
+  // green arrow stays pointed at the real city as the player turns, and the
+  // wedge between guess and truth rides along unchanged. Manual mode has no
+  // live heading; its world group is static.
+  const guessNeedleAngle = mode === "sensor" ? 0 : manualAngle;
   const diff = frozen ? signedDiff(reveal.actual, reveal.guess) : 0;
-  const actualAngle = frozen ? needleAngle + diff : null;
+  // Initial world rotation for the frame the reveal mounts on; the rAF loop
+  // takes over on the next tick.
+  const worldRotation = mode === "sensor" ? -displayRef.current : 0;
 
   return (
     <svg
@@ -163,53 +201,34 @@ export default function CompassDial({
         {tickMarks()}
       </g>
 
-      {frozen && errorWedge(needleAngle, diff)}
-
-      {actualAngle !== null && (
-        <g style={{ transform: `rotate(${actualAngle}deg)`, transformOrigin: "center" }}>
-          <line
-            x1={C}
-            y1={C}
-            x2={C}
-            y2={C - R + 26}
-            stroke="#4ade80"
-            strokeWidth={4}
-            strokeLinecap="round"
-            strokeDasharray="2 6"
-          />
-          <polygon
-            points={`${C},${C - R + 12} ${C - 8},${C - R + 32} ${C + 8},${C - R + 32}`}
-            fill="#4ade80"
-          />
+      {frozen ? (
+        <g
+          ref={worldRef}
+          data-world
+          style={{ transform: `rotate(${worldRotation}deg)`, transformOrigin: "center" }}
+        >
+          {errorWedge(reveal.guess, diff)}
+          <g style={{ transform: `rotate(${reveal.actual}deg)`, transformOrigin: "center" }}>
+            <line
+              x1={C}
+              y1={C}
+              x2={C}
+              y2={C - R + 26}
+              stroke="#4ade80"
+              strokeWidth={4}
+              strokeLinecap="round"
+              strokeDasharray="2 6"
+            />
+            <polygon
+              points={`${C},${C - R + 12} ${C - 8},${C - R + 32} ${C + 8},${C - R + 32}`}
+              fill="#4ade80"
+            />
+          </g>
+          <Needle angle={reveal.guess} />
         </g>
+      ) : (
+        <Needle angle={guessNeedleAngle} />
       )}
-
-      <g style={{ transform: `rotate(${needleAngle}deg)`, transformOrigin: "center" }}>
-        {/* tail: slate kite half pointing away from the guess */}
-        <polygon
-          points={`${C - 13},${C} ${C + 13},${C} ${C},${C + 58}`}
-          fill="url(#needle-tail)"
-          stroke="#0f172a"
-          strokeWidth={1}
-        />
-        {/* head: amber kite half pointing at the guess */}
-        <polygon
-          points={`${C},${C - R + 24} ${C - 13},${C} ${C + 13},${C}`}
-          fill="url(#needle-head)"
-          stroke="#0f172a"
-          strokeWidth={1}
-        />
-        {/* spine highlight */}
-        <line
-          x1={C}
-          y1={C - R + 28}
-          x2={C}
-          y2={C + 52}
-          stroke="#f8fafc"
-          strokeOpacity={0.28}
-          strokeWidth={1.5}
-        />
-      </g>
 
       {/* hub */}
       <circle cx={C} cy={C} r={13} fill="#1e293b" stroke="#64748b" strokeWidth={2} />
