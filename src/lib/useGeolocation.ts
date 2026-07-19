@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import type { LatLon } from "./directions.ts";
+import { isIos } from "./device.ts";
 
 export type GeoStatus =
   | "idle"
@@ -39,17 +40,22 @@ export function useGeolocation() {
           setStatus("error");
           return;
         }
-        // Distinguish "user denied this site" from the silent failure where
-        // the OS never showed a prompt at all (e.g. iOS Location Services set
-        // to Never for Safari). After a real site-level denial the
-        // Permissions API reports "denied"; if it still says "prompt" (or
-        // "granted"), the denial came from above the browser. Where the API
-        // is unavailable, an instant failure means no prompt was shown.
+        const instant = Date.now() - started < 1200;
+        // iOS Safari's Permissions API reports the *effective* state, so it
+        // can't separate a site-level Deny from Safari itself being blocked
+        // in Settings (verified on-device). Timing can: an instant failure
+        // means no prompt was ever shown — a Deny is configured somewhere —
+        // while a slow one means the player just answered the prompt.
+        if (isIos()) {
+          setStatus(instant ? "system_denied" : "denied");
+          return;
+        }
+        // Elsewhere the Permissions API is site-scoped: "denied" means this
+        // site was refused; "prompt"/"granted" with a failure anyway means
+        // the denial came from above the browser.
         const state = await sitePermissionState();
         const silent =
-          state === "prompt" ||
-          state === "granted" ||
-          (state === null && Date.now() - started < 1200);
+          state === "prompt" || state === "granted" || (state === null && instant);
         setStatus(silent ? "system_denied" : "denied");
       },
       { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 },
