@@ -206,7 +206,7 @@ export default function Game() {
                   ? "Waiting for your browser's permission prompt…"
                   : geo.status === "system_denied"
                     ? isIos()
-                      ? "No location popup appeared — location is blocked in settings. Most often it's Safari itself: open Settings → Apps → Safari → Location and pick “While Using the App”. If that's already set, open the Page Menu (left side of the address bar) → Website Settings and set Location to Ask or Allow. Then come back and tap Try again."
+                      ? "No location popup appeared — location is blocked in settings. Most often it's Safari itself: open Settings → Apps → Safari → Location and pick “While Using the App”. If that's already set, open the Page Menu (left side of the address bar) → Website Settings and set Location to Ask or Allow. Then come back and tap the button below — Safari only rechecks after a reload."
                       : "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
                     : geo.status === "denied"
                       ? isIos()
@@ -218,15 +218,26 @@ export default function Game() {
             </p>
             {(geo.status === "denied" ||
               geo.status === "system_denied" ||
-              geo.status === "error") && (
-              <Button
-                variant="secondary"
-                className="mt-3 text-sm px-4 py-2"
-                onClick={geo.request}
-              >
-                Try again
-              </Button>
-            )}
+              geo.status === "error") &&
+              (geo.status === "system_denied" && isIos() ? (
+                // iOS Safari resolves location authorization once per page
+                // load — after a settings change, only a reload helps.
+                <Button
+                  variant="secondary"
+                  className="mt-3 text-sm px-4 py-2"
+                  onClick={() => window.location.reload()}
+                >
+                  Reload and try again
+                </Button>
+              ) : (
+                <Button
+                  variant="secondary"
+                  className="mt-3 text-sm px-4 py-2"
+                  onClick={geo.request}
+                >
+                  Try again
+                </Button>
+              ))}
           </div>
           {likelyHasCompass() ? (
             <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
