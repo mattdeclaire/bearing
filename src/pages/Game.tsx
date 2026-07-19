@@ -197,6 +197,27 @@ export default function Game() {
       {phase === "permissions" && (
         <div className="flex flex-col items-center text-center gap-6 max-w-sm my-auto">
           <h2 className="text-2xl font-bold">Before we start</h2>
+          {likelyHasCompass() ? (
+            <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
+              <p className="font-semibold">🧭 Compass</p>
+              <p className="text-sm text-slate-400 mt-1">
+                {compass.status === "sensor"
+                  ? "Compass ready!"
+                  : compass.status === "manual"
+                    ? "No compass reading — no problem, you'll aim by dragging the dial instead."
+                    : "Listening for the compass…"}
+              </p>
+            </div>
+          ) : (
+            <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
+              <p className="font-semibold">🖱️ No compass needed</p>
+              <p className="text-sm text-slate-400 mt-1">
+                This device doesn't have a compass, so you'll aim by dragging
+                the dial. For the point-your-phone experience, open
+                bearing.city on a phone.
+              </p>
+            </div>
+          )}
           <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
             <p className="font-semibold">📍 Location</p>
             <div className="text-sm text-slate-400 mt-1">
@@ -259,27 +280,6 @@ export default function Game() {
                 </Button>
               ))}
           </div>
-          {likelyHasCompass() ? (
-            <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
-              <p className="font-semibold">🧭 Compass</p>
-              <p className="text-sm text-slate-400 mt-1">
-                {compass.status === "sensor"
-                  ? "Compass ready!"
-                  : compass.status === "manual"
-                    ? "No compass reading — no problem, you'll aim by dragging the dial instead."
-                    : "Listening for the compass…"}
-              </p>
-            </div>
-          ) : (
-            <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
-              <p className="font-semibold">🖱️ No compass needed</p>
-              <p className="text-sm text-slate-400 mt-1">
-                This device doesn't have a compass, so you'll aim by dragging
-                the dial. For the point-your-phone experience, open
-                bearing.city on a phone.
-              </p>
-            </div>
-          )}
         </div>
       )}
 
