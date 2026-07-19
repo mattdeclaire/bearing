@@ -201,7 +201,9 @@ export default function Game() {
                       ? "No permission popup appeared — location looks turned off for Safari itself. Open Settings → Apps → Safari → Location and pick “While Using the App” (on older iOS: Settings → Privacy & Security → Location Services → Safari Websites). Then come back and tap Try again."
                       : "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
                     : geo.status === "denied"
-                      ? "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
+                      ? isIos()
+                        ? "Permission denied — without your location, Bearing can't compute which way each city is. In Safari, tap the ᴀA button in the address bar, choose Website Settings, and set Location to Ask or Allow. Or close this tab and reopen bearing.city — Safari asks again on a fresh visit."
+                        : "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
                       : geo.status === "error"
                         ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
                         : "Used only on your device, only to compute city directions."}
