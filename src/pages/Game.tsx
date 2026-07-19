@@ -206,7 +206,7 @@ export default function Game() {
                   ? "Waiting for your browser's permission prompt…"
                   : geo.status === "system_denied"
                     ? isIos()
-                      ? "No location popup appeared — location is blocked in settings. Most often it's Safari itself: open Settings → Apps → Safari → Location and pick “While Using the App”. If that's already set, open the Page Menu (left side of the address bar) → Website Settings and set Location to Ask or Allow. Then come back and tap the button below — Safari only rechecks after a reload."
+                      ? "No location popup appeared — an iPhone setting is blocking location. Check both: Settings → Privacy & Security → Location Services → Safari Websites, set to “While Using the App”; and Settings → Apps → Safari → Location, set to “Ask” or “Allow”. (A per-site block in the Page Menu's Website Settings can also cause this.) Then tap the button below — Safari only rechecks after a reload."
                       : "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
                     : geo.status === "denied"
                       ? isIos()
