@@ -135,6 +135,12 @@ export default function Game() {
               {cities === "loading" ? "Loading…" : "Play"}
             </Button>
           )}
+          <a
+            href="./about.html"
+            className="text-sm text-slate-500 underline hover:text-slate-400"
+          >
+            How directions work: great circles, explained
+          </a>
         </div>
       )}
 
@@ -242,12 +248,10 @@ export default function Game() {
             Surprised by a direction? Bearing scores the shortest path over the
             globe, which often differs from the straight line on a flat map —{" "}
             <a
-              href="https://en.wikipedia.org/wiki/Rhumb_line"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="./about.html"
               className="underline text-slate-400 hover:text-slate-300"
             >
-              great circles vs rhumb lines
+              see why, with pictures
             </a>
             .
           </p>
