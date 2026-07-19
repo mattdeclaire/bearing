@@ -10,6 +10,7 @@ export type CompassStatus =
 
 interface WebkitOrientationEvent extends DeviceOrientationEvent {
   webkitCompassHeading?: number;
+  webkitCompassAccuracy?: number;
 }
 
 const SENSOR_TIMEOUT_MS = 3000;
@@ -22,6 +23,9 @@ export function useCompassHeading() {
   // "webkit" headings are already true-north (iOS corrects via location);
   // "alpha" headings are magnetic and need declination applied by the caller.
   const [source, setSource] = useState<CompassSource | null>(null);
+  // iOS reports heading uncertainty in degrees (-1 = uncalibrated); other
+  // platforms don't expose accuracy, so it stays null there.
+  const [accuracy, setAccuracy] = useState<number | null>(null);
   const cleanupRef = useRef<(() => void) | null>(null);
 
   const listen = useCallback((awaitSensor: boolean) => {
@@ -34,7 +38,13 @@ export function useCompassHeading() {
       if (typeof webkit === "number" && !Number.isNaN(webkit)) {
         h = webkit;
         src = "webkit";
-      } else if (e.alpha !== null) {
+        const acc = (e as WebkitOrientationEvent).webkitCompassAccuracy;
+        if (typeof acc === "number") setAccuracy(Math.round(acc));
+      } else if (e.alpha !== null && e.absolute) {
+        // A relative-orientation alpha has an arbitrary zero point — using it
+        // would render a convincing compass pointing nowhere. Only absolute
+        // (magnetometer-anchored) events count; without them the timeout
+        // drops us to the manual dial.
         h = (360 - e.alpha) % 360;
       }
       if (h !== null) {
@@ -100,5 +110,5 @@ export function useCompassHeading() {
 
   useEffect(() => () => cleanupRef.current?.(), []);
 
-  return { status, heading, source, request };
+  return { status, heading, source, accuracy, request };
 }

@@ -252,11 +252,20 @@ export default function Game() {
           />
           {reveal === null ? (
             <>
-              <p className="text-sm text-slate-500">
-                {mode === "sensor"
-                  ? "Point the top of your phone toward the city."
-                  : "Drag the dial to aim the needle toward the city."}
-              </p>
+              {mode === "sensor" &&
+              compass.accuracy !== null &&
+              (compass.accuracy < 0 || compass.accuracy > 30) ? (
+                <p className="text-sm text-amber-400 text-center max-w-xs">
+                  🧭 Compass accuracy is low — wave your phone in a figure-8
+                  to recalibrate, away from metal and magnets.
+                </p>
+              ) : (
+                <p className="text-sm text-slate-500">
+                  {mode === "sensor"
+                    ? "Point the top of your phone toward the city."
+                    : "Drag the dial to aim the needle toward the city."}
+                </p>
+              )}
               <Button onClick={lockIn}>Lock in</Button>
             </>
           ) : (
