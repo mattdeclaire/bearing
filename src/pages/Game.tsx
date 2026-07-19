@@ -202,10 +202,7 @@ export default function Game() {
             <div className="text-sm text-slate-400 mt-1">
               {geo.status === "system_denied" && isIos() ? (
                 <>
-                  <p>
-                    No location popup appeared — an iPhone setting is blocking
-                    location. Check both:
-                  </p>
+                  <p>Location is blocked in an iPhone setting. Check both:</p>
                   <ul className="list-disc pl-5 mt-2 space-y-1.5">
                     <li>
                       Settings → Privacy & Security → Location Services →
@@ -217,9 +214,8 @@ export default function Game() {
                     </li>
                   </ul>
                   <p className="mt-2">
-                    Then tap the button below — Safari only rechecks after a
-                    reload. (A per-site block in the Page Menu's Website
-                    Settings can also cause this.)
+                    Then tap the button below. (A per-site block in the Page
+                    Menu's Website Settings can also cause this.)
                   </p>
                 </>
               ) : (
@@ -229,7 +225,7 @@ export default function Game() {
                     : geo.status === "requesting"
                       ? "Waiting for your browser's permission prompt…"
                       : geo.status === "system_denied"
-                        ? "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
+                        ? "Location is disabled for your browser or device. Turn it on in your system settings, then try again."
                         : geo.status === "denied"
                           ? isIos()
                             ? "Location was denied. Tap Try again — or close this tab and reopen bearing.city, and Safari will ask again on a fresh visit."
