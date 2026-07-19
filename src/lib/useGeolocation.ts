@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import type { LatLon } from "./directions.ts";
 import { isIos } from "./device.ts";
+import { motionPromptSnapshot } from "./motionPrompt.ts";
 
 export type GeoStatus =
   | "idle"
@@ -45,9 +46,17 @@ export function useGeolocation() {
         // can't separate a site-level Deny from Safari itself being blocked
         // in Settings (verified on-device). Timing can: an instant failure
         // means no prompt was ever shown — a Deny is configured somewhere —
-        // while a slow one means the player just answered the prompt.
+        // while a slow one means the player just answered the prompt. The
+        // motion-permission modal fires on the same tap and can defer this
+        // callback, so the clock excludes it: a denial while that modal is
+        // open cannot be human (iOS shows one popup at a time), and after it
+        // settles the threshold restarts from the settle time.
         if (isIos()) {
-          setStatus(instant ? "system_denied" : "denied");
+          const motion = motionPromptSnapshot();
+          const silent =
+            motion.pending ||
+            Date.now() - Math.max(started, motion.settledAt ?? 0) < 1200;
+          setStatus(silent ? "system_denied" : "denied");
           return;
         }
         // Elsewhere the Permissions API is site-scoped: "denied" means this

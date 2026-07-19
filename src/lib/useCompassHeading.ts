@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { isIos, likelyHasCompass } from "./device.ts";
+import {
+  markMotionPromptPending,
+  markMotionPromptSettled,
+} from "./motionPrompt.ts";
 
 export type CompassStatus =
   | "idle"
@@ -90,6 +94,7 @@ export function useCompassHeading() {
     }
     setStatus("requesting");
     if (isIos()) {
+      markMotionPromptPending();
       try {
         const result = await (
           DeviceOrientationEvent as unknown as {
@@ -103,6 +108,8 @@ export function useCompassHeading() {
       } catch {
         setStatus("manual");
         return;
+      } finally {
+        markMotionPromptSettled();
       }
     }
     listen(true);
