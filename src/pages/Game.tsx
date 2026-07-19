@@ -51,7 +51,9 @@ export default function Game() {
   };
 
   useEffect(() => {
-    if (geo.status === "denied") track("geo_denied");
+    if (geo.status === "denied" || geo.status === "system_denied") {
+      track("geo_denied", { kind: geo.status });
+    }
   }, [geo.status]);
 
   const compassResolved =
@@ -194,13 +196,19 @@ export default function Game() {
                 ? "Got it!"
                 : geo.status === "requesting"
                   ? "Waiting for your browser's permission prompt…"
-                  : geo.status === "denied"
-                    ? "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
-                    : geo.status === "error"
-                      ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
-                      : "Used only on your device, only to compute city directions."}
+                  : geo.status === "system_denied"
+                    ? isIos()
+                      ? "No permission popup appeared — location looks turned off for Safari itself. Open Settings → Apps → Safari → Location and pick “While Using the App” (on older iOS: Settings → Privacy & Security → Location Services → Safari Websites). Then come back and tap Try again."
+                      : "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
+                    : geo.status === "denied"
+                      ? "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
+                      : geo.status === "error"
+                        ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
+                        : "Used only on your device, only to compute city directions."}
             </p>
-            {(geo.status === "denied" || geo.status === "error") && (
+            {(geo.status === "denied" ||
+              geo.status === "system_denied" ||
+              geo.status === "error") && (
               <Button
                 variant="secondary"
                 className="mt-3 text-sm px-4 py-2"
