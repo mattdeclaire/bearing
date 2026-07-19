@@ -199,23 +199,47 @@ export default function Game() {
           <h2 className="text-2xl font-bold">Before we start</h2>
           <div className="w-full rounded-xl bg-slate-800 p-4 text-left">
             <p className="font-semibold">📍 Location</p>
-            <p className="text-sm text-slate-400 mt-1">
-              {geo.status === "granted"
-                ? "Got it!"
-                : geo.status === "requesting"
-                  ? "Waiting for your browser's permission prompt…"
-                  : geo.status === "system_denied"
-                    ? isIos()
-                      ? "No location popup appeared — an iPhone setting is blocking location. Check both: Settings → Privacy & Security → Location Services → Safari Websites, set to “While Using the App”; and Settings → Apps → Safari → Location, set to “Ask” or “Allow”. (A per-site block in the Page Menu's Website Settings can also cause this.) Then tap the button below — Safari only rechecks after a reload."
-                      : "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
-                    : geo.status === "denied"
-                      ? isIos()
-                        ? "Location was denied. Tap Try again — or close this tab and reopen bearing.city, and Safari will ask again on a fresh visit."
-                        : "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
-                      : geo.status === "error"
-                        ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
-                        : "Used only on your device, only to compute city directions."}
-            </p>
+            <div className="text-sm text-slate-400 mt-1">
+              {geo.status === "system_denied" && isIos() ? (
+                <>
+                  <p>
+                    No location popup appeared — an iPhone setting is blocking
+                    location. Check both:
+                  </p>
+                  <ul className="list-disc pl-5 mt-2 space-y-1.5">
+                    <li>
+                      Settings → Privacy & Security → Location Services →
+                      Safari Websites — set to <strong>“While Using the App”</strong>
+                    </li>
+                    <li>
+                      Settings → Apps → Safari → Location — set to{" "}
+                      <strong>“Ask”</strong> or <strong>“Allow”</strong>
+                    </li>
+                  </ul>
+                  <p className="mt-2">
+                    Then tap the button below — Safari only rechecks after a
+                    reload. (A per-site block in the Page Menu's Website
+                    Settings can also cause this.)
+                  </p>
+                </>
+              ) : (
+                <p>
+                  {geo.status === "granted"
+                    ? "Got it!"
+                    : geo.status === "requesting"
+                      ? "Waiting for your browser's permission prompt…"
+                      : geo.status === "system_denied"
+                        ? "No permission popup appeared — location seems to be disabled for your browser or device. Turn it on in your system settings, then try again."
+                        : geo.status === "denied"
+                          ? isIos()
+                            ? "Location was denied. Tap Try again — or close this tab and reopen bearing.city, and Safari will ask again on a fresh visit."
+                            : "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
+                          : geo.status === "error"
+                            ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
+                            : "Used only on your device, only to compute city directions."}
+                </p>
+              )}
+            </div>
             {(geo.status === "denied" ||
               geo.status === "system_denied" ||
               geo.status === "error") &&
