@@ -14,7 +14,7 @@ import {
 const SIZE = 320;
 const C = SIZE / 2;
 const R = C - 10;
-const STUB_DEG = 5; // ~350 mi: length of guess vectors and error wedges
+const STUB_DEG = 14.5; // ~1000 mi: length of guess vectors and error wedges
 const DEG_PER_PX = 0.45; // drag sensitivity (radius 150px ≈ 90° of arc)
 const FRICTION = 0.95; // momentum decay per frame
 const MIN_SPIN = 0.05; // °/frame below which momentum stops
