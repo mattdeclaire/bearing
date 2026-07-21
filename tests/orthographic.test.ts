@@ -5,8 +5,10 @@ import {
   applyDrag,
   destinationPoint,
   globeCenter,
+  greatCirclePoints,
   greatCircleSegments,
   orthoProject,
+  splitRuns,
 } from "../src/lib/orthographic.ts";
 import { bearingTo } from "../src/lib/directions.ts";
 import type { CityResult } from "../src/lib/directions.ts";
@@ -56,6 +58,14 @@ describe("greatCircleSegments", () => {
     const center = { lat: 40.7, lon: -74 };
     const runs = greatCircleSegments(center, center, { lat: 41.9, lon: -87.6 }, R);
     expect(runs.every((r) => r.front)).toBe(true);
+  });
+
+  it("is equivalent to splitRuns over the same points", () => {
+    const center = { lat: 40.7, lon: -74 };
+    const to = { lat: -31.95, lon: 115.86 };
+    expect(greatCircleSegments(center, center, to, R)).toEqual(
+      splitRuns(center, greatCirclePoints(center, to), R),
+    );
   });
 });
 

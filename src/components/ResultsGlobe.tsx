@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent } from "react";
 import type { CityResult, LatLon } from "../lib/directions.ts";
 import {
+  angularDistance,
   applyDrag,
   destinationPoint,
   frontPath,
@@ -9,12 +10,14 @@ import {
   graticuleRings,
   greatCircleSegments,
   orthoProject,
+  splitRuns,
 } from "../lib/orthographic.ts";
 
 const SIZE = 320;
 const C = SIZE / 2;
 const R = C - 10;
-const STUB_DEG = 14.5; // ~1000 mi: length of guess vectors and error wedges
+const WEDGE_DEG = 14.5; // ~1000 mi: radius of the near-player error wedge
+const GUESS_SEGMENTS = 32; // per-segment rendering fades the guess line
 const DEG_PER_PX = 0.45; // drag sensitivity (radius 150px ≈ 90° of arc)
 const FRICTION = 0.95; // momentum decay per frame
 const MIN_SPIN = 0.05; // °/frame below which momentum stops
@@ -137,23 +140,60 @@ export default function ResultsGlobe({
       results.map((r) => {
         const runs = greatCircleSegments(center, pos, r, R);
         const diff = signedDiff(r.actual, r.guess);
-        const guessTip = orthoProject(
-          center,
-          destinationPoint(pos, r.guess, STUB_DEG),
-          R,
-        );
-        // Error wedge: fan from the player between guess and actual bearings.
-        const arc: string[] = [];
+        const dist = angularDistance(pos, r);
+
+        // Guess line: same great-circle length as the real route, rendered as
+        // segments so its opacity can fade with distance from the player.
+        const guessSegs: {
+          x1: number;
+          y1: number;
+          x2: number;
+          y2: number;
+          front: boolean;
+          t: number;
+        }[] = [];
+        let prev = orthoProject(center, pos, R);
+        for (let i = 1; i <= GUESS_SEGMENTS; i++) {
+          const t = i / GUESS_SEGMENTS;
+          const p = orthoProject(
+            center,
+            destinationPoint(pos, r.guess, dist * t),
+            R,
+          );
+          guessSegs.push({
+            x1: prev.x,
+            y1: prev.y,
+            x2: p.x,
+            y2: p.y,
+            front: prev.front && p.front,
+            t,
+          });
+          prev = p;
+        }
+
+        // Faint arc from the guess tip to the true city, at the route's full
+        // radius — the error angle drawn at scale.
+        const arcSteps = Math.max(8, Math.ceil(Math.abs(diff) / 3));
+        const arcPts: ReturnType<typeof destinationPoint>[] = [];
+        for (let i = 0; i <= arcSteps; i++) {
+          arcPts.push(
+            destinationPoint(pos, r.guess + (diff * i) / arcSteps, dist),
+          );
+        }
+        const arcRuns = splitRuns(center, arcPts, R);
+
+        // Near-player error wedge (unchanged scale).
+        const wedgePts: string[] = [];
         const steps = Math.max(2, Math.ceil(Math.abs(diff) / 6));
         for (let i = 0; i <= steps; i++) {
           const b = r.guess + (diff * i) / steps;
-          const p = orthoProject(center, destinationPoint(pos, b, STUB_DEG), R);
-          arc.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`);
+          const p = orthoProject(center, destinationPoint(pos, b, WEDGE_DEG), R);
+          wedgePts.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`);
         }
         const player = orthoProject(center, pos, R);
-        const wedge = `M${player.x.toFixed(1)},${player.y.toFixed(1)} L${arc.join(" L")} Z`;
+        const wedge = `M${player.x.toFixed(1)},${player.y.toFixed(1)} L${wedgePts.join(" L")} Z`;
         const city = orthoProject(center, r, R);
-        return { runs, guessTip, wedge, city, player };
+        return { runs, guessSegs, arcRuns, wedge, city, player };
       }),
     [results, center, pos],
   );
@@ -232,16 +272,30 @@ export default function ResultsGlobe({
                 strokeLinecap="round"
               />
             ))}
-            <line
-              x1={r.player.x}
-              y1={r.player.y}
-              x2={r.guessTip.x}
-              y2={r.guessTip.y}
-              stroke="#fbbf24"
-              strokeWidth={2}
-              strokeOpacity={r.player.front ? 0.7 : 0.2}
-              strokeLinecap="round"
-            />
+            {r.arcRuns.map((run, j) => (
+              <polyline
+                key={`arc-${j}`}
+                points={run.points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ")}
+                fill="none"
+                stroke="#fbbf24"
+                strokeWidth={1.2}
+                strokeOpacity={run.front ? 0.3 : 0.1}
+                strokeDasharray="3 4"
+              />
+            ))}
+            {r.guessSegs.map((s, j) => (
+              <line
+                key={`guess-${j}`}
+                x1={s.x1}
+                y1={s.y1}
+                x2={s.x2}
+                y2={s.y2}
+                stroke="#fbbf24"
+                strokeWidth={2.2 - 1.2 * s.t}
+                strokeOpacity={(0.75 - 0.5 * s.t) * (s.front ? 1 : 0.3)}
+                strokeLinecap="round"
+              />
+            ))}
           </g>
         ))}
 

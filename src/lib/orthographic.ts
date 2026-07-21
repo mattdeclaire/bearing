@@ -70,15 +70,14 @@ export interface Run {
   points: { x: number; y: number }[];
 }
 
-export function greatCircleSegments(
+export function splitRuns(
   center: LatLon,
-  from: LatLon,
-  to: LatLon,
+  points: LatLon[],
   radius: number,
 ): Run[] {
   const runs: Run[] = [];
   let current: Run | null = null;
-  for (const p of greatCirclePoints(from, to)) {
+  for (const p of points) {
     const proj = orthoProject(center, p, radius);
     if (!current || current.front !== proj.front) {
       current = { front: proj.front, points: [] };
@@ -87,6 +86,15 @@ export function greatCircleSegments(
     current.points.push({ x: proj.x, y: proj.y });
   }
   return runs.filter((r) => r.points.length > 1);
+}
+
+export function greatCircleSegments(
+  center: LatLon,
+  from: LatLon,
+  to: LatLon,
+  radius: number,
+): Run[] {
+  return splitRuns(center, greatCirclePoints(from, to), radius);
 }
 
 // Front-hemisphere-only SVG path for a polyline of lat/lon points, with the
