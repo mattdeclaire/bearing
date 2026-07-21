@@ -79,11 +79,11 @@ describe("gradeEmoji", () => {
 describe("buildShareText", () => {
   it("formats the result line with total, count, emojis, and URL", () => {
     const results = [
-      { name: "A", country: "X", guess: 0, actual: 5, error: 5 },
-      { name: "B", country: "X", guess: 0, actual: 20, error: 20 },
-      { name: "C", country: "X", guess: 0, actual: 50, error: 50 },
-      { name: "D", country: "X", guess: 0, actual: 100, error: 100 },
-      { name: "E", country: "X", guess: 0, actual: 170, error: 170 },
+      { name: "A", country: "X", lat: 0, lon: 0, guess: 0, actual: 5, error: 5 },
+      { name: "B", country: "X", lat: 0, lon: 0, guess: 0, actual: 20, error: 20 },
+      { name: "C", country: "X", lat: 0, lon: 0, guess: 0, actual: 50, error: 50 },
+      { name: "D", country: "X", lat: 0, lon: 0, guess: 0, actual: 100, error: 100 },
+      { name: "E", country: "X", lat: 0, lon: 0, guess: 0, actual: 170, error: 170 },
     ];
     const text = buildShareText(results);
     expect(text).toBe(

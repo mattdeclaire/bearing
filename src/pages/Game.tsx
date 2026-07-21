@@ -15,6 +15,7 @@ import { isIos, likelyHasCompass } from "../lib/device.ts";
 import { useGeolocation } from "../lib/useGeolocation.ts";
 import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
+import ResultsGlobe from "../components/ResultsGlobe.tsx";
 import Button from "../components/Button.tsx";
 
 type Phase = "intro" | "permissions" | "playing" | "results";
@@ -26,7 +27,7 @@ export default function Game() {
   const [phase, setPhase] = useState<Phase>(saved ? "results" : "intro");
   const [cities, setCities] = useState<City[] | null | "loading">("loading");
   const [round, setRound] = useState(0);
-  const [results, setResults] = useState<CityResult[]>(saved ?? []);
+  const [results, setResults] = useState<CityResult[]>(saved?.results ?? []);
   const [manualAngle, setManualAngle] = useState(0);
   const [reveal, setReveal] = useState<{ guess: number; actual: number } | null>(
     null,
@@ -97,6 +98,8 @@ export default function Game() {
       {
         name: city.name,
         country: city.country,
+        lat: city.lat,
+        lon: city.lon,
         guess,
         actual,
         error: angularDiff(guess, actual),
@@ -109,7 +112,7 @@ export default function Game() {
     setReveal(null);
     setManualAngle(0);
     if (round + 1 >= 5) {
-      saveResult(dateKey, results);
+      saveResult(dateKey, results, geo.position);
       track("game_complete", {
         score: Math.round(results.reduce((s, r) => s + r.error, 0)),
         mode,
@@ -338,13 +341,21 @@ export default function Game() {
             {Math.round(results.reduce((s, r) => s + r.error, 0))}°
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
+          {(() => {
+            const globePos = geo.position ?? saved?.pos ?? null;
+            const hasCoords = results.every((r) => typeof r.lat === "number");
+            return globePos && hasCoords ? (
+              <ResultsGlobe pos={globePos} results={results} />
+            ) : null;
+          })()}
           <ul className="w-full rounded-xl bg-slate-800 divide-y divide-slate-700">
-            {results.map((r) => (
+            {results.map((r, i) => (
               <li
                 key={r.name}
                 className="flex items-center justify-between px-4 py-3"
               >
                 <span>
+                  <span className="text-slate-500 text-sm mr-2">{i + 1}</span>
                   {gradeEmoji(r.error)} {r.name}
                   <span className="text-slate-500 text-sm"> · {r.country}</span>
                 </span>

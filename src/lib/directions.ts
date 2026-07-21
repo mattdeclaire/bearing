@@ -6,6 +6,8 @@ export interface LatLon {
 export interface CityResult {
   name: string;
   country: string;
+  lat: number;
+  lon: number;
   guess: number;
   actual: number;
   error: number;
