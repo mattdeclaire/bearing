@@ -33,6 +33,8 @@ export default function Game() {
     null,
   );
   const [copied, setCopied] = useState(false);
+  // results-list selection: focus one city's lines on the globe
+  const [focus, setFocus] = useState<number | null>(null);
 
   const geo = useGeolocation();
   const compass = useCompassHeading();
@@ -345,21 +347,30 @@ export default function Game() {
             const globePos = geo.position ?? saved?.pos ?? null;
             const hasCoords = results.every((r) => typeof r.lat === "number");
             return globePos && hasCoords ? (
-              <ResultsGlobe pos={globePos} results={results} />
+              <ResultsGlobe pos={globePos} results={results} focusIndex={focus} />
             ) : null;
           })()}
-          <ul className="w-full rounded-xl bg-slate-800 divide-y divide-slate-700">
+          <ul className="w-full rounded-xl bg-slate-800 divide-y divide-slate-700 overflow-hidden">
             {results.map((r, i) => (
-              <li
-                key={r.name}
-                className="flex items-center justify-between px-4 py-3"
-              >
-                <span>
-                  <span className="text-slate-500 text-sm mr-2">{i + 1}</span>
-                  {gradeEmoji(r.error)} {r.name}
-                  <span className="text-slate-500 text-sm"> · {r.country}</span>
-                </span>
-                <span className="font-semibold">{Math.round(r.error)}°</span>
+              <li key={r.name}>
+                <button
+                  onClick={() => setFocus(focus === i ? null : i)}
+                  aria-pressed={focus === i}
+                  className={`w-full flex items-center justify-between px-4 py-3 text-left transition-colors ${
+                    focus === i
+                      ? "bg-slate-700"
+                      : focus !== null
+                        ? "opacity-50"
+                        : ""
+                  }`}
+                >
+                  <span>
+                    <span className="text-slate-500 text-sm mr-2">{i + 1}</span>
+                    {gradeEmoji(r.error)} {r.name}
+                    <span className="text-slate-500 text-sm"> · {r.country}</span>
+                  </span>
+                  <span className="font-semibold">{Math.round(r.error)}°</span>
+                </button>
               </li>
             ))}
           </ul>

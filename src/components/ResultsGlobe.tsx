@@ -33,9 +33,12 @@ type Ring = [number, number][]; // [lon, lat] pairs from land.json
 export default function ResultsGlobe({
   pos,
   results,
+  focusIndex = null,
 }: {
   pos: LatLon;
   results: CityResult[];
+  // when set, only this city's lines/shading render; markers always show
+  focusIndex?: number | null;
 }) {
   const [land, setLand] = useState<Ring[] | null>(null);
   // null = the computed smart default view; set once the globe moves
@@ -277,7 +280,9 @@ export default function ResultsGlobe({
           />
         )}
 
-        {routes.map((r, i) => (
+        {routes.map((r, i) => {
+          if (focusIndex !== null && i !== focusIndex) return null;
+          return (
           <g key={results[i].name}>
             <path
               d={r.shade}
@@ -324,7 +329,8 @@ export default function ResultsGlobe({
               />
             ))}
           </g>
-        ))}
+          );
+        })}
 
         {routes.map((r, i) =>
           r.city.front ? (
