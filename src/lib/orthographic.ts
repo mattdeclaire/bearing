@@ -1,5 +1,5 @@
-import type { LatLon } from "./directions.ts";
-import type { CityResult } from "./directions.ts";
+import { bearingTo } from "./directions.ts";
+import type { CityResult, LatLon } from "./directions.ts";
 
 // Orthographic projection helpers for the results globe. Angles in degrees.
 
@@ -149,20 +149,39 @@ export function destinationPoint(
   return { lat: phi2 / D, lon: ((lam2 / D + 540) % 360) - 180 };
 }
 
+// Central angle between two points, degrees [0, 180].
+export function angularDistance(a: LatLon, b: LatLon): number {
+  const dLat = (b.lat - a.lat) * D;
+  const dLon = (b.lon - a.lon) * D;
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(a.lat * D) * Math.cos(b.lat * D) * Math.sin(dLon / 2) ** 2;
+  return (2 * Math.asin(Math.min(1, Math.sqrt(h)))) / D;
+}
+
 // View center: keep the player's longitude (player stays on the vertical
-// centerline, north up) but bias the latitude toward the cities so more of
-// the routes are on the visible hemisphere — clamped so the player stays at
+// centerline, north up) but tilt the latitude toward where the routes
+// actually travel. City latitude is misleading — from the US, Jakarta sits
+// south of the equator but the route to it goes north over the pole — so the
+// tilt is the average north–south component of each route's midpoint:
+// (distance / 2) · cos(initial bearing). Clamped so the player stays at
 // least 45° from the horizon.
 const MAX_TILT_DEG = 45;
 
 export function globeCenter(pos: LatLon, results: CityResult[]): LatLon {
-  const withCoords = results.filter((r) => typeof r.lat === "number");
+  const withCoords = results.filter(
+    (r) => typeof r.lat === "number" && typeof r.lon === "number",
+  );
   if (withCoords.length === 0) return pos;
-  const meanLat =
-    withCoords.reduce((s, r) => s + r.lat, 0) / withCoords.length;
+  const sum = withCoords.reduce(
+    (s, r) =>
+      s +
+      (angularDistance(pos, r) / 2) * Math.cos(bearingTo(pos, r) * D),
+    0,
+  );
   const tilt = Math.max(
     -MAX_TILT_DEG,
-    Math.min(MAX_TILT_DEG, meanLat - pos.lat),
+    Math.min(MAX_TILT_DEG, sum / withCoords.length),
   );
   return { lat: Math.max(-89, Math.min(89, pos.lat + tilt)), lon: pos.lon };
 }

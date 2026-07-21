@@ -80,14 +80,38 @@ describe("globeCenter", () => {
     expect(c.lon).toBe(pos.lon);
   });
 
-  it("tilts toward the cities' mean latitude", () => {
-    const c = globeCenter(pos, [mkResult(10, 0), mkResult(20, 0)]);
-    expect(c.lat).toBeCloseTo(15, 5);
+  it("tilts north when all routes head north, even to southern cities", () => {
+    // Regression from an on-device screenshot: Midwest player, all five
+    // routes northbound (Jakarta is south of the equator but its route goes
+    // over the pole). The old mean-latitude heuristic tilted the view DOWN.
+    const midwest = { lat: 43, lon: -88 };
+    const c = globeCenter(midwest, [
+      mkResult(-6.2, 106.8), // Jakarta
+      mkResult(59.3, 18.1), // Stockholm
+      mkResult(19.1, 72.9), // Mumbai
+      mkResult(52.4, 4.9), // Amsterdam
+      mkResult(34.7, 135.5), // Osaka
+    ]);
+    expect(c.lat).toBeGreaterThan(75); // strongly tilted toward the pole
+    expect(c.lon).toBe(midwest.lon);
   });
 
-  it("clamps the tilt to 45° in both directions", () => {
-    expect(globeCenter(pos, [mkResult(-80, 0)]).lat).toBeCloseTo(-5, 5);
-    expect(globeCenter({ lat: -40, lon: 0 }, [mkResult(85, 0)]).lat).toBeCloseTo(5, 5);
+  it("stays near the player when routes balance north and south", () => {
+    // equal 40° hops due north and due south cancel out
+    const c = globeCenter(pos, [mkResult(80, -74), mkResult(0, -74)]);
+    expect(Math.abs(c.lat - pos.lat)).toBeLessThan(1);
+  });
+
+  it("barely tilts for short routes", () => {
+    const c = globeCenter(pos, [mkResult(43.7, -79.4)]); // Toronto from NYC
+    expect(Math.abs(c.lat - pos.lat)).toBeLessThan(3);
+  });
+
+  it("clamps the tilt to 45°", () => {
+    // A single antipodal-ish city straight north would suggest ~85° of tilt.
+    const c = globeCenter(pos, [mkResult(-35, 106)]);
+    expect(c.lat).toBeLessThanOrEqual(85);
+    expect(Math.abs(c.lat - pos.lat)).toBeLessThanOrEqual(45);
   });
 });
 
