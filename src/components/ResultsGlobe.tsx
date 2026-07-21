@@ -18,6 +18,7 @@ const STUB_DEG = 5; // ~350 mi: length of guess vectors and error wedges
 const DEG_PER_PX = 0.45; // drag sensitivity (radius 150px ≈ 90° of arc)
 const FRICTION = 0.95; // momentum decay per frame
 const MIN_SPIN = 0.05; // °/frame below which momentum stops
+const AUTO_SPIN = 0.04; // °/frame idle rotation (≈2.4°/s)
 
 const signedDiff = (a: number, b: number) => {
   const d = ((a - b + 540) % 360) - 180;
@@ -34,8 +35,11 @@ export default function ResultsGlobe({
   results: CityResult[];
 }) {
   const [land, setLand] = useState<Ring[] | null>(null);
-  // null = the computed smart default view; set once the user drags
+  // null = the computed smart default view; set once the globe moves
   const [view, setView] = useState<LatLon | null>(null);
+  // idle rotation runs until the user grabs the globe; recenter restarts it
+  const [autoSpin, setAutoSpin] = useState(true);
+  const [userMoved, setUserMoved] = useState(false);
   const dragging = useRef(false);
   const last = useRef({ x: 0, y: 0, t: 0 });
   const velocity = useRef({ dx: 0, dy: 0 });
@@ -58,8 +62,24 @@ export default function ResultsGlobe({
   const smartCenter = useMemo(() => globeCenter(pos, results), [pos, results]);
   const center = view ?? smartCenter;
 
+  useEffect(() => {
+    if (!autoSpin) return;
+    let raf = requestAnimationFrame(function tick() {
+      setView((v) => {
+        const cur = v ?? smartCenter;
+        return {
+          lat: cur.lat,
+          lon: ((cur.lon + AUTO_SPIN + 540) % 360) - 180,
+        };
+      });
+      raf = requestAnimationFrame(tick);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [autoSpin, smartCenter]);
+
   const onPointerDown = (e: PointerEvent<SVGSVGElement>) => {
     cancelAnimationFrame(momentumRaf.current);
+    setAutoSpin(false);
     dragging.current = true;
     last.current = { x: e.clientX, y: e.clientY, t: performance.now() };
     velocity.current = { dx: 0, dy: 0 };
@@ -75,6 +95,7 @@ export default function ResultsGlobe({
     // per-frame (~16ms) velocity for the momentum flick
     velocity.current = { dx: (dx / dt) * 16, dy: (dy / dt) * 16 };
     last.current = { x: e.clientX, y: e.clientY, t: now };
+    setUserMoved(true);
     setView((v) => applyDrag(v ?? smartCenter, dx, dy, DEG_PER_PX));
   };
 
@@ -141,11 +162,13 @@ export default function ResultsGlobe({
 
   return (
     <div className="relative w-full max-w-[320px]">
-      {view !== null && (
+      {userMoved && (
         <button
           onClick={() => {
             cancelAnimationFrame(momentumRaf.current);
             setView(null);
+            setUserMoved(false);
+            setAutoSpin(true);
           }}
           aria-label="Recenter globe"
           className="absolute top-1 right-1 z-10 rounded-full bg-slate-800/80 text-slate-300 hover:text-slate-100 w-8 h-8 text-lg leading-none"
