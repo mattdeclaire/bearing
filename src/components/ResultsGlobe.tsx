@@ -1,6 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { PointerEvent } from "react";
 import type { CityResult, LatLon } from "../lib/directions.ts";
 import {
+  applyDrag,
   destinationPoint,
   frontPath,
   globeCenter,
@@ -13,6 +15,9 @@ const SIZE = 320;
 const C = SIZE / 2;
 const R = C - 10;
 const STUB_DEG = 5; // ~350 mi: length of guess vectors and error wedges
+const DEG_PER_PX = 0.45; // drag sensitivity (radius 150px ≈ 90° of arc)
+const FRICTION = 0.95; // momentum decay per frame
+const MIN_SPIN = 0.05; // °/frame below which momentum stops
 
 const signedDiff = (a: number, b: number) => {
   const d = ((a - b + 540) % 360) - 180;
@@ -29,6 +34,12 @@ export default function ResultsGlobe({
   results: CityResult[];
 }) {
   const [land, setLand] = useState<Ring[] | null>(null);
+  // null = the computed smart default view; set once the user drags
+  const [view, setView] = useState<LatLon | null>(null);
+  const dragging = useRef(false);
+  const last = useRef({ x: 0, y: 0, t: 0 });
+  const velocity = useRef({ dx: 0, dy: 0 });
+  const momentumRaf = useRef(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -40,10 +51,51 @@ export default function ResultsGlobe({
       .catch(() => {});
     return () => {
       cancelled = true;
+      cancelAnimationFrame(momentumRaf.current);
     };
   }, []);
 
-  const center = useMemo(() => globeCenter(pos, results), [pos, results]);
+  const smartCenter = useMemo(() => globeCenter(pos, results), [pos, results]);
+  const center = view ?? smartCenter;
+
+  const onPointerDown = (e: PointerEvent<SVGSVGElement>) => {
+    cancelAnimationFrame(momentumRaf.current);
+    dragging.current = true;
+    last.current = { x: e.clientX, y: e.clientY, t: performance.now() };
+    velocity.current = { dx: 0, dy: 0 };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: PointerEvent<SVGSVGElement>) => {
+    if (!dragging.current) return;
+    const dx = e.clientX - last.current.x;
+    const dy = e.clientY - last.current.y;
+    const now = performance.now();
+    const dt = Math.max(1, now - last.current.t);
+    // per-frame (~16ms) velocity for the momentum flick
+    velocity.current = { dx: (dx / dt) * 16, dy: (dy / dt) * 16 };
+    last.current = { x: e.clientX, y: e.clientY, t: now };
+    setView((v) => applyDrag(v ?? smartCenter, dx, dy, DEG_PER_PX));
+  };
+
+  const onPointerUp = () => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    const spin = () => {
+      velocity.current.dx *= FRICTION;
+      velocity.current.dy *= FRICTION;
+      const { dx, dy } = velocity.current;
+      if (
+        Math.abs(dx * DEG_PER_PX) < MIN_SPIN &&
+        Math.abs(dy * DEG_PER_PX) < MIN_SPIN
+      ) {
+        return;
+      }
+      setView((v) => applyDrag(v ?? smartCenter, dx, dy, DEG_PER_PX));
+      momentumRaf.current = requestAnimationFrame(spin);
+    };
+    momentumRaf.current = requestAnimationFrame(spin);
+  };
 
   const landPath = useMemo(() => {
     if (!land) return null;
@@ -88,11 +140,28 @@ export default function ResultsGlobe({
   const playerProj = orthoProject(center, pos, R);
 
   return (
+    <div className="relative w-full max-w-[320px]">
+      {view !== null && (
+        <button
+          onClick={() => {
+            cancelAnimationFrame(momentumRaf.current);
+            setView(null);
+          }}
+          aria-label="Recenter globe"
+          className="absolute top-1 right-1 z-10 rounded-full bg-slate-800/80 text-slate-300 hover:text-slate-100 w-8 h-8 text-lg leading-none"
+        >
+          ↺
+        </button>
+      )}
     <svg
       viewBox={`0 0 ${SIZE} ${SIZE}`}
-      className="w-full max-w-[320px] select-none"
+      className="w-full select-none touch-none cursor-grab active:cursor-grabbing"
       role="img"
       aria-label="Globe showing your location and the routes to today's five cities"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
     >
       <defs>
         <radialGradient id="globe-face" cx="50%" cy="42%" r="65%">
@@ -123,7 +192,11 @@ export default function ResultsGlobe({
 
         {routes.map((r, i) => (
           <g key={results[i].name}>
-            <path d={r.wedge} fill="#f59e0b" fillOpacity={0.15} />
+            <path
+              d={r.wedge}
+              fill="#f59e0b"
+              fillOpacity={r.player.front ? 0.15 : 0.05}
+            />
             {r.runs.map((run, j) => (
               <polyline
                 key={j}
@@ -143,7 +216,7 @@ export default function ResultsGlobe({
               y2={r.guessTip.y}
               stroke="#fbbf24"
               strokeWidth={2}
-              strokeOpacity={0.7}
+              strokeOpacity={r.player.front ? 0.7 : 0.2}
               strokeLinecap="round"
             />
           </g>
@@ -181,9 +254,12 @@ export default function ResultsGlobe({
           ),
         )}
 
-        <circle cx={playerProj.x} cy={playerProj.y} r={7} fill="#fbbf24" fillOpacity={0.25} />
-        <circle cx={playerProj.x} cy={playerProj.y} r={4} fill="#fbbf24" stroke="#0b1220" strokeWidth={1.5} />
+        <g opacity={playerProj.front ? 1 : 0.3}>
+          <circle cx={playerProj.x} cy={playerProj.y} r={7} fill="#fbbf24" fillOpacity={0.25} />
+          <circle cx={playerProj.x} cy={playerProj.y} r={4} fill="#fbbf24" stroke="#0b1220" strokeWidth={1.5} />
+        </g>
       </g>
     </svg>
+    </div>
   );
 }

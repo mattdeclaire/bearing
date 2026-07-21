@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import {
+  applyDrag,
   destinationPoint,
   globeCenter,
   greatCircleSegments,
@@ -112,6 +113,30 @@ describe("globeCenter", () => {
     const c = globeCenter(pos, [mkResult(-35, 106)]);
     expect(c.lat).toBeLessThanOrEqual(85);
     expect(Math.abs(c.lat - pos.lat)).toBeLessThanOrEqual(45);
+  });
+});
+
+describe("applyDrag", () => {
+  const view = { lat: 30, lon: -74 };
+
+  it("dragging right spins east under the cursor (lon decreases)", () => {
+    expect(applyDrag(view, 100, 0, 0.45).lon).toBeCloseTo(-74 - 45, 5);
+  });
+
+  it("dragging down tips the north pole toward the viewer (lat increases)", () => {
+    expect(applyDrag(view, 0, 100, 0.45).lat).toBeCloseTo(75, 5);
+  });
+
+  it("clamps latitude at ±89", () => {
+    expect(applyDrag(view, 0, 1000, 0.45).lat).toBe(89);
+    expect(applyDrag(view, 0, -1000, 0.45).lat).toBe(-89);
+  });
+
+  it("wraps longitude across the antimeridian", () => {
+    const v = applyDrag({ lat: 0, lon: -170 }, 100, 0, 0.45);
+    expect(v.lon).toBeCloseTo(145, 5);
+    expect(v.lon).toBeGreaterThanOrEqual(-180);
+    expect(v.lon).toBeLessThanOrEqual(180);
   });
 });
 

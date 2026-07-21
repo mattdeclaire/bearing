@@ -159,6 +159,20 @@ export function angularDistance(a: LatLon, b: LatLon): number {
   return (2 * Math.asin(Math.min(1, Math.sqrt(h)))) / D;
 }
 
+// Drag interaction: pointer deltas → view rotation. Dragging right spins the
+// globe east under the cursor (lon decreases); dragging down tips the north
+// pole toward the viewer (lat increases). North stays up (no roll).
+export function applyDrag(
+  view: LatLon,
+  dx: number,
+  dy: number,
+  degPerPx: number,
+): LatLon {
+  const lon = ((view.lon - dx * degPerPx + 540) % 360) - 180;
+  const lat = Math.max(-89, Math.min(89, view.lat + dy * degPerPx));
+  return { lat, lon };
+}
+
 // View center: keep the player's longitude (player stays on the vertical
 // centerline, north up) but tilt the latitude toward where the routes
 // actually travel. City latitude is misleading — from the US, Jakarta sits
