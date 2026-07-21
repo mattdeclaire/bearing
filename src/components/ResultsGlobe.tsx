@@ -16,8 +16,8 @@ import {
 const SIZE = 320;
 const C = SIZE / 2;
 const R = C - 10;
-const WEDGE_DEG = 14.5; // ~1000 mi: radius of the near-player error wedge
 const GUESS_SEGMENTS = 32; // per-segment rendering fades the guess line
+const SHADE_OPACITY = 0.08; // full-length error shading
 const DEG_PER_PX = 0.45; // drag sensitivity (radius 150px ≈ 90° of arc)
 const FRICTION = 0.95; // momentum decay per frame
 const MIN_SPIN = 0.05; // °/frame below which momentum stops
@@ -182,18 +182,42 @@ export default function ResultsGlobe({
         }
         const arcRuns = splitRuns(center, arcPts, R);
 
-        // Near-player error wedge (unchanged scale).
-        const wedgePts: string[] = [];
-        const steps = Math.max(2, Math.ceil(Math.abs(diff) / 6));
-        for (let i = 0; i <= steps; i++) {
-          const b = r.guess + (diff * i) / steps;
-          const p = orthoProject(center, destinationPoint(pos, b, WEDGE_DEG), R);
-          wedgePts.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`);
+        // Full-length error shading between the guess line and the true
+        // route: a grid of quads in (bearing, radius) space. Only quads
+        // entirely on the front hemisphere render — a single projected
+        // polygon would fold through the horizon and shade the wrong region
+        // for large errors. Shared edges use identical coordinates, so the
+        // quads merge into one seamless path.
+        const shadeParts: string[] = [];
+        const bSteps = Math.max(2, Math.ceil(Math.abs(diff) / 6));
+        const rSteps = Math.max(2, Math.ceil(dist / 15));
+        const gridPt = (bi: number, rj: number) =>
+          orthoProject(
+            center,
+            destinationPoint(
+              pos,
+              r.guess + (diff * bi) / bSteps,
+              (dist * rj) / rSteps,
+            ),
+            R,
+          );
+        for (let i = 0; i < bSteps; i++) {
+          for (let j = 0; j < rSteps; j++) {
+            const c00 = gridPt(i, j);
+            const c01 = gridPt(i, j + 1);
+            const c11 = gridPt(i + 1, j + 1);
+            const c10 = gridPt(i + 1, j);
+            if (c00.front && c01.front && c11.front && c10.front) {
+              shadeParts.push(
+                `M${c00.x.toFixed(1)},${c00.y.toFixed(1)}L${c01.x.toFixed(1)},${c01.y.toFixed(1)}L${c11.x.toFixed(1)},${c11.y.toFixed(1)}L${c10.x.toFixed(1)},${c10.y.toFixed(1)}Z`,
+              );
+            }
+          }
         }
+        const shade = shadeParts.join("");
         const player = orthoProject(center, pos, R);
-        const wedge = `M${player.x.toFixed(1)},${player.y.toFixed(1)} L${wedgePts.join(" L")} Z`;
         const city = orthoProject(center, r, R);
-        return { runs, guessSegs, arcRuns, wedge, city, player };
+        return { runs, guessSegs, arcRuns, shade, city, player };
       }),
     [results, center, pos],
   );
@@ -256,9 +280,12 @@ export default function ResultsGlobe({
         {routes.map((r, i) => (
           <g key={results[i].name}>
             <path
-              d={r.wedge}
+              d={r.shade}
               fill="#f59e0b"
-              fillOpacity={r.player.front ? 0.15 : 0.05}
+              fillOpacity={SHADE_OPACITY}
+              stroke="#f59e0b"
+              strokeOpacity={SHADE_OPACITY / 2}
+              strokeWidth={0.5}
             />
             {r.runs.map((run, j) => (
               <polyline
