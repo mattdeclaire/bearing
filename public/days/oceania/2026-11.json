@@ -1,0 +1,1112 @@
+{
+  "2026-11-01": [
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-02": [
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-03": [
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-04": [
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-05": [
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-06": [
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-07": [
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-08": [
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-09": [
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-10": [
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-11": [
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-12": [
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-13": [
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-14": [
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-15": [
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-16": [
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-17": [
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-18": [
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-19": [
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-20": [
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-21": [
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-22": [
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-23": [
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-24": [
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-25": [
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-26": [
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    },
+    {
+      "name": "Sydney",
+      "country": "Australia",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-27": [
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Suva",
+      "country": "Fiji",
+      "lat": -18.1416,
+      "lon": 178.4419,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-28": [
+    {
+      "name": "Honolulu",
+      "country": "United States",
+      "lat": 21.3099,
+      "lon": -157.8581,
+      "continent": "oceania"
+    },
+    {
+      "name": "Wellington",
+      "country": "New Zealand",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-29": [
+    {
+      "name": "Perth",
+      "country": "Australia",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Port Moresby",
+      "country": "Papua New Guinea",
+      "lat": -9.4438,
+      "lon": 147.1803,
+      "continent": "oceania"
+    },
+    {
+      "name": "Christchurch",
+      "country": "New Zealand",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    }
+  ],
+  "2026-11-30": [
+    {
+      "name": "Auckland",
+      "country": "New Zealand",
+      "lat": -36.8509,
+      "lon": 174.7645,
+      "continent": "oceania"
+    },
+    {
+      "name": "Melbourne",
+      "country": "Australia",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "continent": "oceania"
+    },
+    {
+      "name": "Adelaide",
+      "country": "Australia",
+      "lat": -34.9285,
+      "lon": 138.6007,
+      "continent": "oceania"
+    },
+    {
+      "name": "Brisbane",
+      "country": "Australia",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "continent": "oceania"
+    },
+    {
+      "name": "Darwin",
+      "country": "Australia",
+      "lat": -12.4634,
+      "lon": 130.8456,
+      "continent": "oceania"
+    }
+  ]
+}

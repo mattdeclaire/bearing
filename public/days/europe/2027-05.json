@@ -1,0 +1,1149 @@
+{
+  "2027-05-01": [
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-02": [
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "continent": "europe"
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Copenhagen",
+      "country": "Denmark",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "continent": "europe"
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-03": [
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686,
+      "continent": "europe"
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "continent": "europe"
+    },
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-04": [
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Copenhagen",
+      "country": "Denmark",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "continent": "europe"
+    },
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-05": [
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-06": [
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-07": [
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Copenhagen",
+      "country": "Denmark",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "continent": "europe"
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-08": [
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "continent": "europe"
+    },
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-09": [
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    },
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-10": [
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-11": [
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    },
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "continent": "europe"
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-12": [
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-13": [
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    },
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "continent": "europe"
+    },
+    {
+      "name": "Stockholm",
+      "country": "Sweden",
+      "lat": 59.3293,
+      "lon": 18.0686,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-14": [
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-15": [
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-16": [
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    },
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384,
+      "continent": "europe"
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-17": [
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-18": [
+    {
+      "name": "Copenhagen",
+      "country": "Denmark",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "continent": "europe"
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-19": [
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "continent": "europe"
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-20": [
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-21": [
+    {
+      "name": "Lisbon",
+      "country": "Portugal",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "continent": "europe"
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-22": [
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Copenhagen",
+      "country": "Denmark",
+      "lat": 55.6761,
+      "lon": 12.5683,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-23": [
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-24": [
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    },
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-25": [
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    },
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-26": [
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Oslo",
+      "country": "Norway",
+      "lat": 59.9139,
+      "lon": 10.7522,
+      "continent": "europe"
+    },
+    {
+      "name": "Madrid",
+      "country": "Spain",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "continent": "europe"
+    },
+    {
+      "name": "Berlin",
+      "country": "Germany",
+      "lat": 52.52,
+      "lon": 13.405,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-27": [
+    {
+      "name": "Vienna",
+      "country": "Austria",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384,
+      "continent": "europe"
+    },
+    {
+      "name": "Paris",
+      "country": "France",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-28": [
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "continent": "europe"
+    },
+    {
+      "name": "Amsterdam",
+      "country": "Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "continent": "europe"
+    },
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "continent": "europe"
+    },
+    {
+      "name": "Helsinki",
+      "country": "Finland",
+      "lat": 60.1699,
+      "lon": 24.9384,
+      "continent": "europe"
+    },
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-29": [
+    {
+      "name": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    },
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "continent": "europe"
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "continent": "europe"
+    },
+    {
+      "name": "Prague",
+      "country": "Czechia",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-30": [
+    {
+      "name": "Rome",
+      "country": "Italy",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    },
+    {
+      "name": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    },
+    {
+      "name": "Dublin",
+      "country": "Ireland",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "continent": "europe"
+    }
+  ],
+  "2027-05-31": [
+    {
+      "name": "Reykjavík",
+      "country": "Iceland",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "continent": "europe"
+    },
+    {
+      "name": "Athens",
+      "country": "Greece",
+      "lat": 37.9838,
+      "lon": 23.7275,
+      "continent": "europe"
+    },
+    {
+      "name": "Budapest",
+      "country": "Hungary",
+      "lat": 47.4979,
+      "lon": 19.0402,
+      "continent": "europe"
+    },
+    {
+      "name": "Istanbul",
+      "country": "Turkey",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "continent": "europe"
+    },
+    {
+      "name": "Kyiv",
+      "country": "Ukraine",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "continent": "europe"
+    }
+  ]
+}

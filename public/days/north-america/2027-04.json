@@ -1,0 +1,1112 @@
+{
+  "2027-04-01": [
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "continent": "north-america"
+    },
+    {
+      "name": "New York",
+      "country": "United States",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-02": [
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Denver",
+      "country": "United States",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "continent": "north-america"
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-03": [
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Kingston",
+      "country": "Jamaica",
+      "lat": 17.9712,
+      "lon": -76.7936,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-04": [
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-05": [
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-06": [
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Atlanta",
+      "country": "United States",
+      "lat": 33.749,
+      "lon": -84.388,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-07": [
+    {
+      "name": "Denver",
+      "country": "United States",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "continent": "north-america"
+    },
+    {
+      "name": "Miami",
+      "country": "United States",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-08": [
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Miami",
+      "country": "United States",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "continent": "north-america"
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-09": [
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Denver",
+      "country": "United States",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-10": [
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Atlanta",
+      "country": "United States",
+      "lat": 33.749,
+      "lon": -84.388,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "Miami",
+      "country": "United States",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-11": [
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    },
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-12": [
+    {
+      "name": "New York",
+      "country": "United States",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-13": [
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "Anchorage",
+      "country": "United States",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    },
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-14": [
+    {
+      "name": "Los Angeles",
+      "country": "United States",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    },
+    {
+      "name": "Kingston",
+      "country": "Jamaica",
+      "lat": 17.9712,
+      "lon": -76.7936,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-15": [
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-16": [
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Atlanta",
+      "country": "United States",
+      "lat": 33.749,
+      "lon": -84.388,
+      "continent": "north-america"
+    },
+    {
+      "name": "New York",
+      "country": "United States",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "continent": "north-america"
+    },
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-17": [
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    },
+    {
+      "name": "Anchorage",
+      "country": "United States",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-18": [
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-19": [
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    },
+    {
+      "name": "Anchorage",
+      "country": "United States",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "continent": "north-america"
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-20": [
+    {
+      "name": "Anchorage",
+      "country": "United States",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "continent": "north-america"
+    },
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Miami",
+      "country": "United States",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-21": [
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-22": [
+    {
+      "name": "Anchorage",
+      "country": "United States",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "continent": "north-america"
+    },
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-23": [
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-24": [
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    },
+    {
+      "name": "Toronto",
+      "country": "Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-25": [
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guatemala City",
+      "country": "Guatemala",
+      "lat": 14.6349,
+      "lon": -90.5069,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Kingston",
+      "country": "Jamaica",
+      "lat": 17.9712,
+      "lon": -76.7936,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-26": [
+    {
+      "name": "Anchorage",
+      "country": "United States",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-27": [
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    },
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-28": [
+    {
+      "name": "Seattle",
+      "country": "United States",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "Havana",
+      "country": "Cuba",
+      "lat": 23.1136,
+      "lon": -82.3666,
+      "continent": "north-america"
+    },
+    {
+      "name": "Mexico City",
+      "country": "Mexico",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "continent": "north-america"
+    },
+    {
+      "name": "Atlanta",
+      "country": "United States",
+      "lat": 33.749,
+      "lon": -84.388,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-29": [
+    {
+      "name": "Chicago",
+      "country": "United States",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "continent": "north-america"
+    },
+    {
+      "name": "New York",
+      "country": "United States",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "continent": "north-america"
+    },
+    {
+      "name": "Houston",
+      "country": "United States",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "continent": "north-america"
+    },
+    {
+      "name": "Miami",
+      "country": "United States",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "continent": "north-america"
+    },
+    {
+      "name": "Montreal",
+      "country": "Canada",
+      "lat": 45.5019,
+      "lon": -73.5674,
+      "continent": "north-america"
+    }
+  ],
+  "2027-04-30": [
+    {
+      "name": "Miami",
+      "country": "United States",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "continent": "north-america"
+    },
+    {
+      "name": "Panama City",
+      "country": "Panama",
+      "lat": 8.9824,
+      "lon": -79.5199,
+      "continent": "north-america"
+    },
+    {
+      "name": "Guadalajara",
+      "country": "Mexico",
+      "lat": 20.6597,
+      "lon": -103.3496,
+      "continent": "north-america"
+    },
+    {
+      "name": "Winnipeg",
+      "country": "Canada",
+      "lat": 49.8951,
+      "lon": -97.1384,
+      "continent": "north-america"
+    },
+    {
+      "name": "Kingston",
+      "country": "Jamaica",
+      "lat": 17.9712,
+      "lon": -76.7936,
+      "continent": "north-america"
+    }
+  ]
+}

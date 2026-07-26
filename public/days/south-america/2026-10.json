@@ -1,0 +1,1149 @@
+{
+  "2026-10-01": [
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-02": [
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-03": [
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-04": [
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-05": [
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-06": [
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-07": [
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-08": [
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-09": [
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-10": [
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-11": [
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-12": [
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-13": [
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-14": [
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-15": [
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-16": [
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-17": [
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-18": [
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-19": [
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-20": [
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-21": [
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-22": [
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-23": [
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-24": [
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-25": [
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Montevideo",
+      "country": "Uruguay",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-26": [
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-27": [
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "La Paz",
+      "country": "Bolivia",
+      "lat": -16.4897,
+      "lon": -68.1193,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-28": [
+    {
+      "name": "Medellín",
+      "country": "Colombia",
+      "lat": 6.2442,
+      "lon": -75.5812,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Recife",
+      "country": "Brazil",
+      "lat": -8.0476,
+      "lon": -34.877,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-29": [
+    {
+      "name": "Santiago",
+      "country": "Chile",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "continent": "south-america"
+    },
+    {
+      "name": "Brasília",
+      "country": "Brazil",
+      "lat": -15.8267,
+      "lon": -47.9218,
+      "continent": "south-america"
+    },
+    {
+      "name": "Asunción",
+      "country": "Paraguay",
+      "lat": -25.2637,
+      "lon": -57.5759,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-30": [
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    },
+    {
+      "name": "São Paulo",
+      "country": "Brazil",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "continent": "south-america"
+    },
+    {
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    }
+  ],
+  "2026-10-31": [
+    {
+      "name": "Bogotá",
+      "country": "Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "continent": "south-america"
+    },
+    {
+      "name": "Caracas",
+      "country": "Venezuela",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "continent": "south-america"
+    },
+    {
+      "name": "Rio de Janeiro",
+      "country": "Brazil",
+      "lat": -22.9068,
+      "lon": -43.1729,
+      "continent": "south-america"
+    },
+    {
+      "name": "Lima",
+      "country": "Peru",
+      "lat": -12.0464,
+      "lon": -77.0428,
+      "continent": "south-america"
+    },
+    {
+      "name": "Quito",
+      "country": "Ecuador",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "continent": "south-america"
+    }
+  ]
+}
