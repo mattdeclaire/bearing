@@ -1,3 +1,5 @@
+import type { GameMode } from "./gameMode.ts";
+
 export interface LatLon {
   lat: number;
   lon: number;
@@ -41,8 +43,12 @@ export function gradeEmoji(diff: number): string {
 
 export const SITE_URL = "https://bearing.city/";
 
-export function buildShareText(results: CityResult[]): string {
+// Continental is the canonical daily game, so its share text stays exactly as
+// it was pre-modes; only Global gets a label. The continent itself is never
+// included — it's derived from the player's location.
+export function buildShareText(results: CityResult[], mode: GameMode): string {
   const total = Math.round(results.reduce((sum, r) => sum + r.error, 0));
   const emojis = results.map((r) => gradeEmoji(r.error)).join("");
-  return `Bearing · ${total}° off over ${results.length} cities · ${emojis}\n${SITE_URL}`;
+  const label = mode === "global" ? "Bearing (Global)" : "Bearing";
+  return `${label} · ${total}° off over ${results.length} cities · ${emojis}\n${SITE_URL}`;
 }

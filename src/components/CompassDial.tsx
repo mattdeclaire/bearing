@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 import type { PointerEvent } from "react";
 
 interface CompassDialProps {
-  mode: "sensor" | "manual";
+  inputMode: "sensor" | "manual";
   heading: number;
   manualAngle: number;
   onManualChange: (angle: number) => void;
@@ -88,7 +88,7 @@ function Needle({ angle }: { angle: number }) {
 }
 
 export default function CompassDial({
-  mode,
+  inputMode,
   heading,
   manualAngle,
   onManualChange,
@@ -114,7 +114,7 @@ export default function CompassDial({
   useEffect(() => {
     const el = roseRef.current;
     if (!el) return;
-    if (mode !== "sensor") {
+    if (inputMode !== "sensor") {
       el.style.transform = "rotate(0deg)";
       return;
     }
@@ -132,7 +132,7 @@ export default function CompassDial({
       raf = requestAnimationFrame(tick);
     });
     return () => cancelAnimationFrame(raf);
-  }, [mode]);
+  }, [inputMode]);
 
   const angleFromEvent = useCallback((e: PointerEvent<SVGSVGElement>) => {
     const rect = svgRef.current!.getBoundingClientRect();
@@ -142,7 +142,7 @@ export default function CompassDial({
   }, []);
 
   const onPointerDown = (e: PointerEvent<SVGSVGElement>) => {
-    if (mode !== "manual" || reveal) return;
+    if (inputMode !== "manual" || reveal) return;
     dragging.current = true;
     svgRef.current?.setPointerCapture(e.pointerId);
     onManualChange(angleFromEvent(e));
@@ -162,11 +162,11 @@ export default function CompassDial({
   // green arrow stays pointed at the real city as the player turns, and the
   // wedge between guess and truth rides along unchanged. Manual mode has no
   // live heading; its world group is static.
-  const guessNeedleAngle = mode === "sensor" ? 0 : manualAngle;
+  const guessNeedleAngle = inputMode === "sensor" ? 0 : manualAngle;
   const diff = frozen ? signedDiff(reveal.actual, reveal.guess) : 0;
   // Initial world rotation for the frame the reveal mounts on; the rAF loop
   // takes over on the next tick.
-  const worldRotation = mode === "sensor" ? -displayRef.current : 0;
+  const worldRotation = inputMode === "sensor" ? -displayRef.current : 0;
 
   return (
     <svg

@@ -85,9 +85,23 @@ describe("buildShareText", () => {
       { name: "D", country: "X", lat: 0, lon: 0, guess: 0, actual: 100, error: 100 },
       { name: "E", country: "X", lat: 0, lon: 0, guess: 0, actual: 170, error: 170 },
     ];
-    const text = buildShareText(results);
+    const text = buildShareText(results, "continental");
     expect(text).toBe(
       `Bearing · 345° off over 5 cities · 🎯🟢🟡🟠🔴\n${SITE_URL}`,
+    );
+  });
+
+  it("labels the global mode and never names a continent", () => {
+    const results = [
+      { name: "A", country: "X", lat: 0, lon: 0, guess: 0, actual: 5, error: 5 },
+      { name: "B", country: "X", lat: 0, lon: 0, guess: 0, actual: 20, error: 20 },
+      { name: "C", country: "X", lat: 0, lon: 0, guess: 0, actual: 50, error: 50 },
+      { name: "D", country: "X", lat: 0, lon: 0, guess: 0, actual: 100, error: 100 },
+      { name: "E", country: "X", lat: 0, lon: 0, guess: 0, actual: 170, error: 170 },
+    ];
+    const text = buildShareText(results, "global");
+    expect(text).toBe(
+      `Bearing (Global) · 345° off over 5 cities · 🎯🟢🟡🟠🔴\n${SITE_URL}`,
     );
   });
 });
@@ -147,5 +161,33 @@ describe("citiesForDay", () => {
 
   it("differs across dates", () => {
     expect(citiesForDay("2026-07-17")).not.toEqual(citiesForDay("2026-07-18"));
+  });
+
+  it("draws only from the requested continent", () => {
+    const cities = citiesForDay("2026-08-01", "europe");
+    expect(cities).toHaveLength(5);
+    expect(new Set(cities.map((c) => c.name)).size).toBe(5);
+    expect(cities.every((c) => c.continent === "europe")).toBe(true);
+  });
+
+  it("is deterministic per continent", () => {
+    expect(citiesForDay("2026-08-01", "europe")).toEqual(
+      citiesForDay("2026-08-01", "europe"),
+    );
+  });
+
+  it("differs across continents and from global on the same date", () => {
+    const europe = citiesForDay("2026-08-01", "europe");
+    expect(europe).not.toEqual(citiesForDay("2026-08-01", "asia"));
+    expect(europe).not.toEqual(citiesForDay("2026-08-01"));
+  });
+
+  it("builds a full month for a continent", () => {
+    const month = buildMonth(2026, 8, "oceania");
+    expect(Object.keys(month)).toHaveLength(31);
+    for (const cities of Object.values(month)) {
+      expect(cities).toHaveLength(5);
+      expect(cities.every((c) => c.continent === "oceania")).toBe(true);
+    }
   });
 });

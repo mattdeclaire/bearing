@@ -1,0 +1,1149 @@
+{
+  "2026-12-01": [
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-02": [
+    {
+      "name": "Delhi",
+      "country": "India",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    },
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "continent": "asia"
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-03": [
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Shanghai",
+      "country": "China",
+      "lat": 31.2304,
+      "lon": 121.4737,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    },
+    {
+      "name": "Chengdu",
+      "country": "China",
+      "lat": 30.5728,
+      "lon": 104.0668,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-04": [
+    {
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "continent": "asia"
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-05": [
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Delhi",
+      "country": "India",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "continent": "asia"
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "continent": "asia"
+    },
+    {
+      "name": "Kuala Lumpur",
+      "country": "Malaysia",
+      "lat": 3.139,
+      "lon": 101.6869,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-06": [
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-07": [
+    {
+      "name": "Shanghai",
+      "country": "China",
+      "lat": 31.2304,
+      "lon": 121.4737,
+      "continent": "asia"
+    },
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "continent": "asia"
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-08": [
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-09": [
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "continent": "asia"
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    },
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-10": [
+    {
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    },
+    {
+      "name": "Chengdu",
+      "country": "China",
+      "lat": 30.5728,
+      "lon": 104.0668,
+      "continent": "asia"
+    },
+    {
+      "name": "Almaty",
+      "country": "Kazakhstan",
+      "lat": 43.222,
+      "lon": 76.8512,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-11": [
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "continent": "asia"
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639,
+      "continent": "asia"
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-12": [
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "continent": "asia"
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-13": [
+    {
+      "name": "Chengdu",
+      "country": "China",
+      "lat": 30.5728,
+      "lon": 104.0668,
+      "continent": "asia"
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-14": [
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    },
+    {
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-15": [
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    },
+    {
+      "name": "Kuala Lumpur",
+      "country": "Malaysia",
+      "lat": 3.139,
+      "lon": 101.6869,
+      "continent": "asia"
+    },
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639,
+      "continent": "asia"
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-16": [
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    },
+    {
+      "name": "Shanghai",
+      "country": "China",
+      "lat": 31.2304,
+      "lon": 121.4737,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-17": [
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Kuala Lumpur",
+      "country": "Malaysia",
+      "lat": 3.139,
+      "lon": 101.6869,
+      "continent": "asia"
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-18": [
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    },
+    {
+      "name": "Almaty",
+      "country": "Kazakhstan",
+      "lat": 43.222,
+      "lon": 76.8512,
+      "continent": "asia"
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-19": [
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639,
+      "continent": "asia"
+    },
+    {
+      "name": "Ulaanbaatar",
+      "country": "Mongolia",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-20": [
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-21": [
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    },
+    {
+      "name": "Almaty",
+      "country": "Kazakhstan",
+      "lat": 43.222,
+      "lon": 76.8512,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-22": [
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-23": [
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-24": [
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Kolkata",
+      "country": "India",
+      "lat": 22.5726,
+      "lon": 88.3639,
+      "continent": "asia"
+    },
+    {
+      "name": "Karachi",
+      "country": "Pakistan",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-25": [
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Beijing",
+      "country": "China",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "continent": "asia"
+    },
+    {
+      "name": "Delhi",
+      "country": "India",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "continent": "asia"
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-26": [
+    {
+      "name": "Almaty",
+      "country": "Kazakhstan",
+      "lat": 43.222,
+      "lon": 76.8512,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    },
+    {
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "continent": "asia"
+    },
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-27": [
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "continent": "asia"
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Seoul",
+      "country": "South Korea",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "continent": "asia"
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-28": [
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    },
+    {
+      "name": "Delhi",
+      "country": "India",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-29": [
+    {
+      "name": "Osaka",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "continent": "asia"
+    },
+    {
+      "name": "Delhi",
+      "country": "India",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "continent": "asia"
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    },
+    {
+      "name": "Dhaka",
+      "country": "Bangladesh",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "continent": "asia"
+    },
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-30": [
+    {
+      "name": "Mumbai",
+      "country": "India",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "continent": "asia"
+    },
+    {
+      "name": "Hong Kong",
+      "country": "China",
+      "lat": 22.3193,
+      "lon": 114.1694,
+      "continent": "asia"
+    },
+    {
+      "name": "Tokyo",
+      "country": "Japan",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "continent": "asia"
+    },
+    {
+      "name": "Riyadh",
+      "country": "Saudi Arabia",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "continent": "asia"
+    },
+    {
+      "name": "Tehran",
+      "country": "Iran",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "continent": "asia"
+    }
+  ],
+  "2026-12-31": [
+    {
+      "name": "Singapore",
+      "country": "Singapore",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "continent": "asia"
+    },
+    {
+      "name": "Manila",
+      "country": "Philippines",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "continent": "asia"
+    },
+    {
+      "name": "Jakarta",
+      "country": "Indonesia",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "continent": "asia"
+    },
+    {
+      "name": "Nagoya",
+      "country": "Japan",
+      "lat": 35.1815,
+      "lon": 136.9066,
+      "continent": "asia"
+    },
+    {
+      "name": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "continent": "asia"
+    }
+  ]
+}
