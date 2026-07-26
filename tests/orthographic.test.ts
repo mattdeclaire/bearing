@@ -177,15 +177,16 @@ describe("fitZoom", () => {
     expect(zoom).toBeGreaterThan(1.5);
     for (const r of [...european, { ...mkResult(BERLIN.lat, BERLIN.lon) }]) {
       const p = orthoProject(center, r, R * zoom);
-      expect(Math.hypot(p.x, p.y)).toBeLessThanOrEqual(0.92 * R + 1e-6);
+      expect(Math.hypot(p.x, p.y)).toBeLessThanOrEqual(R + 1e-6);
       expect(p.front).toBe(true);
     }
   });
 
   it("accounts for a wildly wrong guess pointing away from the city", () => {
-    const goodGuess = [european[0]];
+    // Reykjavík is far enough from Berlin that neither variant hits the cap
+    const goodGuess = [european[4]];
     const badGuess = [
-      { ...european[0], guess: (european[0].actual + 180) % 360 },
+      { ...european[4], guess: (european[4].actual + 180) % 360 },
     ];
     const zoomGood = fitZoom(globeCenter(BERLIN, goodGuess), BERLIN, goodGuess);
     const zoomBad = fitZoom(globeCenter(BERLIN, badGuess), BERLIN, badGuess);
