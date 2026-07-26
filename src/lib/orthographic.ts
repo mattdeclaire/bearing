@@ -188,7 +188,10 @@ export function applyDrag(
 // inside FIT_FILL of the visible disc. 1 = whole hemisphere (the old look,
 // kept for far-flung global games); continental games zoom in. The zoom is
 // constant while the globe spins — only the default framing is fitted.
-const FIT_FILL = 0.92; // content fills at most this fraction of the disc
+// When zoomed, the globe overflows the square viewport, so content may fill
+// the full R-radius circle inscribed in it (R itself sits ~10px inside the
+// viewport edge, which is the padding for markers and labels).
+const FIT_FILL = 1.0;
 const MAX_ZOOM = 6;
 const MIN_FIT_DEG = 6; // never frame tighter than a 6°-radius view
 

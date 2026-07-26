@@ -263,7 +263,7 @@ export default function ResultsGlobe({
       )}
     <svg
       viewBox={`0 0 ${SIZE} ${SIZE}`}
-      className="w-full select-none touch-none cursor-grab active:cursor-grabbing"
+      className="w-full rounded-2xl select-none touch-none cursor-grab active:cursor-grabbing"
       role="img"
       aria-label="Globe showing your location and the routes to today's five cities"
       onPointerDown={onPointerDown}
@@ -276,15 +276,44 @@ export default function ResultsGlobe({
           <stop offset="0%" stopColor="#1a2436" />
           <stop offset="100%" stopColor="#0b1220" />
         </radialGradient>
+        {/* Zoomed variant in user space: the limb circle is huge and mostly
+            off-screen, so its own bounding box would flatten the gradient —
+            pin the shading to the viewport instead to keep the sphere vignette. */}
+        <radialGradient
+          id="globe-face-zoom"
+          gradientUnits="userSpaceOnUse"
+          cx={C}
+          cy={SIZE * 0.42}
+          r={SIZE * 0.65}
+        >
+          <stop offset="0%" stopColor="#1a2436" />
+          <stop offset="100%" stopColor="#0b1220" />
+        </radialGradient>
         {/* referenced from a group translated to the disc center, so the
             clip circle lives at the origin of that translated space */}
         <clipPath id="globe-clip">
-          <circle cx={0} cy={0} r={R} />
+          <circle cx={0} cy={0} r={GR} />
         </clipPath>
       </defs>
 
-      <circle cx={C} cy={C} r={R + 5} fill="#1e293b" />
-      <circle cx={C} cy={C} r={R} fill="url(#globe-face)" stroke="#334155" strokeWidth={2} />
+      {zoom === 1 ? (
+        // Full-hemisphere view: the classic disc with its rim ring.
+        <>
+          <circle cx={C} cy={C} r={R + 5} fill="#1e293b" />
+          <circle cx={C} cy={C} r={R} fill="url(#globe-face)" stroke="#334155" strokeWidth={2} />
+        </>
+      ) : (
+        // Zoomed: draw the sphere at its true projected size so the limb
+        // overflows the viewport — the square crop is what sells the zoom.
+        <circle
+          cx={C}
+          cy={C}
+          r={GR}
+          fill="url(#globe-face-zoom)"
+          stroke="#334155"
+          strokeWidth={2}
+        />
+      )}
 
       <g clipPath="url(#globe-clip)" transform={`translate(${C} ${C})`}>
         <path d={graticulePath} fill="none" stroke="#293548" strokeWidth={1} />
