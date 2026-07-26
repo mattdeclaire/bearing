@@ -6,6 +6,10 @@ the sum of your angular errors in degrees across all 5 cities. Lower is better.
 One puzzle per day, same cities for everyone — share your result and see how
 your friends' sense of direction stacks up.
 
+Two modes: the default **continental** game keeps all 5 cities on your own
+continent (auto-detected from your location), so targets surround you and
+bearings point every which way; **Global** is the classic worldwide list.
+
 **Play it:** https://bearing.city/
 
 ## Stack
@@ -19,17 +23,23 @@ your friends' sense of direction stacks up.
 
 ## Daily puzzles
 
-Puzzles live in committed monthly JSON files: `public/days/YYYY-MM.json`, an
-object mapping each date of the month to its 5 cities. The app fetches the
-current month's file and picks the entry for the player's **local** date
-(Wordle-style), so everyone on the same calendar day gets the same puzzle. A
-missing file or date shows a friendly "no puzzle today" state.
+Puzzles live in committed monthly JSON files, one stream per game: the global
+game in `public/days/YYYY-MM.json` and one per continent (Antarctica excluded)
+in `public/days/{continent}/YYYY-MM.json` — seven streams total. Each file
+maps every date of the month to its 5 cities. The app fetches the current
+month's file for the active mode — continental picks the directory matching
+the continent nearest the player — and uses the entry for the player's
+**local** date (Wordle-style), so everyone on the same calendar day (and, in
+continental mode, the same continent) gets the same puzzle. A missing file or
+date shows a friendly "no puzzle today" state.
 
 - `npm run gen-days` (`scripts/gen-days.ts`) generates complete month files
-  with a deterministic shuffle keyed off each date string, covering yesterday
+  for all seven streams with a deterministic shuffle keyed off each date
+  string (global) or continent + date (continental), covering yesterday
   through one year out. It **skips files that already exist** — a published
-  puzzle must never change underneath players — and per-date determinism means
-  even `--force` regeneration reproduces identical puzzles.
+  puzzle must never change underneath players. Don't run `--force`: the city
+  pool has grown since the first global months were published, so
+  regeneration would rewrite them.
 - `.github/workflows/gen-days.yml` runs monthly (cron, 1st of the month) to
   top up the window and commits the new files to `main`, which triggers a
   deploy. If a run is missed, the next run catches up automatically. GitHub
