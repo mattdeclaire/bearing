@@ -1,6 +1,13 @@
 import type { CityResult, LatLon } from "./directions.ts";
+import type { GameMode } from "./gameMode.ts";
 
-const KEY = "bearing:lastResult";
+// One saved result per game mode, so finishing one mode never wipes the
+// other's result for the day.
+const keyFor = (mode: GameMode) => `bearing:lastResult:${mode}`;
+// Pre-modes saves lived here; they were all global-list games. Read-only
+// fallback — the dateKey check makes it stale within a day, so it's never
+// cleaned up.
+const LEGACY_KEY = "bearing:lastResult";
 
 export interface SavedGame {
   results: CityResult[];
@@ -13,13 +20,14 @@ export interface SavedGame {
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
 export function saveResult(
+  mode: GameMode,
   dateKey: string,
   results: CityResult[],
   pos: LatLon | null,
 ): void {
   try {
     localStorage.setItem(
-      KEY,
+      keyFor(mode),
       JSON.stringify({
         dateKey,
         results,
@@ -31,29 +39,37 @@ export function saveResult(
   }
 }
 
-export function loadResult(dateKey: string): SavedGame | null {
+function parseSaved(raw: string | null, dateKey: string): SavedGame | null {
+  if (!raw) return null;
+  const data: unknown = JSON.parse(raw);
+  if (
+    typeof data !== "object" ||
+    data === null ||
+    (data as { dateKey?: unknown }).dateKey !== dateKey
+  ) {
+    return null;
+  }
+  const results = (data as { results?: unknown }).results;
+  if (!Array.isArray(results) || results.length !== 5) return null;
+  const rawPos = (data as { pos?: unknown }).pos;
+  const pos =
+    typeof rawPos === "object" &&
+    rawPos !== null &&
+    typeof (rawPos as LatLon).lat === "number" &&
+    typeof (rawPos as LatLon).lon === "number"
+      ? (rawPos as LatLon)
+      : null;
+  return { results: results as CityResult[], pos };
+}
+
+export function loadResult(mode: GameMode, dateKey: string): SavedGame | null {
   try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return null;
-    const data: unknown = JSON.parse(raw);
-    if (
-      typeof data !== "object" ||
-      data === null ||
-      (data as { dateKey?: unknown }).dateKey !== dateKey
-    ) {
-      return null;
+    const saved = parseSaved(localStorage.getItem(keyFor(mode)), dateKey);
+    if (saved) return saved;
+    if (mode === "global") {
+      return parseSaved(localStorage.getItem(LEGACY_KEY), dateKey);
     }
-    const results = (data as { results?: unknown }).results;
-    if (!Array.isArray(results) || results.length !== 5) return null;
-    const rawPos = (data as { pos?: unknown }).pos;
-    const pos =
-      typeof rawPos === "object" &&
-      rawPos !== null &&
-      typeof (rawPos as LatLon).lat === "number" &&
-      typeof (rawPos as LatLon).lon === "number"
-        ? (rawPos as LatLon)
-        : null;
-    return { results: results as CityResult[], pos };
+    return null;
   } catch {
     return null;
   }

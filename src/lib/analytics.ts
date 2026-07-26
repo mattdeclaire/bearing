@@ -1,7 +1,9 @@
 // Umami Cloud analytics — cookieless, no PII. Set WEBSITE_ID to the site's
 // Umami website ID to enable; empty string keeps analytics fully inert.
 // Privacy rule: never send coordinates, headings, or anything derived from
-// the player's location — scores, modes, and statuses only.
+// the player's location — scores, modes, and statuses only. The detected
+// continent counts as location-derived: send game_mode (continental/global)
+// only, never which continent.
 const WEBSITE_ID = "04fa0e6c-977c-4688-8e5a-3a7c8cf3acd1";
 
 declare global {

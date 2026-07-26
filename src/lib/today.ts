@@ -1,4 +1,4 @@
-import type { City } from "./cities.ts";
+import type { City, Continent } from "./cities.ts";
 
 export function todayKey(now: Date = new Date()): string {
   const y = now.getFullYear();
@@ -11,9 +11,14 @@ export function monthKey(now: Date = new Date()): string {
   return todayKey(now).slice(0, 7);
 }
 
-export async function loadTodayCities(): Promise<City[] | null> {
+export async function loadTodayCities(
+  continent: Continent | null = null,
+): Promise<City[] | null> {
   try {
-    const res = await fetch(`days/${monthKey()}.json`);
+    const path = continent
+      ? `days/${continent}/${monthKey()}.json`
+      : `days/${monthKey()}.json`;
+    const res = await fetch(path);
     if (!res.ok) return null;
     const data: unknown = await res.json();
     if (typeof data !== "object" || data === null) return null;

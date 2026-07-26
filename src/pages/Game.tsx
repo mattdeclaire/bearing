@@ -9,6 +9,12 @@ import {
 } from "../lib/directions.ts";
 import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
+import { detectContinent } from "../lib/continent.ts";
+import {
+  loadModePref,
+  saveModePref,
+  type GameMode,
+} from "../lib/gameMode.ts";
 import { declinationAt } from "../lib/declination.ts";
 import { track } from "../lib/analytics.ts";
 import { isIos, likelyHasCompass } from "../lib/device.ts";
@@ -21,9 +27,14 @@ import Button from "../components/Button.tsx";
 type Phase = "intro" | "permissions" | "playing" | "results";
 
 export default function Game() {
+  const [gameMode, setGameMode] = useState<GameMode>(
+    () => loadModePref() ?? "continental",
+  );
   // A finished game persists for the rest of the day — refreshing shows the
   // results again instead of restarting the puzzle.
-  const [saved] = useState(() => loadResult(todayKey()));
+  const [saved, setSaved] = useState(() =>
+    loadResult(loadModePref() ?? "continental", todayKey()),
+  );
   const [phase, setPhase] = useState<Phase>(saved ? "results" : "intro");
   const [cities, setCities] = useState<City[] | null | "loading">("loading");
   const [round, setRound] = useState(0);
@@ -40,14 +51,31 @@ export default function Game() {
   const compass = useCompassHeading();
   const dateKey = useRef(todayKey()).current;
 
+  // Global loads right away; continental can only pick its list once the
+  // player's position (and with it their continent) is known, so it stays
+  // "loading" until geolocation resolves during the permissions phase.
   useEffect(() => {
-    if (!saved) loadTodayCities().then(setCities);
-  }, [saved]);
+    if (saved) return;
+    let stale = false;
+    setCities("loading");
+    if (gameMode === "global") {
+      loadTodayCities(null).then((c) => {
+        if (!stale) setCities(c);
+      });
+    } else if (geo.position) {
+      loadTodayCities(detectContinent(geo.position)).then((c) => {
+        if (!stale) setCities(c);
+      });
+    }
+    return () => {
+      stale = true;
+    };
+  }, [saved, gameMode, geo.position]);
 
   const startPermissions = () => {
     // The Play tap is itself a user gesture, so iOS's compass permission
     // prompt can be triggered right here — no separate "Enable compass" tap.
-    track("game_start");
+    track("game_start", { game_mode: gameMode });
     setPhase("permissions");
     if (isIos()) {
       // Serial prompts: motion must be requested inside the tap's gesture
@@ -70,12 +98,35 @@ export default function Game() {
   const compassResolved =
     compass.status === "sensor" || compass.status === "manual";
   useEffect(() => {
-    if (phase === "permissions" && geo.status === "granted" && compassResolved) {
+    // In continental mode the city fetch starts only after the position
+    // arrives, so readiness includes the cities themselves.
+    if (
+      phase === "permissions" &&
+      geo.status === "granted" &&
+      compassResolved &&
+      Array.isArray(cities)
+    ) {
       setPhase("playing");
     }
-  }, [phase, geo.status, compassResolved]);
+  }, [phase, geo.status, compassResolved, cities]);
 
-  const mode = compass.status === "sensor" ? "sensor" : "manual";
+  const inputMode = compass.status === "sensor" ? "sensor" : "manual";
+
+  // Switch between the continental and global game. Each mode has its own
+  // saved result, so this may land on today's results instead of the intro.
+  const pickMode = (m: GameMode) => {
+    if (m === gameMode) return;
+    saveModePref(m);
+    setGameMode(m);
+    const s = loadResult(m, todayKey());
+    setSaved(s);
+    setResults(s?.results ?? []);
+    setRound(0);
+    setReveal(null);
+    setManualAngle(0);
+    setFocus(null);
+    setPhase(s ? "results" : "intro");
+  };
 
   // Convert magnetic headings ("alpha" source, i.e. Android) to true north.
   // iOS's webkitCompassHeading is already true when location is on.
@@ -93,7 +144,7 @@ export default function Game() {
   const lockIn = () => {
     if (cities === "loading" || cities === null || !geo.position) return;
     const city = cities[round];
-    const guess = mode === "sensor" ? (trueHeading ?? 0) : manualAngle;
+    const guess = inputMode === "sensor" ? (trueHeading ?? 0) : manualAngle;
     const actual = bearingTo(geo.position, city);
     setResults((prev) => [
       ...prev,
@@ -114,10 +165,11 @@ export default function Game() {
     setReveal(null);
     setManualAngle(0);
     if (round + 1 >= 5) {
-      saveResult(dateKey, results, geo.position);
+      saveResult(gameMode, dateKey, results, geo.position);
       track("game_complete", {
         score: Math.round(results.reduce((s, r) => s + r.error, 0)),
-        mode,
+        mode: inputMode,
+        game_mode: gameMode,
       });
       setPhase("results");
     } else {
@@ -126,7 +178,7 @@ export default function Game() {
   };
 
   const share = async () => {
-    const text = buildShareText(results);
+    const text = buildShareText(results, gameMode);
     track("share", {
       method: typeof navigator.share === "function" ? "sheet" : "clipboard",
     });
@@ -181,13 +233,50 @@ export default function Game() {
               </>
             )}
           </p>
-          {cities === null ? (
+          <div className="flex flex-col items-center gap-2">
+            <div
+              role="group"
+              aria-label="Game mode"
+              className="flex rounded-full bg-slate-800 p-1"
+            >
+              {(
+                [
+                  ["continental", "My continent"],
+                  ["global", "Global"],
+                ] as const
+              ).map(([m, label]) => (
+                <button
+                  key={m}
+                  onClick={() => pickMode(m)}
+                  aria-pressed={gameMode === m}
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                    gameMode === m
+                      ? "bg-slate-100 text-slate-900"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <p className="text-xs text-slate-500">
+              {gameMode === "continental"
+                ? "Today's 5 cities are on your continent — expect directions all around you."
+                : "The classic worldwide list."}
+            </p>
+          </div>
+          {gameMode === "global" && cities === null ? (
             <p className="text-amber-400">
               No puzzle today — check back soon.
             </p>
           ) : (
-            <Button onClick={startPermissions} disabled={cities === "loading"}>
-              {cities === "loading" ? "Loading…" : "Play"}
+            <Button
+              onClick={startPermissions}
+              disabled={gameMode === "global" && cities === "loading"}
+            >
+              {gameMode === "global" && cities === "loading"
+                ? "Loading…"
+                : "Play"}
             </Button>
           )}
           <a
@@ -285,6 +374,11 @@ export default function Game() {
                 </Button>
               ))}
           </div>
+          {cities === null && (
+            <p className="text-amber-400">
+              No puzzle available today — check back soon.
+            </p>
+          )}
         </div>
       )}
 
@@ -298,7 +392,7 @@ export default function Game() {
             <p className="text-slate-400 text-lg">{cities[round].country}</p>
           </div>
           <CompassDial
-            mode={mode}
+            inputMode={inputMode}
             heading={trueHeading ?? 0}
             manualAngle={manualAngle}
             onManualChange={setManualAngle}
@@ -306,7 +400,7 @@ export default function Game() {
           />
           {reveal === null ? (
             <>
-              {mode === "sensor" &&
+              {inputMode === "sensor" &&
               compass.accuracy !== null &&
               (compass.accuracy < 0 || compass.accuracy > 30) ? (
                 <p className="text-sm text-amber-400 text-center max-w-xs">
@@ -315,7 +409,7 @@ export default function Game() {
                 </p>
               ) : (
                 <p className="text-sm text-slate-500">
-                  {mode === "sensor"
+                  {inputMode === "sensor"
                     ? "Point the top of your phone toward the city."
                     : "Drag the dial to aim the needle toward the city."}
                 </p>
@@ -386,6 +480,19 @@ export default function Game() {
             </a>
             .
           </p>
+          {loadResult(gameMode === "continental" ? "global" : "continental", dateKey) ===
+            null && (
+            <Button
+              variant="secondary"
+              onClick={() =>
+                pickMode(gameMode === "continental" ? "global" : "continental")
+              }
+            >
+              {gameMode === "continental"
+                ? "Play today's Global puzzle too"
+                : "Play today's continental puzzle too"}
+            </Button>
+          )}
           <p className="text-sm text-slate-500">
             Come back tomorrow for a new set of cities.
           </p>
