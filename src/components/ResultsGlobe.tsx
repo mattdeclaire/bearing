@@ -5,6 +5,7 @@ import {
   angularDistance,
   applyDrag,
   destinationPoint,
+  fitZoom,
   frontPath,
   globeCenter,
   graticuleRings,
@@ -68,6 +69,19 @@ export default function ResultsGlobe({
   const smartCenter = useMemo(() => globeCenter(pos, results), [pos, results]);
   const center = view ?? smartCenter;
 
+  // Fit the default framing around the player and all routes (continental
+  // games zoom well in; scattered global games stay at the full hemisphere).
+  // GR is the projection radius: the globe's limb moves off-screen while the
+  // visible disc stays R, so dragging still spins the whole globe.
+  const zoom = useMemo(
+    () => fitZoom(smartCenter, pos, results),
+    [smartCenter, pos, results],
+  );
+  const GR = R * zoom;
+  // Degrees-per-pixel shrinks with zoom so dragging and idle spin keep the
+  // same apparent speed on screen.
+  const degPerPx = DEG_PER_PX / zoom;
+
   useEffect(() => {
     if (!autoSpin) return;
     let raf = requestAnimationFrame(function tick() {
@@ -75,13 +89,13 @@ export default function ResultsGlobe({
         const cur = v ?? smartCenter;
         return {
           lat: cur.lat,
-          lon: ((cur.lon + AUTO_SPIN + 540) % 360) - 180,
+          lon: ((cur.lon + AUTO_SPIN / zoom + 540) % 360) - 180,
         };
       });
       raf = requestAnimationFrame(tick);
     });
     return () => cancelAnimationFrame(raf);
-  }, [autoSpin, smartCenter]);
+  }, [autoSpin, smartCenter, zoom]);
 
   const onPointerDown = (e: PointerEvent<SVGSVGElement>) => {
     cancelAnimationFrame(momentumRaf.current);
@@ -102,7 +116,7 @@ export default function ResultsGlobe({
     velocity.current = { dx: (dx / dt) * 16, dy: (dy / dt) * 16 };
     last.current = { x: e.clientX, y: e.clientY, t: now };
     setUserMoved(true);
-    setView((v) => applyDrag(v ?? smartCenter, dx, dy, DEG_PER_PX));
+    setView((v) => applyDrag(v ?? smartCenter, dx, dy, degPerPx));
   };
 
   const onPointerUp = () => {
@@ -113,12 +127,12 @@ export default function ResultsGlobe({
       velocity.current.dy *= FRICTION;
       const { dx, dy } = velocity.current;
       if (
-        Math.abs(dx * DEG_PER_PX) < MIN_SPIN &&
-        Math.abs(dy * DEG_PER_PX) < MIN_SPIN
+        Math.abs(dx * degPerPx) < MIN_SPIN / zoom &&
+        Math.abs(dy * degPerPx) < MIN_SPIN / zoom
       ) {
         return;
       }
-      setView((v) => applyDrag(v ?? smartCenter, dx, dy, DEG_PER_PX));
+      setView((v) => applyDrag(v ?? smartCenter, dx, dy, degPerPx));
       momentumRaf.current = requestAnimationFrame(spin);
     };
     momentumRaf.current = requestAnimationFrame(spin);
@@ -128,20 +142,23 @@ export default function ResultsGlobe({
     if (!land) return null;
     return land
       .map((ring) =>
-        frontPath(center, ring.map(([lon, lat]) => ({ lat, lon })), R),
+        frontPath(center, ring.map(([lon, lat]) => ({ lat, lon })), GR),
       )
       .join("");
-  }, [land, center]);
+  }, [land, center, GR]);
 
   const graticulePath = useMemo(
-    () => graticuleRings().map((r) => frontPath(center, r, R)).join(""),
-    [center],
+    () =>
+      graticuleRings(Math.max(1, 3 / zoom))
+        .map((r) => frontPath(center, r, GR))
+        .join(""),
+    [center, GR, zoom],
   );
 
   const routes = useMemo(
     () =>
       results.map((r) => {
-        const runs = greatCircleSegments(center, pos, r, R);
+        const runs = greatCircleSegments(center, pos, r, GR);
         const diff = signedDiff(r.actual, r.guess);
         const dist = angularDistance(pos, r);
 
@@ -155,13 +172,13 @@ export default function ResultsGlobe({
           front: boolean;
           t: number;
         }[] = [];
-        let prev = orthoProject(center, pos, R);
+        let prev = orthoProject(center, pos, GR);
         for (let i = 1; i <= GUESS_SEGMENTS; i++) {
           const t = i / GUESS_SEGMENTS;
           const p = orthoProject(
             center,
             destinationPoint(pos, r.guess, dist * t),
-            R,
+            GR,
           );
           guessSegs.push({
             x1: prev.x,
@@ -176,14 +193,14 @@ export default function ResultsGlobe({
 
         // Faint arc from the guess tip to the true city, at the route's full
         // radius — the error angle drawn at scale.
-        const arcSteps = Math.max(8, Math.ceil(Math.abs(diff) / 3));
+        const arcSteps = Math.max(8, Math.ceil((Math.abs(diff) * zoom) / 3));
         const arcPts: ReturnType<typeof destinationPoint>[] = [];
         for (let i = 0; i <= arcSteps; i++) {
           arcPts.push(
             destinationPoint(pos, r.guess + (diff * i) / arcSteps, dist),
           );
         }
-        const arcRuns = splitRuns(center, arcPts, R);
+        const arcRuns = splitRuns(center, arcPts, GR);
 
         // Full-length error shading between the guess line and the true
         // route: a grid of quads in (bearing, radius) space. Only quads
@@ -192,8 +209,9 @@ export default function ResultsGlobe({
         // for large errors. Shared edges use identical coordinates, so the
         // quads merge into one seamless path.
         const shadeParts: string[] = [];
-        const bSteps = Math.max(2, Math.ceil(Math.abs(diff) / 6));
-        const rSteps = Math.max(2, Math.ceil(dist / 15));
+        // step counts scale with zoom so the quads stay small on screen
+        const bSteps = Math.max(2, Math.ceil((Math.abs(diff) * zoom) / 6));
+        const rSteps = Math.max(2, Math.ceil((dist * zoom) / 15));
         const gridPt = (bi: number, rj: number) =>
           orthoProject(
             center,
@@ -202,7 +220,7 @@ export default function ResultsGlobe({
               r.guess + (diff * bi) / bSteps,
               (dist * rj) / rSteps,
             ),
-            R,
+            GR,
           );
         for (let i = 0; i < bSteps; i++) {
           for (let j = 0; j < rSteps; j++) {
@@ -218,14 +236,14 @@ export default function ResultsGlobe({
           }
         }
         const shade = shadeParts.join("");
-        const player = orthoProject(center, pos, R);
-        const city = orthoProject(center, r, R);
+        const player = orthoProject(center, pos, GR);
+        const city = orthoProject(center, r, GR);
         return { runs, guessSegs, arcRuns, shade, city, player };
       }),
-    [results, center, pos],
+    [results, center, pos, GR, zoom],
   );
 
-  const playerProj = orthoProject(center, pos, R);
+  const playerProj = orthoProject(center, pos, GR);
 
   return (
     <div className="relative w-full max-w-[320px]">
