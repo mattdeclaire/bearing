@@ -246,7 +246,9 @@ export default function ResultsGlobe({
   const playerProj = orthoProject(center, pos, GR);
 
   return (
-    <div className="relative w-full max-w-[320px]">
+    // Full-bleed on phones: w-screen is wider than the page column but stays
+    // centered by the parent flex; max-w-md caps it on larger screens.
+    <div className="relative w-screen max-w-md">
       {userMoved && (
         <button
           onClick={() => {
@@ -263,7 +265,7 @@ export default function ResultsGlobe({
       )}
     <svg
       viewBox={`0 0 ${SIZE} ${SIZE}`}
-      className="w-full rounded-2xl select-none touch-none cursor-grab active:cursor-grabbing"
+      className="w-full rounded-none sm:rounded-2xl select-none touch-none cursor-grab active:cursor-grabbing"
       role="img"
       aria-label="Globe showing your location and the routes to today's five cities"
       onPointerDown={onPointerDown}
@@ -417,6 +419,16 @@ export default function ResultsGlobe({
         </g>
       </g>
     </svg>
+    {zoom > 1 && (
+      // Inset edge shading so the zoomed globe reads as sunk into the page:
+      // a shadowed top lip, an all-edge vignette fading inward, and a faint
+      // bottom highlight. The unzoomed disc floats free (its corners are
+      // transparent), so no frame there.
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-none sm:rounded-2xl shadow-[inset_0_2px_6px_rgba(2,6,23,0.8),inset_0_16px_32px_-12px_rgba(2,6,23,0.6),inset_0_0_36px_rgba(2,6,23,0.45),inset_0_-1px_0_rgba(148,163,184,0.12)]"
+      />
+    )}
     </div>
   );
 }
