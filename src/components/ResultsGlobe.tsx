@@ -246,7 +246,9 @@ export default function ResultsGlobe({
   const playerProj = orthoProject(center, pos, GR);
 
   return (
-    <div className="relative w-full max-w-[320px]">
+    // Full-bleed on phones: w-screen is wider than the page column but stays
+    // centered by the parent flex; max-w-md caps it on larger screens.
+    <div className="relative w-screen max-w-md">
       {userMoved && (
         <button
           onClick={() => {
@@ -263,7 +265,7 @@ export default function ResultsGlobe({
       )}
     <svg
       viewBox={`0 0 ${SIZE} ${SIZE}`}
-      className="w-full rounded-2xl select-none touch-none cursor-grab active:cursor-grabbing"
+      className="w-full rounded-none sm:rounded-2xl select-none touch-none cursor-grab active:cursor-grabbing"
       role="img"
       aria-label="Globe showing your location and the routes to today's five cities"
       onPointerDown={onPointerDown}
