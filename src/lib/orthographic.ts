@@ -118,16 +118,18 @@ export function frontPath(
   return d;
 }
 
-export function graticuleRings(): LatLon[][] {
+// step: sampling interval along each ring — finer when the globe is zoomed
+// in, so the faint lines stay smooth curves instead of visible segments.
+export function graticuleRings(step = 3): LatLon[][] {
   const rings: LatLon[][] = [];
   for (let lon = -180; lon < 180; lon += 30) {
     const m: LatLon[] = [];
-    for (let lat = -90; lat <= 90; lat += 3) m.push({ lat, lon });
+    for (let lat = -90; lat <= 90; lat += step) m.push({ lat, lon });
     rings.push(m);
   }
   for (let lat = -60; lat <= 60; lat += 30) {
     const p: LatLon[] = [];
-    for (let lon = -180; lon <= 180; lon += 3) p.push({ lat, lon });
+    for (let lon = -180; lon <= 180; lon += step) p.push({ lat, lon });
     rings.push(p);
   }
   return rings;
@@ -179,6 +181,38 @@ export function applyDrag(
   const lon = ((view.lon - dx * degPerPx + 540) % 360) - 180;
   const lat = Math.max(-89, Math.min(89, view.lat + dy * degPerPx));
   return { lat, lon };
+}
+
+// Zoom-to-fit: multiplier for the projection radius so that, at the default
+// view center, the player and every route, guess line, and error arc sit
+// inside FIT_FILL of the visible disc. 1 = whole hemisphere (the old look,
+// kept for far-flung global games); continental games zoom in. The zoom is
+// constant while the globe spins — only the default framing is fitted.
+const FIT_FILL = 0.92; // content fills at most this fraction of the disc
+const MAX_ZOOM = 6;
+const MIN_FIT_DEG = 6; // never frame tighter than a 6°-radius view
+
+export function fitZoom(
+  center: LatLon,
+  pos: LatLon,
+  results: CityResult[],
+): number {
+  const pts: LatLon[] = [pos];
+  for (const r of results) {
+    if (typeof r.lat !== "number" || typeof r.lon !== "number") continue;
+    const dist = angularDistance(pos, r);
+    // Route samples (great circles can bow away from both endpoints), plus
+    // the error arc from guess tip to city — the guess line lies inside it.
+    pts.push(...greatCirclePoints(pos, r, 12));
+    const diff = ((r.actual - r.guess + 540) % 360) - 180;
+    for (let i = 0; i <= 8; i++) {
+      pts.push(destinationPoint(pos, r.guess + (diff * i) / 8, dist));
+    }
+  }
+  let theta = MIN_FIT_DEG;
+  for (const p of pts) theta = Math.max(theta, angularDistance(center, p));
+  if (theta >= 90) return 1;
+  return Math.max(1, Math.min(MAX_ZOOM, FIT_FILL / Math.sin(theta * D)));
 }
 
 // View center: keep the player's longitude (player stays on the vertical

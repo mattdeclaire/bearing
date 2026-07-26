@@ -4,6 +4,7 @@ import { join } from "node:path";
 import {
   applyDrag,
   destinationPoint,
+  fitZoom,
   globeCenter,
   greatCirclePoints,
   greatCircleSegments,
@@ -147,6 +148,57 @@ describe("applyDrag", () => {
     expect(v.lon).toBeCloseTo(145, 5);
     expect(v.lon).toBeGreaterThanOrEqual(-180);
     expect(v.lon).toBeLessThanOrEqual(180);
+  });
+});
+
+describe("fitZoom", () => {
+  const BERLIN = { lat: 52.52, lon: 13.405 };
+  // a continental-style set: perfect guesses at European cities
+  const european = [
+    mkResult(48.8566, 2.3522), // Paris
+    mkResult(51.5074, -0.1278), // London
+    mkResult(41.9028, 12.4964), // Rome
+    mkResult(52.2297, 21.0122), // Warsaw
+    mkResult(64.1466, -21.9426), // Reykjavík
+  ].map((r) => ({ ...r, guess: bearingTo(BERLIN, r), actual: bearingTo(BERLIN, r) }));
+
+  it("stays at 1 for far-flung global games", () => {
+    const global = [
+      mkResult(35.6762, 139.6503), // Tokyo
+      mkResult(-33.8688, 151.2093), // Sydney
+      mkResult(40.7128, -74.006), // New York
+    ].map((r) => ({ ...r, guess: bearingTo(BERLIN, r), actual: bearingTo(BERLIN, r) }));
+    expect(fitZoom(globeCenter(BERLIN, global), BERLIN, global)).toBe(1);
+  });
+
+  it("zooms in on a continental cluster and keeps it inside the disc", () => {
+    const center = globeCenter(BERLIN, european);
+    const zoom = fitZoom(center, BERLIN, european);
+    expect(zoom).toBeGreaterThan(1.5);
+    for (const r of [...european, { ...mkResult(BERLIN.lat, BERLIN.lon) }]) {
+      const p = orthoProject(center, r, R * zoom);
+      expect(Math.hypot(p.x, p.y)).toBeLessThanOrEqual(0.92 * R + 1e-6);
+      expect(p.front).toBe(true);
+    }
+  });
+
+  it("accounts for a wildly wrong guess pointing away from the city", () => {
+    const goodGuess = [european[0]];
+    const badGuess = [
+      { ...european[0], guess: (european[0].actual + 180) % 360 },
+    ];
+    const zoomGood = fitZoom(globeCenter(BERLIN, goodGuess), BERLIN, goodGuess);
+    const zoomBad = fitZoom(globeCenter(BERLIN, badGuess), BERLIN, badGuess);
+    expect(zoomBad).toBeLessThan(zoomGood);
+  });
+
+  it("never exceeds the zoom cap", () => {
+    const nextDoor = [
+      { ...mkResult(52.6, 13.5), guess: 30, actual: 30 },
+    ];
+    const zoom = fitZoom(globeCenter(BERLIN, nextDoor), BERLIN, nextDoor);
+    expect(zoom).toBeGreaterThan(1);
+    expect(zoom).toBeLessThanOrEqual(6);
   });
 });
 
