@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { isIos, likelyHasCompass } from "./device.ts";
+import { nextTooVertical, screenTilt } from "./tilt.ts";
 import {
   markMotionPromptPending,
   markMotionPromptSettled,
@@ -30,6 +31,10 @@ export function useCompassHeading() {
   // iOS reports heading uncertainty in degrees (-1 = uncalibrated); other
   // platforms don't expose accuracy, so it stays null there.
   const [accuracy, setAccuracy] = useState<number | null>(null);
+  // Phone held vertical (camera-aiming pose) — headings are degenerate there.
+  // Hysteresis lives in nextTooVertical; false by default so manual/desktop
+  // never block.
+  const [tooVertical, setTooVertical] = useState(false);
   const cleanupRef = useRef<(() => void) | null>(null);
 
   const listen = useCallback((awaitSensor: boolean) => {
@@ -56,6 +61,18 @@ export function useCompassHeading() {
         setHeading(h);
         setSource(src);
         setStatus("sensor");
+      }
+      // Independent of the heading branch. The functional update bails out
+      // of re-rendering while the boolean is stable (Object.is).
+      const { beta, gamma } = e;
+      if (
+        typeof beta === "number" &&
+        Number.isFinite(beta) &&
+        typeof gamma === "number" &&
+        Number.isFinite(gamma)
+      ) {
+        const tilt = screenTilt(beta, gamma);
+        setTooVertical((prev) => nextTooVertical(prev, tilt));
       }
     };
 
@@ -117,5 +134,5 @@ export function useCompassHeading() {
 
   useEffect(() => () => cleanupRef.current?.(), []);
 
-  return { status, heading, source, accuracy, request };
+  return { status, heading, source, accuracy, tooVertical, request };
 }

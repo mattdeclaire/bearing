@@ -111,6 +111,19 @@ export default function Game() {
   }, [phase, geo.status, compassResolved, cities]);
 
   const inputMode = compass.status === "sensor" ? "sensor" : "manual";
+  // Phone raised like a camera — heading is meaningless, so locking in is
+  // gated until the player tips it down flat.
+  const tooVertical = inputMode === "sensor" && compass.tooVertical;
+
+  // Count (once per load) how often players hit the vertical-phone hint —
+  // no pose angles or anything location-derived, just that it happened.
+  const tiltTracked = useRef(false);
+  useEffect(() => {
+    if (phase === "playing" && tooVertical && !tiltTracked.current) {
+      tiltTracked.current = true;
+      track("tilt_warning", { game_mode: gameMode });
+    }
+  }, [phase, tooVertical, gameMode]);
 
   // Switch between the continental and global game. Each mode has its own
   // saved result, so this may land on today's results instead of the intro.
@@ -142,6 +155,7 @@ export default function Game() {
         : compass.heading;
 
   const lockIn = () => {
+    if (tooVertical) return;
     if (cities === "loading" || cities === null || !geo.position) return;
     const city = cities[round];
     const guess = inputMode === "sensor" ? (trueHeading ?? 0) : manualAngle;
@@ -400,9 +414,14 @@ export default function Game() {
           />
           {reveal === null ? (
             <>
-              {inputMode === "sensor" &&
-              compass.accuracy !== null &&
-              (compass.accuracy < 0 || compass.accuracy > 30) ? (
+              {tooVertical ? (
+                <p className="text-sm text-amber-400 text-center max-w-xs">
+                  📱 Tip your phone down flat — screen up, like a real
+                  compass — then aim its top edge at the city.
+                </p>
+              ) : inputMode === "sensor" &&
+                compass.accuracy !== null &&
+                (compass.accuracy < 0 || compass.accuracy > 30) ? (
                 <p className="text-sm text-amber-400 text-center max-w-xs">
                   🧭 Compass accuracy is low — wave your phone in a figure-8
                   to recalibrate, away from metal and magnets.
@@ -414,7 +433,9 @@ export default function Game() {
                     : "Drag the dial to aim the needle toward the city."}
                 </p>
               )}
-              <Button onClick={lockIn}>Lock in</Button>
+              <Button onClick={lockIn} disabled={tooVertical}>
+                Lock in
+              </Button>
             </>
           ) : (
             <>
