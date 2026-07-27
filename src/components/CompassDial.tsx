@@ -38,6 +38,36 @@ function tickMarks() {
   return ticks;
 }
 
+// Faint polar graticule — meridian spokes and parallel rings, like lat/lng
+// lines on a globe seen from above the pole. It gives the rose visible
+// texture so live rotation is easy to see; spokes every 30° stay uniform,
+// so there's still no distinguishable north.
+function graticule() {
+  const rMax = R - 16;
+  const parts = [];
+  for (let deg = 0; deg < 180; deg += 30) {
+    const [x1, y1] = point(deg, rMax);
+    const [x2, y2] = point(deg + 180, rMax);
+    parts.push(
+      <line key={`m${deg}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#293548" strokeWidth={1} />,
+    );
+  }
+  for (let k = 1; k <= 3; k++) {
+    parts.push(
+      <circle
+        key={`p${k}`}
+        cx={C}
+        cy={C}
+        r={(rMax * k) / 4}
+        fill="none"
+        stroke="#293548"
+        strokeWidth={1}
+      />,
+    );
+  }
+  return parts;
+}
+
 function errorWedge(guessAngle: number, diff: number) {
   if (Math.abs(diff) < 0.5) return null;
   const wedgeR = R - 18;
@@ -198,6 +228,7 @@ export default function CompassDial({
       <circle cx={C} cy={C} r={R - 14} fill="none" stroke="#334155" strokeWidth={1} strokeOpacity={0.6} />
 
       <g ref={roseRef} data-rose style={{ transformOrigin: "center" }}>
+        {graticule()}
         {tickMarks()}
       </g>
 
