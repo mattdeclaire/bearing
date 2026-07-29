@@ -5,10 +5,27 @@ import {
   bearingTo,
   buildShareText,
   gradeEmoji,
+  scoreOf,
   type CityResult,
 } from "../lib/directions.ts";
 import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
+import { loadHistory, recordGame } from "../lib/history.ts";
+import { computeModeStats, computeStreaks } from "../lib/stats.ts";
+import {
+  fetchDistribution,
+  getAccountState,
+  linkEmail,
+  submitScore,
+  type AccountState,
+} from "../lib/backend.ts";
+import { topPercent } from "../lib/percentile.ts";
+import { backendEnabled } from "../lib/supabaseConfig.ts";
+import {
+  loadSubmitPref,
+  saveSubmitPref,
+  type SubmitPref,
+} from "../lib/settings.ts";
 import { detectContinent } from "../lib/continent.ts";
 import {
   loadModePref,
@@ -23,6 +40,7 @@ import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
 import ResultsGlobe from "../components/ResultsGlobe.tsx";
 import Button from "../components/Button.tsx";
+import StatsModal from "../components/StatsModal.tsx";
 
 type Phase = "intro" | "permissions" | "playing" | "results";
 
@@ -46,10 +64,43 @@ export default function Game() {
   const [copied, setCopied] = useState(false);
   // results-list selection: focus one city's lines on the globe
   const [focus, setFocus] = useState<number | null>(null);
+  const [showStats, setShowStats] = useState(false);
+  const [submitPref, setSubmitPref] = useState<SubmitPref>(() =>
+    loadSubmitPref(),
+  );
+  const [account, setAccount] = useState<AccountState | undefined>(undefined);
+  // "Top X% of N players today", once the day's distribution is available.
+  const [ranking, setRanking] = useState<{
+    topPct: number;
+    sampleCount: number;
+  } | null>(null);
 
   const geo = useGeolocation();
   const compass = useCompassHeading();
   const dateKey = useRef(todayKey()).current;
+
+  // A player who finished today's game before the stats update deployed has
+  // a lastResult save but no history entry. Backfill it once so they start
+  // with 1 game instead of 0; the version bump refreshes already-computed
+  // stats (the effect runs after the first render).
+  const [historyVersion, setHistoryVersion] = useState(0);
+  useEffect(() => {
+    let backfilled = false;
+    for (const m of ["continental", "global"] as const) {
+      const s = loadResult(m, dateKey);
+      if (!s || loadHistory(m).some((e) => e.dateKey === dateKey)) continue;
+      recordGame(m, {
+        dateKey,
+        score: scoreOf(s.results),
+        errors: s.results.map((r) => Math.round(r.error * 10) / 10),
+        ...(m === "continental" && s.pos
+          ? { continent: detectContinent(s.pos) }
+          : {}),
+      });
+      backfilled = true;
+    }
+    if (backfilled) setHistoryVersion((v) => v + 1);
+  }, [dateKey]);
 
   // Global loads right away; continental can only pick its list once the
   // player's position (and with it their continent) is known, so it stays
@@ -180,8 +231,27 @@ export default function Game() {
     setManualAngle(0);
     if (round + 1 >= 5) {
       saveResult(gameMode, dateKey, results, geo.position);
+      recordGame(gameMode, {
+        dateKey,
+        score: scoreOf(results),
+        errors: results.map((r) => Math.round(r.error * 10) / 10),
+        ...(gameMode === "continental" && geo.position
+          ? { continent: detectContinent(geo.position) }
+          : {}),
+      });
+      submitScore({
+        dateKey,
+        mode: gameMode,
+        continent:
+          gameMode === "continental" && geo.position
+            ? detectContinent(geo.position)
+            : null,
+        score: scoreOf(results),
+        errors: results.map((r) => Math.round(r.error)),
+        input: inputMode,
+      });
       track("game_complete", {
-        score: Math.round(results.reduce((s, r) => s + r.error, 0)),
+        score: scoreOf(results),
         mode: inputMode,
         game_mode: gameMode,
       });
@@ -190,6 +260,65 @@ export default function Game() {
       setRound(round + 1);
     }
   };
+
+  // Recomputed when the results screen appears (recordGame just ran) or the
+  // stats modal opens. History lives in localStorage, so this is a cheap read.
+  const stats = useMemo(() => {
+    const continental = loadHistory("continental");
+    const global = loadHistory("global");
+    return {
+      continental: computeModeStats(continental),
+      global: computeModeStats(global),
+      // Playing either mode keeps the streak alive.
+      streaks: computeStreaks(
+        [...continental, ...global].map((e) => e.dateKey),
+        dateKey,
+      ),
+    };
+  }, [phase, showStats, dateKey, historyVersion]);
+
+  // Account state is only shown in the stats modal — resolve it when the
+  // modal opens (this is what lazily pulls in the supabase chunk).
+  useEffect(() => {
+    if (!showStats || !backendEnabled) return;
+    let stale = false;
+    getAccountState().then((a) => {
+      if (!stale) setAccount(a);
+    });
+    return () => {
+      stale = true;
+    };
+  }, [showStats]);
+
+  // Fetch the day's score distribution once the results screen is up and
+  // compute "Top X%". Absent whenever it can't be honest: backend inert,
+  // offline, opted out, or fewer than MIN_SAMPLE players so far.
+  useEffect(() => {
+    if (phase !== "results" || results.length !== 5) {
+      setRanking(null);
+      return;
+    }
+    if (!backendEnabled || submitPref === "off") return;
+    // On a reload later in the day the geolocation prompt hasn't re-run, so
+    // fall back to the day's history entry, then the saved rounded position
+    // (~11 km — plenty for nearest-city continent detection).
+    const pos = geo.position ?? saved?.pos ?? null;
+    const continent =
+      gameMode === "continental"
+        ? (loadHistory(gameMode).find((e) => e.dateKey === dateKey)
+            ?.continent ?? (pos ? detectContinent(pos) : null))
+        : null;
+    if (gameMode === "continental" && continent === null) return;
+    let stale = false;
+    fetchDistribution(dateKey, gameMode, continent).then((d) => {
+      if (stale || !d) return;
+      const topPct = topPercent(scoreOf(results), d);
+      if (topPct !== null) setRanking({ topPct, sampleCount: d.sampleCount });
+    });
+    return () => {
+      stale = true;
+    };
+  }, [phase, results, gameMode, dateKey, submitPref, geo.position, saved]);
 
   const share = async () => {
     const text = buildShareText(results, gameMode);
@@ -237,13 +366,17 @@ export default function Game() {
                 Your browser will ask for your location
                 {isIos() ? " and motion access" : ""} — that's how Bearing
                 knows each city's true direction and where you're pointing.
-                Your location never leaves your device.
+                Your precise location never leaves your device — only your
+                score (and, in the continent game, which continent you're on)
+                is ever shared, so you can see how you rank.
               </>
             ) : (
               <>
                 Your browser will ask for your location — that's how Bearing
-                knows each city's true direction. It never leaves your device.
-                No compass here? On a phone you get to physically point. 📱
+                knows each city's true direction. Your precise location never
+                leaves your device — only your score (and, in the continent
+                game, which continent you're on) is ever shared. No compass
+                here? On a phone you get to physically point. 📱
               </>
             )}
           </p>
@@ -293,12 +426,20 @@ export default function Game() {
                 : "Play"}
             </Button>
           )}
-          <a
-            href="./about.html"
-            className="text-sm text-slate-500 underline hover:text-slate-400"
-          >
-            How directions work: great circles, explained
-          </a>
+          <div className="flex flex-col items-center gap-2">
+            <button
+              onClick={() => setShowStats(true)}
+              className="text-sm text-slate-500 underline hover:text-slate-400"
+            >
+              📊 Your stats
+            </button>
+            <a
+              href="./about.html"
+              className="text-sm text-slate-500 underline hover:text-slate-400"
+            >
+              How directions work: great circles, explained
+            </a>
+          </div>
         </div>
       )}
 
@@ -361,7 +502,7 @@ export default function Game() {
                             : "Permission denied — without your location, Bearing can't compute which way each city is. Allow location for this site (usually the padlock or settings icon in the address bar), then try again."
                           : geo.status === "error"
                             ? "Couldn't get a location fix. If you're indoors or offline, that can take a moment — try again."
-                            : "Used only on your device, only to compute city directions."}
+                            : "Used only on your device, only to compute city directions — your precise location is never sent anywhere."}
                 </p>
               )}
             </div>
@@ -455,9 +596,15 @@ export default function Game() {
         <div className="flex flex-col items-center gap-6 w-full max-w-sm my-auto">
           <h2 className="text-2xl font-bold">Results</h2>
           <p className="text-5xl font-bold text-amber-400">
-            {Math.round(results.reduce((s, r) => s + r.error, 0))}°
+            {scoreOf(results)}°
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
+          {ranking && (
+            <p className="text-amber-400 font-semibold -mt-2">
+              Top {ranking.topPct}% of{" "}
+              {ranking.sampleCount.toLocaleString()} players today
+            </p>
+          )}
           {(() => {
             const globePos = geo.position ?? saved?.pos ?? null;
             const hasCoords = results.every((r) => typeof r.lat === "number");
@@ -490,6 +637,14 @@ export default function Game() {
             ))}
           </ul>
           <Button onClick={share}>{copied ? "Copied!" : "Share"}</Button>
+          {stats.streaks.current > 0 && (
+            <button
+              onClick={() => setShowStats(true)}
+              className="text-sm text-slate-400 underline hover:text-slate-300"
+            >
+              🔥 {stats.streaks.current}-day streak — see your stats
+            </button>
+          )}
           <p className="text-sm text-slate-500 max-w-xs">
             Surprised by a direction? Bearing scores the shortest path over the
             globe, which often differs from the straight line on a flat map —{" "}
@@ -518,6 +673,33 @@ export default function Game() {
             Come back tomorrow for a new set of cities.
           </p>
         </div>
+      )}
+
+      {showStats && (
+        <StatsModal
+          streaks={stats.streaks}
+          continental={stats.continental}
+          global={stats.global}
+          submit={
+            backendEnabled
+              ? {
+                  pref: submitPref,
+                  onToggle: () => {
+                    const next = submitPref === "on" ? "off" : "on";
+                    saveSubmitPref(next);
+                    setSubmitPref(next);
+                  },
+                }
+              : undefined
+          }
+          account={account}
+          onLinkEmail={async (email) => {
+            const result = await linkEmail(email);
+            if (result.ok) getAccountState().then(setAccount);
+            return result;
+          }}
+          onClose={() => setShowStats(false)}
+        />
       )}
     </div>
   );

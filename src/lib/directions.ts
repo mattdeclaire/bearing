@@ -41,13 +41,18 @@ export function gradeEmoji(diff: number): string {
   return "🔴";
 }
 
+// A game's final score: total angular error across the 5 cities, 0–900,
+// lower is better.
+export const scoreOf = (results: CityResult[]): number =>
+  Math.round(results.reduce((sum, r) => sum + r.error, 0));
+
 export const SITE_URL = "https://bearing.city/";
 
 // Continental is the canonical daily game, so its share text stays exactly as
 // it was pre-modes; only Global gets a label. The continent itself is never
 // included — it's derived from the player's location.
 export function buildShareText(results: CityResult[], mode: GameMode): string {
-  const total = Math.round(results.reduce((sum, r) => sum + r.error, 0));
+  const total = scoreOf(results);
   const emojis = results.map((r) => gradeEmoji(r.error)).join("");
   const label = mode === "global" ? "Bearing (Global)" : "Bearing";
   return `${label} · ${total}° off over ${results.length} cities · ${emojis}\n${SITE_URL}`;
