@@ -5,10 +5,13 @@ import {
   bearingTo,
   buildShareText,
   gradeEmoji,
+  scoreOf,
   type CityResult,
 } from "../lib/directions.ts";
 import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
+import { loadHistory, recordGame } from "../lib/history.ts";
+import { computeModeStats, computeStreaks } from "../lib/stats.ts";
 import { detectContinent } from "../lib/continent.ts";
 import {
   loadModePref,
@@ -23,6 +26,7 @@ import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
 import ResultsGlobe from "../components/ResultsGlobe.tsx";
 import Button from "../components/Button.tsx";
+import StatsModal from "../components/StatsModal.tsx";
 
 type Phase = "intro" | "permissions" | "playing" | "results";
 
@@ -46,10 +50,34 @@ export default function Game() {
   const [copied, setCopied] = useState(false);
   // results-list selection: focus one city's lines on the globe
   const [focus, setFocus] = useState<number | null>(null);
+  const [showStats, setShowStats] = useState(false);
 
   const geo = useGeolocation();
   const compass = useCompassHeading();
   const dateKey = useRef(todayKey()).current;
+
+  // A player who finished today's game before the stats update deployed has
+  // a lastResult save but no history entry. Backfill it once so they start
+  // with 1 game instead of 0; the version bump refreshes already-computed
+  // stats (the effect runs after the first render).
+  const [historyVersion, setHistoryVersion] = useState(0);
+  useEffect(() => {
+    let backfilled = false;
+    for (const m of ["continental", "global"] as const) {
+      const s = loadResult(m, dateKey);
+      if (!s || loadHistory(m).some((e) => e.dateKey === dateKey)) continue;
+      recordGame(m, {
+        dateKey,
+        score: scoreOf(s.results),
+        errors: s.results.map((r) => Math.round(r.error * 10) / 10),
+        ...(m === "continental" && s.pos
+          ? { continent: detectContinent(s.pos) }
+          : {}),
+      });
+      backfilled = true;
+    }
+    if (backfilled) setHistoryVersion((v) => v + 1);
+  }, [dateKey]);
 
   // Global loads right away; continental can only pick its list once the
   // player's position (and with it their continent) is known, so it stays
@@ -180,8 +208,16 @@ export default function Game() {
     setManualAngle(0);
     if (round + 1 >= 5) {
       saveResult(gameMode, dateKey, results, geo.position);
+      recordGame(gameMode, {
+        dateKey,
+        score: scoreOf(results),
+        errors: results.map((r) => Math.round(r.error * 10) / 10),
+        ...(gameMode === "continental" && geo.position
+          ? { continent: detectContinent(geo.position) }
+          : {}),
+      });
       track("game_complete", {
-        score: Math.round(results.reduce((s, r) => s + r.error, 0)),
+        score: scoreOf(results),
         mode: inputMode,
         game_mode: gameMode,
       });
@@ -190,6 +226,22 @@ export default function Game() {
       setRound(round + 1);
     }
   };
+
+  // Recomputed when the results screen appears (recordGame just ran) or the
+  // stats modal opens. History lives in localStorage, so this is a cheap read.
+  const stats = useMemo(() => {
+    const continental = loadHistory("continental");
+    const global = loadHistory("global");
+    return {
+      continental: computeModeStats(continental),
+      global: computeModeStats(global),
+      // Playing either mode keeps the streak alive.
+      streaks: computeStreaks(
+        [...continental, ...global].map((e) => e.dateKey),
+        dateKey,
+      ),
+    };
+  }, [phase, showStats, dateKey, historyVersion]);
 
   const share = async () => {
     const text = buildShareText(results, gameMode);
@@ -293,12 +345,20 @@ export default function Game() {
                 : "Play"}
             </Button>
           )}
-          <a
-            href="./about.html"
-            className="text-sm text-slate-500 underline hover:text-slate-400"
-          >
-            How directions work: great circles, explained
-          </a>
+          <div className="flex flex-col items-center gap-2">
+            <button
+              onClick={() => setShowStats(true)}
+              className="text-sm text-slate-500 underline hover:text-slate-400"
+            >
+              📊 Your stats
+            </button>
+            <a
+              href="./about.html"
+              className="text-sm text-slate-500 underline hover:text-slate-400"
+            >
+              How directions work: great circles, explained
+            </a>
+          </div>
         </div>
       )}
 
@@ -455,7 +515,7 @@ export default function Game() {
         <div className="flex flex-col items-center gap-6 w-full max-w-sm my-auto">
           <h2 className="text-2xl font-bold">Results</h2>
           <p className="text-5xl font-bold text-amber-400">
-            {Math.round(results.reduce((s, r) => s + r.error, 0))}°
+            {scoreOf(results)}°
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
           {(() => {
@@ -490,6 +550,14 @@ export default function Game() {
             ))}
           </ul>
           <Button onClick={share}>{copied ? "Copied!" : "Share"}</Button>
+          {stats.streaks.current > 0 && (
+            <button
+              onClick={() => setShowStats(true)}
+              className="text-sm text-slate-400 underline hover:text-slate-300"
+            >
+              🔥 {stats.streaks.current}-day streak — see your stats
+            </button>
+          )}
           <p className="text-sm text-slate-500 max-w-xs">
             Surprised by a direction? Bearing scores the shortest path over the
             globe, which often differs from the straight line on a flat map —{" "}
@@ -518,6 +586,15 @@ export default function Game() {
             Come back tomorrow for a new set of cities.
           </p>
         </div>
+      )}
+
+      {showStats && (
+        <StatsModal
+          streaks={stats.streaks}
+          continental={stats.continental}
+          global={stats.global}
+          onClose={() => setShowStats(false)}
+        />
       )}
     </div>
   );

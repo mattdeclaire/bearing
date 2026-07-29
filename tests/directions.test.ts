@@ -4,6 +4,7 @@ import {
   bearingTo,
   buildShareText,
   gradeEmoji,
+  scoreOf,
   SITE_URL,
 } from "../src/lib/directions.ts";
 import { monthKey, todayKey } from "../src/lib/today.ts";
@@ -73,6 +74,22 @@ describe("gradeEmoji", () => {
     expect(gradeEmoji(60)).toBe("🟡");
     expect(gradeEmoji(110)).toBe("🟠");
     expect(gradeEmoji(180)).toBe("🔴");
+  });
+});
+
+describe("scoreOf", () => {
+  it("sums the errors and rounds", () => {
+    const results = [5.3, 20.4, 50, 100, 170].map((error) => ({
+      name: "A",
+      country: "X",
+      lat: 0,
+      lon: 0,
+      guess: 0,
+      actual: 0,
+      error,
+    }));
+    expect(scoreOf(results)).toBe(346); // round(345.7)
+    expect(scoreOf([])).toBe(0);
   });
 });
 
