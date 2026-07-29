@@ -1,6 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Continent } from "./cities.ts";
+import { CONTINENTS, type Continent } from "./cities.ts";
+import { SITE_URL } from "./directions.ts";
 import type { GameMode } from "./gameMode.ts";
+import { mergeHistory, type HistoryEntry } from "./history.ts";
 import { loadSubmitPref } from "./settings.ts";
 import {
   SUPABASE_ANON_KEY,
@@ -134,4 +136,162 @@ export async function fetchDistribution(
   } catch {
     return null;
   }
+}
+
+// --- Account upgrade (email magic link) ---------------------------------
+// The anonymous user is converted IN PLACE by updateUser({ email }): same
+// user_id before and after, so every submitted score stays attached with no
+// data migration. Until the emailed link is clicked the user stays
+// anonymous with the address pending.
+
+export type AccountState =
+  | { kind: "none" } // backend inert, offline, or no session yet
+  | { kind: "anonymous"; pendingEmail: string | null }
+  | { kind: "linked"; email: string };
+
+export async function getAccountState(): Promise<AccountState> {
+  try {
+    const client = await getClient();
+    if (!client) return { kind: "none" };
+    const { data } = await client.auth.getSession();
+    const user = data.session?.user;
+    if (!user) return { kind: "anonymous", pendingEmail: null };
+    if (user.is_anonymous) {
+      return { kind: "anonymous", pendingEmail: user.new_email ?? null };
+    }
+    return { kind: "linked", email: user.email ?? "" };
+  } catch {
+    return { kind: "none" };
+  }
+}
+
+export interface LinkResult {
+  ok: boolean;
+  message: string;
+}
+
+const OFFLINE: LinkResult = {
+  ok: false,
+  message: "Couldn't reach the server — try again later.",
+};
+
+export async function linkEmail(email: string): Promise<LinkResult> {
+  try {
+    const client = await getClient();
+    if (!client) return OFFLINE;
+    // A player who never submitted a score has no user yet — explicitly
+    // creating an account is the one other action that mints one.
+    if (!(await ensureUserId(client))) return OFFLINE;
+    const { error } = await client.auth.updateUser(
+      { email },
+      { emailRedirectTo: SITE_URL },
+    );
+    if (!error) {
+      return { ok: true, message: `Check ${email} for a confirmation link.` };
+    }
+    if (error.code === "email_exists" || /already|registered/i.test(error.message)) {
+      // The address already has a Bearing account — send a sign-in link to
+      // it instead. Clicking it replaces this device's anonymous session;
+      // scores this device submitted anonymously before stay orphaned
+      // server-side (accepted limitation, see supabase/README.md).
+      const { error: otpError } = await client.auth.signInWithOtp({
+        email,
+        options: { shouldCreateUser: false, emailRedirectTo: SITE_URL },
+      });
+      return otpError
+        ? { ok: false, message: otpError.message }
+        : {
+            ok: true,
+            message: `That email already has stats — check ${email} for a sign-in link.`,
+          };
+    }
+    return { ok: false, message: error.message };
+  } catch {
+    return OFFLINE;
+  }
+}
+
+// One score row from the server → a local history entry. Exported for tests.
+export function parseScoreRow(
+  row: unknown,
+): { mode: GameMode; entry: HistoryEntry } | null {
+  if (typeof row !== "object" || row === null) return null;
+  const { date, mode, continent, score, errors } = row as Record<
+    string,
+    unknown
+  >;
+  if (typeof date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+  if (mode !== "continental" && mode !== "global") return null;
+  if (typeof score !== "number" || !Number.isFinite(score)) return null;
+  if (
+    !Array.isArray(errors) ||
+    errors.length !== 5 ||
+    !errors.every((e) => typeof e === "number" && Number.isFinite(e))
+  ) {
+    return null;
+  }
+  const entry: HistoryEntry = { dateKey: date, score, errors: errors as number[] };
+  if (
+    typeof continent === "string" &&
+    (CONTINENTS as readonly string[]).includes(continent)
+  ) {
+    entry.continent = continent as Continent;
+  }
+  return { mode, entry };
+}
+
+// supabase-js persists its session under sb-<ref>-auth-token. Checking for
+// the key's existence (not its format) lets the idle-time restore below skip
+// initializing the client — and downloading its chunk — for the majority of
+// visitors who have no session at all.
+function hasStoredSession(): boolean {
+  try {
+    return Object.keys(localStorage).some(
+      (k) => k.startsWith("sb-") && k.endsWith("-auth-token"),
+    );
+  } catch {
+    return false;
+  }
+}
+
+// On a device signed into a linked account, pull the account's scores into
+// local history (local entries win). Runs at idle on every load so devices
+// stay passively in sync. Returns how many days were added.
+export async function restoreHistoryIfLinked(): Promise<number> {
+  try {
+    if (!hasStoredSession()) return 0;
+    const client = await getClient();
+    if (!client) return 0;
+    const { data } = await client.auth.getSession();
+    const user = data.session?.user;
+    if (!user || user.is_anonymous) return 0;
+    const { data: rows, error } = await client
+      .from("scores")
+      .select("date, mode, continent, score, errors");
+    if (error || !Array.isArray(rows)) return 0;
+    const parsed = rows
+      .map(parseScoreRow)
+      .filter((r): r is NonNullable<typeof r> => r !== null);
+    let added = 0;
+    for (const mode of ["continental", "global"] as const) {
+      added += mergeHistory(
+        mode,
+        parsed.filter((r) => r.mode === mode).map((r) => r.entry),
+      );
+    }
+    return added;
+  } catch {
+    return 0;
+  }
+}
+
+// Returning from a magic link (URL hash carries the tokens): initialize the
+// client right away so supabase-js can pick the session out of the URL —
+// its detectSessionInUrl only works if the client exists during load — then
+// pull the account's history onto this device.
+export async function handleAuthCallback(): Promise<void> {
+  const client = await getClient();
+  if (!client) return;
+  await client.auth.getSession(); // waits for the hash to be processed
+  await restoreHistoryIfLinked();
 }

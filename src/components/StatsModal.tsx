@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import type { AccountState, LinkResult } from "../lib/backend.ts";
 import { GRADE_TIERS, type ModeStats } from "../lib/stats.ts";
 import type { SubmitPref } from "../lib/settings.ts";
 import Button from "./Button.tsx";
@@ -9,7 +10,87 @@ interface StatsModalProps {
   global: ModeStats;
   // Score-submission opt-out; absent while the backend is inert.
   submit?: { pref: SubmitPref; onToggle: () => void };
+  // Account section; absent while the backend is inert or state is loading.
+  account?: AccountState;
+  onLinkEmail?: (email: string) => Promise<LinkResult>;
   onClose: () => void;
+}
+
+const maskEmail = (email: string): string => {
+  const [local, domain] = email.split("@");
+  return `${local?.[0] ?? ""}***@${domain ?? ""}`;
+};
+
+function AccountSection({
+  account,
+  onLinkEmail,
+}: {
+  account: AccountState;
+  onLinkEmail: (email: string) => Promise<LinkResult>;
+}) {
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [result, setResult] = useState<LinkResult | null>(null);
+
+  if (account.kind === "none") return null;
+  if (account.kind === "linked") {
+    return (
+      <p className="text-sm text-slate-400">
+        ✓ Synced as {maskEmail(account.email)} — your stats follow you across
+        devices.
+      </p>
+    );
+  }
+  if (result?.ok || account.pendingEmail) {
+    return (
+      <p className="text-sm text-slate-400">
+        {result?.ok
+          ? result.message
+          : `Confirmation link sent to ${account.pendingEmail} — click it to finish.`}
+      </p>
+    );
+  }
+  return (
+    <form
+      className="w-full flex flex-col gap-2 text-left"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!email || busy) return;
+        setBusy(true);
+        setResult(null);
+        void onLinkEmail(email).then((r) => {
+          setResult(r);
+          setBusy(false);
+        });
+      }}
+    >
+      <p className="text-sm text-slate-400">
+        Save your stats — add your email to keep streaks when you switch
+        devices.
+      </p>
+      <div className="flex gap-2">
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="min-w-0 flex-1 rounded-xl bg-slate-800 border border-slate-700 px-3 py-2 text-sm placeholder:text-slate-600 focus:outline-none focus:border-slate-500"
+        />
+        <Button
+          variant="secondary"
+          type="submit"
+          disabled={busy}
+          className="px-4! py-2! text-sm! shrink-0"
+        >
+          {busy ? "Sending…" : "Send link"}
+        </Button>
+      </div>
+      {result && !result.ok && (
+        <p className="text-sm text-amber-400">{result.message}</p>
+      )}
+    </form>
+  );
 }
 
 function ModeSection({ label, stats }: { label: string; stats: ModeStats }) {
@@ -57,6 +138,8 @@ export default function StatsModal({
   continental,
   global,
   submit,
+  account,
+  onLinkEmail,
   onClose,
 }: StatsModalProps) {
   useEffect(() => {
@@ -106,6 +189,9 @@ export default function StatsModal({
             <ModeSection label="My continent" stats={continental} />
             <ModeSection label="Global" stats={global} />
           </>
+        )}
+        {account && onLinkEmail && (
+          <AccountSection account={account} onLinkEmail={onLinkEmail} />
         )}
         {submit && (
           <label className="flex items-start gap-2 text-left text-sm text-slate-400">

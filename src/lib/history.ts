@@ -68,3 +68,25 @@ export function recordGame(mode: GameMode, entry: HistoryEntry): void {
     // storage full or unavailable (private mode) — losing history is fine
   }
 }
+
+// Union-merge restored entries (e.g. this account's scores fetched on a new
+// device) into local history. The local entry wins on a date conflict — it
+// has finer error precision than what the server stores. Returns how many
+// days were added.
+export function mergeHistory(mode: GameMode, entries: HistoryEntry[]): number {
+  try {
+    const existing = loadHistory(mode);
+    const have = new Set(existing.map((e) => e.dateKey));
+    const added = entries
+      .map((e) => parseEntry(e))
+      .filter((e): e is HistoryEntry => e !== null && !have.has(e.dateKey));
+    if (added.length === 0) return 0;
+    const next = [...existing, ...added].sort((a, b) =>
+      a.dateKey.localeCompare(b.dateKey),
+    );
+    localStorage.setItem(keyFor(mode), JSON.stringify(next));
+    return added.length;
+  } catch {
+    return 0;
+  }
+}

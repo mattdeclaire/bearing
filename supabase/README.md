@@ -15,13 +15,16 @@ also the rollback switch.
 1. Create a project at [supabase.com](https://supabase.com).
 2. **Auth → Sign In / Providers → Anonymous sign-ins**: enable. Leave the
    default anonymous rate limits on. (Turnstile captcha is optional later
-   hardening.)
-3. **Database → Extensions**: enable `pg_cron`.
-4. Run the migrations in order in the SQL editor (or `supabase db push`):
+   hardening.) Keep the **Email** provider enabled (it is by default) — the
+   "save your stats" upgrade sends magic links through it.
+3. **Auth → URL Configuration**: set the Site URL to `https://bearing.city/`
+   so confirmation and sign-in links land back on the game.
+4. **Database → Extensions**: enable `pg_cron`.
+5. Run the migrations in order in the SQL editor (or `supabase db push`):
    - `migrations/0001_scores.sql` — scores table + RLS
    - `migrations/0002_distributions.sql` — public distributions + rebuild fn
    - `migrations/0003_cron.sql` — hourly rebuild at :07
-5. Copy the project URL and the anon/publishable key
+6. Copy the project URL and the anon/publishable key
    (**Settings → API**) into `src/lib/supabaseConfig.ts` and deploy. Both
    are public by design — no repo secrets, no CI changes.
 
@@ -40,6 +43,24 @@ also the rollback switch.
   distribution is frozen forever.
 - The client fetches one distribution row and computes its percentile
   locally (`src/lib/percentile.ts`); nothing renders below 20 samples.
+
+## Accounts
+
+- "Save your stats" in the stats modal calls `auth.updateUser({ email })` on
+  the **existing anonymous user** — the emailed confirmation link converts
+  it to a permanent account **in place**. Same `user_id` before and after,
+  so every submitted score stays attached with zero data migration.
+- If the address already has a Bearing account, the client falls back to
+  `signInWithOtp` (a sign-in link instead). Clicking it replaces the
+  device's anonymous session with the existing account and pulls that
+  account's scores into local history (local entries win on conflicts).
+- **Accepted limitation:** scores a device submitted anonymously *before*
+  signing into an existing account remain attached to the orphaned
+  anonymous user server-side. They still count in past distributions
+  (histograms are frozen facts about who played that day) but don't follow
+  the account.
+- Devices with a linked session re-sync passively: on each load the client
+  merges the account's server-side scores into local history at idle.
 
 ## Verifying after setup
 

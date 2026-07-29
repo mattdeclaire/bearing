@@ -12,7 +12,13 @@ import { loadTodayCities, todayKey } from "../lib/today.ts";
 import { loadResult, saveResult } from "../lib/storage.ts";
 import { loadHistory, recordGame } from "../lib/history.ts";
 import { computeModeStats, computeStreaks } from "../lib/stats.ts";
-import { fetchDistribution, submitScore } from "../lib/backend.ts";
+import {
+  fetchDistribution,
+  getAccountState,
+  linkEmail,
+  submitScore,
+  type AccountState,
+} from "../lib/backend.ts";
 import { topPercent } from "../lib/percentile.ts";
 import { backendEnabled } from "../lib/supabaseConfig.ts";
 import {
@@ -62,6 +68,7 @@ export default function Game() {
   const [submitPref, setSubmitPref] = useState<SubmitPref>(() =>
     loadSubmitPref(),
   );
+  const [account, setAccount] = useState<AccountState | undefined>(undefined);
   // "Top X% of N players today", once the day's distribution is available.
   const [ranking, setRanking] = useState<{
     topPct: number;
@@ -269,6 +276,19 @@ export default function Game() {
       ),
     };
   }, [phase, showStats, dateKey, historyVersion]);
+
+  // Account state is only shown in the stats modal — resolve it when the
+  // modal opens (this is what lazily pulls in the supabase chunk).
+  useEffect(() => {
+    if (!showStats || !backendEnabled) return;
+    let stale = false;
+    getAccountState().then((a) => {
+      if (!stale) setAccount(a);
+    });
+    return () => {
+      stale = true;
+    };
+  }, [showStats]);
 
   // Fetch the day's score distribution once the results screen is up and
   // compute "Top X%". Absent whenever it can't be honest: backend inert,
@@ -672,6 +692,12 @@ export default function Game() {
                 }
               : undefined
           }
+          account={account}
+          onLinkEmail={async (email) => {
+            const result = await linkEmail(email);
+            if (result.ok) getAccountState().then(setAccount);
+            return result;
+          }}
           onClose={() => setShowStats(false)}
         />
       )}

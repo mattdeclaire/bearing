@@ -1,5 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { loadHistory, recordGame, type HistoryEntry } from "../src/lib/history.ts";
+import {
+  loadHistory,
+  mergeHistory,
+  recordGame,
+  type HistoryEntry,
+} from "../src/lib/history.ts";
 
 // Vitest runs in node here — provide a minimal in-memory localStorage.
 function makeMemoryStorage() {
@@ -72,6 +77,30 @@ describe("history", () => {
     expect(history.map((e) => e.dateKey)).toEqual(["2026-07-25", "2026-07-29"]);
     // unknown continent is stripped, not fatal
     expect(history[1].continent).toBeUndefined();
+  });
+
+  it("merges restored entries, local wins on conflict", () => {
+    recordGame("global", entry("2026-07-28", 100));
+    const added = mergeHistory("global", [
+      entry("2026-07-27", 300), // new day → added
+      entry("2026-07-28", 999), // conflict → local 100 kept
+    ]);
+    expect(added).toBe(1);
+    expect(loadHistory("global").map((e) => [e.dateKey, e.score])).toEqual([
+      ["2026-07-27", 300],
+      ["2026-07-28", 100],
+    ]);
+  });
+
+  it("merge validates incoming entries and reports zero when nothing new", () => {
+    recordGame("global", entry("2026-07-28"));
+    expect(
+      mergeHistory("global", [
+        entry("2026-07-28"),
+        { dateKey: "bad", score: 1, errors: [1, 2, 3, 4, 5] },
+      ]),
+    ).toBe(0);
+    expect(loadHistory("global")).toHaveLength(1);
   });
 
   it("returns [] for garbage or missing data", () => {
