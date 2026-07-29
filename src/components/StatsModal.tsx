@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { GRADE_TIERS, type ModeStats } from "../lib/stats.ts";
+import type { SubmitPref } from "../lib/settings.ts";
 import Button from "./Button.tsx";
 
 interface StatsModalProps {
   streaks: { current: number; max: number };
   continental: ModeStats;
   global: ModeStats;
+  // Score-submission opt-out; absent while the backend is inert.
+  submit?: { pref: SubmitPref; onToggle: () => void };
   onClose: () => void;
 }
 
@@ -53,6 +56,7 @@ export default function StatsModal({
   streaks,
   continental,
   global,
+  submit,
   onClose,
 }: StatsModalProps) {
   useEffect(() => {
@@ -102,6 +106,20 @@ export default function StatsModal({
             <ModeSection label="My continent" stats={continental} />
             <ModeSection label="Global" stats={global} />
           </>
+        )}
+        {submit && (
+          <label className="flex items-start gap-2 text-left text-sm text-slate-400">
+            <input
+              type="checkbox"
+              checked={submit.pref === "on"}
+              onChange={submit.onToggle}
+              className="mt-1 accent-amber-400"
+            />
+            <span>
+              Compare my score with other players — only your score and
+              continent are sent, never your location.
+            </span>
+          </label>
         )}
         <Button variant="secondary" onClick={onClose}>
           Close

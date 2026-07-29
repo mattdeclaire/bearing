@@ -14,12 +14,29 @@ bearings point every which way; **Global** is the classic worldwide list.
 
 ## Stack
 
-- Pure static SPA — no backend. Vite + React + TypeScript + Tailwind.
+- Static SPA — Vite + React + TypeScript + Tailwind. The one backend
+  dependency is Supabase (score submission + daily percentile rankings), and
+  the app works fully without it — see `supabase/README.md`.
 - Deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to
   `main`.
 - Browser geolocation gives your position; the device orientation API gives
   your compass heading. On desktop (or when no compass is available) the dial
   falls back to drag-to-aim, so the game is playable anywhere.
+
+## Stats & rankings
+
+- Personal stats (streaks, averages, score distribution) live entirely in
+  localStorage — no account, works offline. See `src/lib/history.ts` and
+  `src/lib/stats.ts`.
+- After each game the score is submitted (queued offline, flushed later) to
+  Supabase under an automatically-created anonymous identity, and the results
+  screen shows "Top X% of N players today" against a batch-computed daily
+  distribution. Privacy: only the score, per-city errors, local date, mode,
+  input method, and — continental mode only — the continent name are ever
+  sent; never coordinates, headings, or anything finer. There's an opt-out
+  toggle in the stats modal, and an empty `SUPABASE_URL` in
+  `src/lib/supabaseConfig.ts` keeps the whole backend inert.
+- Full design: `docs/stats-rankings-plan.md`.
 
 ## Daily puzzles
 

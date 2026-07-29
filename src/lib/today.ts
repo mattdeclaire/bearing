@@ -11,6 +11,12 @@ export function monthKey(now: Date = new Date()): string {
   return todayKey(now).slice(0, 7);
 }
 
+// Whole days since the epoch for a local YYYY-MM-DD key. Parsing at UTC noon
+// makes the division exact regardless of timezone or DST.
+export function dayNumber(dateKey: string): number {
+  return Math.round(new Date(`${dateKey}T12:00:00Z`).getTime() / 86_400_000);
+}
+
 export async function loadTodayCities(
   continent: Continent | null = null,
 ): Promise<City[] | null> {

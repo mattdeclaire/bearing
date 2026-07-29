@@ -1,5 +1,6 @@
 import { gradeEmoji } from "./directions.ts";
 import type { HistoryEntry } from "./history.ts";
+import { dayNumber } from "./today.ts";
 
 // Derived stats over history entries. Pure — no storage access.
 
@@ -33,11 +34,6 @@ export function computeModeStats(entries: HistoryEntry[]): ModeStats {
     distribution,
   };
 }
-
-// Local YYYY-MM-DD keys parsed at UTC noon, so dividing by whole days is
-// immune to DST off-by-ones.
-const dayNumber = (dateKey: string): number =>
-  Math.round(new Date(`${dateKey}T12:00:00Z`).getTime() / 86_400_000);
 
 // Streaks over the set of played local dates (pass the union across modes —
 // playing either mode keeps the streak alive).
