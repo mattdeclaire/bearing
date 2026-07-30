@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { City } from "../lib/cities.ts";
 import {
+  AT_CITY_KM,
   angularDiff,
   bearingTo,
   buildShareText,
+  distanceKm,
   gradeEmoji,
   scoreOf,
   type CityResult,
@@ -58,9 +60,11 @@ export default function Game() {
   const [round, setRound] = useState(0);
   const [results, setResults] = useState<CityResult[]>(saved?.results ?? []);
   const [manualAngle, setManualAngle] = useState(0);
-  const [reveal, setReveal] = useState<{ guess: number; actual: number } | null>(
-    null,
-  );
+  const [reveal, setReveal] = useState<{
+    guess: number;
+    actual: number;
+    atCity?: boolean;
+  } | null>(null);
   const [copied, setCopied] = useState(false);
   // results-list selection: focus one city's lines on the globe
   const [focus, setFocus] = useState<number | null>(null);
@@ -210,7 +214,11 @@ export default function Game() {
     if (cities === "loading" || cities === null || !geo.position) return;
     const city = cities[round];
     const guess = inputMode === "sensor" ? (trueHeading ?? 0) : manualAngle;
-    const actual = bearingTo(geo.position, city);
+    // Standing in the target city, every direction is correct: score a
+    // bullseye, and pin actual to the guess so the reveal needles align and
+    // the results globe draws no error arc.
+    const atCity = distanceKm(geo.position, city) <= AT_CITY_KM;
+    const actual = atCity ? guess : bearingTo(geo.position, city);
     setResults((prev) => [
       ...prev,
       {
@@ -220,10 +228,10 @@ export default function Game() {
         lon: city.lon,
         guess,
         actual,
-        error: angularDiff(guess, actual),
+        error: atCity ? 0 : angularDiff(guess, actual),
       },
     ]);
-    setReveal({ guess, actual });
+    setReveal({ guess, actual, atCity });
   };
 
   const nextCity = () => {
@@ -581,8 +589,14 @@ export default function Game() {
           ) : (
             <>
               <p className="text-xl font-semibold">
-                {gradeEmoji(angularDiff(reveal.guess, reveal.actual))}{" "}
-                {Math.round(angularDiff(reveal.guess, reveal.actual))}° off
+                {reveal.atCity ? (
+                  <>🎯 You're here! Every direction counts.</>
+                ) : (
+                  <>
+                    {gradeEmoji(angularDiff(reveal.guess, reveal.actual))}{" "}
+                    {Math.round(angularDiff(reveal.guess, reveal.actual))}° off
+                  </>
+                )}
               </p>
               <Button onClick={nextCity}>
                 {round + 1 >= 5 ? "See results" : "Next city"}
