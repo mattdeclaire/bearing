@@ -48,9 +48,11 @@ export function distanceKm(a: LatLon, b: LatLon): number {
 
 // Inside the target city, "which way is the city?" has no honest answer —
 // the bearing to its reference coordinate is arbitrary (pure GPS noise when
-// you're near the point). Within this radius the round scores an automatic
-// bullseye instead. 25 km covers most metro areas; beyond it, pointing at
-// the city center is a meaningful question again.
+// you're near the point). Within this radius the round becomes "point due
+// north" instead (announced in the aim hint), so locals still have to
+// orient rather than getting a free bullseye. 25 km covers most metro
+// areas; beyond it, pointing at the city center is a meaningful question
+// again.
 export const AT_CITY_KM = 25;
 
 export function gradeEmoji(diff: number): string {

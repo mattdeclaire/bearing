@@ -60,11 +60,9 @@ export default function Game() {
   const [round, setRound] = useState(0);
   const [results, setResults] = useState<CityResult[]>(saved?.results ?? []);
   const [manualAngle, setManualAngle] = useState(0);
-  const [reveal, setReveal] = useState<{
-    guess: number;
-    actual: number;
-    atCity?: boolean;
-  } | null>(null);
+  const [reveal, setReveal] = useState<{ guess: number; actual: number } | null>(
+    null,
+  );
   const [copied, setCopied] = useState(false);
   // results-list selection: focus one city's lines on the globe
   const [focus, setFocus] = useState<number | null>(null);
@@ -209,16 +207,21 @@ export default function Game() {
         ? (compass.heading + declination + 360) % 360
         : compass.heading;
 
+  // Standing in the current round's city, the bearing to its reference
+  // point is arbitrary — the round becomes "point due north" instead, and
+  // the aim hint says so before the player locks in.
+  const atCity =
+    phase === "playing" &&
+    Array.isArray(cities) &&
+    geo.position !== null &&
+    distanceKm(geo.position, cities[round]) <= AT_CITY_KM;
+
   const lockIn = () => {
     if (tooVertical) return;
     if (cities === "loading" || cities === null || !geo.position) return;
     const city = cities[round];
     const guess = inputMode === "sensor" ? (trueHeading ?? 0) : manualAngle;
-    // Standing in the target city, every direction is correct: score a
-    // bullseye, and pin actual to the guess so the reveal needles align and
-    // the results globe draws no error arc.
-    const atCity = distanceKm(geo.position, city) <= AT_CITY_KM;
-    const actual = atCity ? guess : bearingTo(geo.position, city);
+    const actual = atCity ? 0 : bearingTo(geo.position, city);
     setResults((prev) => [
       ...prev,
       {
@@ -228,10 +231,10 @@ export default function Game() {
         lon: city.lon,
         guess,
         actual,
-        error: atCity ? 0 : angularDiff(guess, actual),
+        error: angularDiff(guess, actual),
       },
     ]);
-    setReveal({ guess, actual, atCity });
+    setReveal({ guess, actual });
   };
 
   const nextCity = () => {
@@ -575,6 +578,11 @@ export default function Game() {
                   🧭 Compass accuracy is low — wave your phone in a figure-8
                   to recalibrate, away from metal and magnets.
                 </p>
+              ) : atCity ? (
+                <p className="text-sm text-amber-400 text-center max-w-xs">
+                  📍 You're in {Array.isArray(cities) ? cities[round].name : "this city"}!
+                  Point due north to claim it.
+                </p>
               ) : (
                 <p className="text-sm text-slate-500">
                   {inputMode === "sensor"
@@ -589,14 +597,8 @@ export default function Game() {
           ) : (
             <>
               <p className="text-xl font-semibold">
-                {reveal.atCity ? (
-                  <>🎯 You're here! Every direction counts.</>
-                ) : (
-                  <>
-                    {gradeEmoji(angularDiff(reveal.guess, reveal.actual))}{" "}
-                    {Math.round(angularDiff(reveal.guess, reveal.actual))}° off
-                  </>
-                )}
+                {gradeEmoji(angularDiff(reveal.guess, reveal.actual))}{" "}
+                {Math.round(angularDiff(reveal.guess, reveal.actual))}° off
               </p>
               <Button onClick={nextCity}>
                 {round + 1 >= 5 ? "See results" : "Next city"}
