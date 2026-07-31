@@ -72,12 +72,9 @@ export default function Game() {
     loadSubmitPref(),
   );
   const [account, setAccount] = useState<AccountState | undefined>(undefined);
-  // "Better than X% of N players today", once the day's distribution is
+  // "Better than X% of today's players", once the day's distribution is
   // available.
-  const [ranking, setRanking] = useState<{
-    betterThanPct: number;
-    sampleCount: number;
-  } | null>(null);
+  const [ranking, setRanking] = useState<number | null>(null);
 
   const geo = useGeolocation();
   const compass = useCompassHeading();
@@ -325,10 +322,7 @@ export default function Game() {
     let stale = false;
     fetchDistribution(dateKey, gameMode, continent).then((d) => {
       if (stale || !d) return;
-      const betterThanPct = betterThanPercent(scoreOf(results), d);
-      if (betterThanPct !== null) {
-        setRanking({ betterThanPct, sampleCount: d.sampleCount });
-      }
+      setRanking(betterThanPercent(scoreOf(results), d));
     });
     return () => {
       stale = true;
@@ -619,12 +613,7 @@ export default function Game() {
             {scoreOf(results)}°
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
-          {ranking && (
-            <RankBar
-              betterThanPct={ranking.betterThanPct}
-              sampleCount={ranking.sampleCount}
-            />
-          )}
+          {ranking !== null && <RankBar betterThanPct={ranking} />}
           {(() => {
             const globePos = geo.position ?? saved?.pos ?? null;
             const hasCoords = results.every((r) => typeof r.lat === "number");

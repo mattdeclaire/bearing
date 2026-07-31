@@ -3,13 +3,13 @@
 // Position is the primary encoding and the caption restates the number, so
 // the green/red hue is never the only channel (colorblind-safe); the
 // gradient's lightness also rises monotonically left→right.
+// Deliberately no player count: the percentile is the story.
 interface RankBarProps {
   betterThanPct: number; // 0..99, share of players beaten — higher is better
-  sampleCount: number;
 }
 
-export default function RankBar({ betterThanPct, sampleCount }: RankBarProps) {
-  const label = `Better than ${betterThanPct}% of ${sampleCount.toLocaleString()} players today`;
+export default function RankBar({ betterThanPct }: RankBarProps) {
+  const label = `Better than ${betterThanPct}% of today's players`;
   return (
     <div className="w-full max-w-xs flex flex-col items-center gap-2 -mt-2">
       <div
@@ -29,7 +29,7 @@ export default function RankBar({ betterThanPct, sampleCount }: RankBarProps) {
       <p className="text-sm text-slate-400">
         Better than{" "}
         <span className="font-semibold text-slate-100">{betterThanPct}%</span>{" "}
-        of {sampleCount.toLocaleString()} players today
+        of today's players
       </p>
     </div>
   );
