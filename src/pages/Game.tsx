@@ -42,6 +42,7 @@ import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
 import ResultsGlobe from "../components/ResultsGlobe.tsx";
 import Button from "../components/Button.tsx";
+import RankBar from "../components/RankBar.tsx";
 import StatsModal from "../components/StatsModal.tsx";
 
 type Phase = "intro" | "permissions" | "playing" | "results";
@@ -616,10 +617,7 @@ export default function Game() {
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
           {ranking && (
-            <p className="text-amber-400 font-semibold -mt-2">
-              Top {ranking.topPct}% of{" "}
-              {ranking.sampleCount.toLocaleString()} players today
-            </p>
+            <RankBar topPct={ranking.topPct} sampleCount={ranking.sampleCount} />
           )}
           {(() => {
             const globePos = geo.position ?? saved?.pos ?? null;
