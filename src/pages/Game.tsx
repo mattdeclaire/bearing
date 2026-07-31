@@ -21,7 +21,7 @@ import {
   submitScore,
   type AccountState,
 } from "../lib/backend.ts";
-import { topPercent } from "../lib/percentile.ts";
+import { betterThanPercent } from "../lib/percentile.ts";
 import { backendEnabled } from "../lib/supabaseConfig.ts";
 import {
   loadSubmitPref,
@@ -72,9 +72,10 @@ export default function Game() {
     loadSubmitPref(),
   );
   const [account, setAccount] = useState<AccountState | undefined>(undefined);
-  // "Top X% of N players today", once the day's distribution is available.
+  // "Better than X% of N players today", once the day's distribution is
+  // available.
   const [ranking, setRanking] = useState<{
-    topPct: number;
+    betterThanPct: number;
     sampleCount: number;
   } | null>(null);
 
@@ -324,8 +325,10 @@ export default function Game() {
     let stale = false;
     fetchDistribution(dateKey, gameMode, continent).then((d) => {
       if (stale || !d) return;
-      const topPct = topPercent(scoreOf(results), d);
-      if (topPct !== null) setRanking({ topPct, sampleCount: d.sampleCount });
+      const betterThanPct = betterThanPercent(scoreOf(results), d);
+      if (betterThanPct !== null) {
+        setRanking({ betterThanPct, sampleCount: d.sampleCount });
+      }
     });
     return () => {
       stale = true;
@@ -617,7 +620,10 @@ export default function Game() {
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
           {ranking && (
-            <RankBar topPct={ranking.topPct} sampleCount={ranking.sampleCount} />
+            <RankBar
+              betterThanPct={ranking.betterThanPct}
+              sampleCount={ranking.sampleCount}
+            />
           )}
           {(() => {
             const globePos = geo.position ?? saved?.pos ?? null;

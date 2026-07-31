@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  betterThanPercent,
   bucketOf,
   MIN_SAMPLE,
-  topPercent,
   type Distribution,
 } from "../src/lib/percentile.ts";
 
@@ -30,36 +30,38 @@ describe("bucketOf", () => {
   });
 });
 
-describe("topPercent", () => {
+describe("betterThanPercent", () => {
   it("returns null below the sample floor", () => {
-    expect(topPercent(100, dist([[10, MIN_SAMPLE - 1]]))).toBeNull();
-    expect(topPercent(100, { histogram: [], sampleCount: 100 })).toBeNull();
+    expect(betterThanPercent(100, dist([[10, MIN_SAMPLE - 1]]))).toBeNull();
+    expect(
+      betterThanPercent(100, { histogram: [], sampleCount: 100 }),
+    ).toBeNull();
   });
 
-  it("never says Top 0% — the day's best score reads Top 1%", () => {
+  it("caps the day's best score at 99% — you can't beat yourself", () => {
     // 1 great score, 99 bad ones
-    expect(topPercent(5, dist([[0, 1], [50, 99]]))).toBe(1);
+    expect(betterThanPercent(5, dist([[0, 1], [50, 99]]))).toBe(99);
   });
 
-  it("caps the worst score at Top 100%", () => {
-    expect(topPercent(890, dist([[0, 99], [89, 1]]))).toBe(100);
+  it("floors the worst score at 0%", () => {
+    expect(betterThanPercent(890, dist([[0, 99], [89, 1]]))).toBe(0);
   });
 
-  it("puts the middle of a uniform field near 50%", () => {
-    // 10 players in each of buckets 0..9; score 45 sits in bucket 4
+  it("puts the middle of a uniform field near 55%", () => {
+    // 10 players in each of buckets 0..9; score 45 sits in bucket 4:
+    // 50 strictly worse + half of own 10 = 55 of 100
     const d = dist(Array.from({ length: 10 }, (_, i) => [i, 10]));
-    // 40 better + half of own 10 = 45 of 100
-    expect(topPercent(45, d)).toBe(45);
+    expect(betterThanPercent(45, d)).toBe(55);
   });
 
   it("uses the midpoint of the player's own bucket", () => {
     // everyone scored in the same bucket → you're at the middle of the pack
-    expect(topPercent(100, dist([[10, 100]]))).toBe(50);
+    expect(betterThanPercent(100, dist([[10, 100]]))).toBe(50);
   });
 
   it("counts at least one own-bucket occupant even if the histogram is stale", () => {
     // the player's own score may not be aggregated yet (hourly batch)
     const d = dist([[0, 20]]);
-    expect(topPercent(500, d)).toBe(100); // 20 better + 0.5 of phantom 1
+    expect(betterThanPercent(500, d)).toBe(0); // everyone else is better
   });
 });
