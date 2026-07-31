@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  AT_CITY_KM,
   angularDiff,
   bearingTo,
   buildShareText,
+  distanceKm,
   gradeEmoji,
   scoreOf,
   SITE_URL,
@@ -74,6 +76,33 @@ describe("gradeEmoji", () => {
     expect(gradeEmoji(60)).toBe("🟡");
     expect(gradeEmoji(110)).toBe("🟠");
     expect(gradeEmoji(180)).toBe("🔴");
+  });
+});
+
+describe("distanceKm", () => {
+  it("zero for identical points", () => {
+    expect(distanceKm(LONDON, LONDON)).toBe(0);
+  });
+
+  it("London → New York is ~5570 km", () => {
+    expect(distanceKm(LONDON, NYC)).toBeCloseTo(5570, -2);
+  });
+
+  it("is symmetric", () => {
+    expect(distanceKm(TOKYO, SYDNEY)).toBeCloseTo(distanceKm(SYDNEY, TOKYO), 6);
+  });
+
+  it("0.1° of latitude is ~11 km — inside the at-city radius", () => {
+    const d = distanceKm(LONDON, { lat: LONDON.lat + 0.1, lon: LONDON.lon });
+    expect(d).toBeCloseTo(11.1, 0);
+    expect(d).toBeLessThan(AT_CITY_KM);
+  });
+
+  it("a neighboring city stays outside the at-city radius", () => {
+    // Amsterdam → Utrecht, ~35 km apart
+    const amsterdam = { lat: 52.3676, lon: 4.9041 };
+    const utrecht = { lat: 52.0907, lon: 5.1214 };
+    expect(distanceKm(amsterdam, utrecht)).toBeGreaterThan(AT_CITY_KM);
   });
 });
 

@@ -33,6 +33,28 @@ export function angularDiff(a: number, b: number): number {
   return d > 180 ? 360 - d : d;
 }
 
+const EARTH_RADIUS_KM = 6371;
+
+// Haversine great-circle distance.
+export function distanceKm(a: LatLon, b: LatLon): number {
+  const φ1 = toRad(a.lat);
+  const φ2 = toRad(b.lat);
+  const Δφ = toRad(b.lat - a.lat);
+  const Δλ = toRad(b.lon - a.lon);
+  const s =
+    Math.sin(Δφ / 2) ** 2 + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
+  return 2 * EARTH_RADIUS_KM * Math.asin(Math.min(1, Math.sqrt(s)));
+}
+
+// Inside the target city, "which way is the city?" has no honest answer —
+// the bearing to its reference coordinate is arbitrary (pure GPS noise when
+// you're near the point). Within this radius the round becomes "point due
+// north" instead (announced in the aim hint), so locals still have to
+// orient rather than getting a free bullseye. 25 km covers most metro
+// areas; beyond it, pointing at the city center is a meaningful question
+// again.
+export const AT_CITY_KM = 25;
+
 export function gradeEmoji(diff: number): string {
   if (diff <= 10) return "🎯";
   if (diff <= 25) return "🟢";

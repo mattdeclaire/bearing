@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { City } from "../lib/cities.ts";
 import {
+  AT_CITY_KM,
   angularDiff,
   bearingTo,
   buildShareText,
+  distanceKm,
   gradeEmoji,
   scoreOf,
   type CityResult,
@@ -205,12 +207,21 @@ export default function Game() {
         ? (compass.heading + declination + 360) % 360
         : compass.heading;
 
+  // Standing in the current round's city, the bearing to its reference
+  // point is arbitrary — the round becomes "point due north" instead, and
+  // the aim hint says so before the player locks in.
+  const atCity =
+    phase === "playing" &&
+    Array.isArray(cities) &&
+    geo.position !== null &&
+    distanceKm(geo.position, cities[round]) <= AT_CITY_KM;
+
   const lockIn = () => {
     if (tooVertical) return;
     if (cities === "loading" || cities === null || !geo.position) return;
     const city = cities[round];
     const guess = inputMode === "sensor" ? (trueHeading ?? 0) : manualAngle;
-    const actual = bearingTo(geo.position, city);
+    const actual = atCity ? 0 : bearingTo(geo.position, city);
     setResults((prev) => [
       ...prev,
       {
@@ -566,6 +577,11 @@ export default function Game() {
                 <p className="text-sm text-amber-400 text-center max-w-xs">
                   🧭 Compass accuracy is low — wave your phone in a figure-8
                   to recalibrate, away from metal and magnets.
+                </p>
+              ) : atCity ? (
+                <p className="text-sm text-amber-400 text-center max-w-xs">
+                  📍 You're in {Array.isArray(cities) ? cities[round].name : "this city"}!
+                  Point due north to claim it.
                 </p>
               ) : (
                 <p className="text-sm text-slate-500">
