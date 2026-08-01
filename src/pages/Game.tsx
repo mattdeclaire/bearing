@@ -21,7 +21,7 @@ import {
   submitScore,
   type AccountState,
 } from "../lib/backend.ts";
-import { topPercent } from "../lib/percentile.ts";
+import { betterThanPercent } from "../lib/percentile.ts";
 import { backendEnabled } from "../lib/supabaseConfig.ts";
 import {
   loadSubmitPref,
@@ -42,6 +42,7 @@ import { useCompassHeading } from "../lib/useCompassHeading.ts";
 import CompassDial from "../components/CompassDial.tsx";
 import ResultsGlobe from "../components/ResultsGlobe.tsx";
 import Button from "../components/Button.tsx";
+import RankBar from "../components/RankBar.tsx";
 import StatsModal from "../components/StatsModal.tsx";
 
 type Phase = "intro" | "permissions" | "playing" | "results";
@@ -71,11 +72,9 @@ export default function Game() {
     loadSubmitPref(),
   );
   const [account, setAccount] = useState<AccountState | undefined>(undefined);
-  // "Top X% of N players today", once the day's distribution is available.
-  const [ranking, setRanking] = useState<{
-    topPct: number;
-    sampleCount: number;
-  } | null>(null);
+  // "Better than X% of today's players", once the day's distribution is
+  // available.
+  const [ranking, setRanking] = useState<number | null>(null);
 
   const geo = useGeolocation();
   const compass = useCompassHeading();
@@ -323,8 +322,7 @@ export default function Game() {
     let stale = false;
     fetchDistribution(dateKey, gameMode, continent).then((d) => {
       if (stale || !d) return;
-      const topPct = topPercent(scoreOf(results), d);
-      if (topPct !== null) setRanking({ topPct, sampleCount: d.sampleCount });
+      setRanking(betterThanPercent(scoreOf(results), d));
     });
     return () => {
       stale = true;
@@ -615,12 +613,7 @@ export default function Game() {
             {scoreOf(results)}°
           </p>
           <p className="text-slate-400 -mt-4">total error (lower is better)</p>
-          {ranking && (
-            <p className="text-amber-400 font-semibold -mt-2">
-              Top {ranking.topPct}% of{" "}
-              {ranking.sampleCount.toLocaleString()} players today
-            </p>
-          )}
+          {ranking !== null && <RankBar betterThanPct={ranking} />}
           {(() => {
             const globePos = geo.position ?? saved?.pos ?? null;
             const hasCoords = results.every((r) => typeof r.lat === "number");
