@@ -1,0 +1,1112 @@
+{
+  "2027-09-01": [
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    },
+    {
+      "name": "Accra",
+      "country": "Ghana",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-02": [
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    },
+    {
+      "name": "Durban",
+      "country": "South Africa",
+      "lat": -29.8587,
+      "lon": 31.0218,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-03": [
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    },
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-04": [
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-05": [
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Dakar",
+      "country": "Senegal",
+      "lat": 14.7167,
+      "lon": -17.4677,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-06": [
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    },
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-07": [
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Algiers",
+      "country": "Algeria",
+      "lat": 36.7538,
+      "lon": 3.0588,
+      "continent": "africa"
+    },
+    {
+      "name": "Durban",
+      "country": "South Africa",
+      "lat": -29.8587,
+      "lon": 31.0218,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-08": [
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "continent": "africa"
+    },
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Dakar",
+      "country": "Senegal",
+      "lat": 14.7167,
+      "lon": -17.4677,
+      "continent": "africa"
+    },
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-09": [
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    },
+    {
+      "name": "Accra",
+      "country": "Ghana",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "continent": "africa"
+    },
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-10": [
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Lagos",
+      "country": "Nigeria",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "continent": "africa"
+    },
+    {
+      "name": "Dar es Salaam",
+      "country": "Tanzania",
+      "lat": -6.7924,
+      "lon": 39.2083,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-11": [
+    {
+      "name": "Accra",
+      "country": "Ghana",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    },
+    {
+      "name": "Dar es Salaam",
+      "country": "Tanzania",
+      "lat": -6.7924,
+      "lon": 39.2083,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-12": [
+    {
+      "name": "Dakar",
+      "country": "Senegal",
+      "lat": 14.7167,
+      "lon": -17.4677,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-13": [
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "continent": "africa"
+    },
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-14": [
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    },
+    {
+      "name": "Algiers",
+      "country": "Algeria",
+      "lat": 36.7538,
+      "lon": 3.0588,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-15": [
+    {
+      "name": "Durban",
+      "country": "South Africa",
+      "lat": -29.8587,
+      "lon": 31.0218,
+      "continent": "africa"
+    },
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "continent": "africa"
+    },
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-16": [
+    {
+      "name": "Durban",
+      "country": "South Africa",
+      "lat": -29.8587,
+      "lon": 31.0218,
+      "continent": "africa"
+    },
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Kinshasa",
+      "country": "DR Congo",
+      "lat": -4.4419,
+      "lon": 15.2663,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-17": [
+    {
+      "name": "Dar es Salaam",
+      "country": "Tanzania",
+      "lat": -6.7924,
+      "lon": 39.2083,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "lat": 5.36,
+      "lon": -4.0083,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-18": [
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    },
+    {
+      "name": "Lagos",
+      "country": "Nigeria",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    },
+    {
+      "name": "Accra",
+      "country": "Ghana",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-19": [
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Algiers",
+      "country": "Algeria",
+      "lat": 36.7538,
+      "lon": 3.0588,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-20": [
+    {
+      "name": "Dar es Salaam",
+      "country": "Tanzania",
+      "lat": -6.7924,
+      "lon": 39.2083,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-21": [
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    },
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Algiers",
+      "country": "Algeria",
+      "lat": 36.7538,
+      "lon": 3.0588,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-22": [
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    },
+    {
+      "name": "Accra",
+      "country": "Ghana",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-23": [
+    {
+      "name": "Lagos",
+      "country": "Nigeria",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Accra",
+      "country": "Ghana",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-24": [
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Dakar",
+      "country": "Senegal",
+      "lat": 14.7167,
+      "lon": -17.4677,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Addis Ababa",
+      "country": "Ethiopia",
+      "lat": 9.0192,
+      "lon": 38.7525,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-25": [
+    {
+      "name": "Cape Town",
+      "country": "South Africa",
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "continent": "africa"
+    },
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Harare",
+      "country": "Zimbabwe",
+      "lat": -17.8252,
+      "lon": 31.0335,
+      "continent": "africa"
+    },
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-26": [
+    {
+      "name": "Antananarivo",
+      "country": "Madagascar",
+      "lat": -18.8792,
+      "lon": 47.5079,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Casablanca",
+      "country": "Morocco",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "continent": "africa"
+    },
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-27": [
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-28": [
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    },
+    {
+      "name": "Nairobi",
+      "country": "Kenya",
+      "lat": -1.2921,
+      "lon": 36.8219,
+      "continent": "africa"
+    },
+    {
+      "name": "Durban",
+      "country": "South Africa",
+      "lat": -29.8587,
+      "lon": 31.0218,
+      "continent": "africa"
+    },
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Luanda",
+      "country": "Angola",
+      "lat": -8.839,
+      "lon": 13.2894,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-29": [
+    {
+      "name": "Khartoum",
+      "country": "Sudan",
+      "lat": 15.5007,
+      "lon": 32.5599,
+      "continent": "africa"
+    },
+    {
+      "name": "Dakar",
+      "country": "Senegal",
+      "lat": 14.7167,
+      "lon": -17.4677,
+      "continent": "africa"
+    },
+    {
+      "name": "Lusaka",
+      "country": "Zambia",
+      "lat": -15.3875,
+      "lon": 28.3228,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Johannesburg",
+      "country": "South Africa",
+      "lat": -26.2041,
+      "lon": 28.0473,
+      "continent": "africa"
+    }
+  ],
+  "2027-09-30": [
+    {
+      "name": "Lagos",
+      "country": "Nigeria",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "continent": "africa"
+    },
+    {
+      "name": "Cairo",
+      "country": "Egypt",
+      "lat": 30.0444,
+      "lon": 31.2357,
+      "continent": "africa"
+    },
+    {
+      "name": "Dar es Salaam",
+      "country": "Tanzania",
+      "lat": -6.7924,
+      "lon": 39.2083,
+      "continent": "africa"
+    },
+    {
+      "name": "Durban",
+      "country": "South Africa",
+      "lat": -29.8587,
+      "lon": 31.0218,
+      "continent": "africa"
+    },
+    {
+      "name": "Tunis",
+      "country": "Tunisia",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "continent": "africa"
+    }
+  ]
+}
